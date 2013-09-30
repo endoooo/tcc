@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>TCC testes</title>
+		<script type="text/javascript" src="js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<div id="g001"></div>
+		<button type="button" value="all">Todos</button>
+		<button type="button" value="Brasil">Brasil</button>
+		<button type="button" value="Norte">Norte</button>
+		<button type="button" value="Nordeste">Nordeste</button>
+		<button type="button" value="Sudeste">Sudeste</button>
+		<button type="button" value="Sul">Sul</button>
+		<button type="button" value="Centro-Oeste">Centro-Oeste</button>
+
+		<script type="text/javascript">
+
+		//line generator
+		var line = d3.svg.line()
+			.x(function(d) { return x(d.ano); })
+			.y(function(d) { return y(d.valor); })
+			.interpolate("linear");
+		var zeroline = d3.svg.line()
+			.x(function(d) { return x(d.ano); })
+			.y(function(d) { return y(0); })
+			.interpolate("linear");
+
+		//graph config
+		var w = 600;
+		var h = 300;
+		var padding = 30;
+
+		//scales
+		var x = d3.scale.linear().domain([2005, 2011]).range([0+padding, w-padding]);
+		var y = d3.scale.linear().domain([0, 60]).range([h-padding, 0+padding]);
+
+		$('button').on('click', function(){
+			filter($(this).val());
+		});
+
+		function filter(region) {
+
+			console.log(region);
+			d3.csv("data/1023.csv", function(csv){
+
+				//grouping by region
+				var dataset = d3.nest()
+					.key(function(d) {return d.regiao;})
+					.entries(csv);
+
+				//creating chart var
+				if (region === 'all') {
+					var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset);	
+				}
+				else {
+					var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset.filter(
+						function(d){return d.key === region;}
+					));
+				}
+
+				//update lines
+				chart.enter()
+					.append('path')
+					.attr('d', function(d){return zeroline(d.values);});
+				chart.transition()
+					.attr('class', 'line')
+					.attr("d", function(d){return line(d.values);})
+					.attr("stroke", "blue")
+					.attr("stroke-width", 2)
+					.attr("fill", "none");
+				
+				chart.exit().transition()
+					.attr('d', function(d){return zeroline(d.values);})
+					.remove();
+
+			});
+
+		}
+
+		d3.csv("data/1023.csv", function(csv){
+
+			console.log(csv);
+
+			//grouping by region
+			var dataset = d3.nest()
+				.key(function(d) {return d.regiao;})
+				.entries(csv);
+
+			console.log(dataset);
+
+			//Define X axis
+			var xAxis = d3.svg.axis()
+				.scale(x)
+				.orient("bottom")
+				.ticks(1);
+
+			//Define Y axis
+			var yAxis = d3.svg.axis()
+				.scale(y)
+				.orient("left")
+				.ticks(1);
+
+			//chart
+			var chart = d3.select('#g001')
+				.append('svg')
+				.attr('width', w)
+				.attr('height', h);
+
+			//lines
+			chart.selectAll('path').data(dataset).enter()
+				.append('path')
+				.attr('class', 'line')
+				.attr("d", function(d){return line(d.values);})
+				.attr("stroke", "blue")
+				.attr("stroke-width", 2)
+				.attr("fill", "none");
+
+			//circles
+			// chart.selectAll('g').data(dataset).enter()
+			// 	.append('g')
+			// 	.selectAll('circle').data(function(d){return d.values;}).enter()
+			// 	.append('circle')
+			// 	.attr('cx', function(d){return x(d.ano);})
+			// 	.attr('cy', function(d){return y(d.valor);})
+			// 	.attr('r', 2);
+
+			//Create X axis
+			chart.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(0," + (h - padding) + ")")
+				.call(xAxis);
+			
+			//Create Y axis
+			chart.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(" + padding + ",0)")
+				.call(yAxis);
+		});
+
+		</script>
+	</body>
+</html>
