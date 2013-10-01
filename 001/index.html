@@ -40,13 +40,37 @@
 		var x = d3.scale.linear().domain([2005, 2011]).range([0+padding, w-padding]);
 		var y = d3.scale.linear().domain([0, 60]).range([h-padding, 0+padding]);
 
+		//colors
+		function colorize(region) {
+			switch(region) {
+				case 'Norte':
+					return 'blue';
+					break;
+				case 'Nordeste':
+					return 'red';
+					break;
+				case 'Sul':
+					return 'green';
+					break;
+				case 'Sudeste':
+					return 'orange';
+					break;
+				case 'Centro-Oeste':
+					return 'purple';
+					break;
+				default:
+					return 'black';
+					break;
+			}
+		}
+
 		$('button').on('click', function(){
 			filter($(this).val());
 		});
 
-		function filter(region) {
+		function filter(arr) {
 
-			console.log(region);
+			console.log(arr);
 			d3.csv("data/1023.csv", function(csv){
 
 				//grouping by region
@@ -55,29 +79,34 @@
 					.entries(csv);
 
 				//creating chart var
-				if (region === 'all') {
-					var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset);	
-				}
-				else {
-					var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset.filter(
-						function(d){return d.key === region;}
-					));
-				}
+				var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset.filter(
+					function(d){return checkRegion(d.key, arr);}
+				));
 
-				//update lines
+				//new lines
 				chart.enter()
 					.append('path')
-					.attr('d', function(d){return zeroline(d.values);});
-				chart.transition()
 					.attr('class', 'line')
+					.attr('d', function(d){return zeroline(d.values);});
+				//update lines
+				chart.transition()
 					.attr("d", function(d){return line(d.values);})
-					.attr("stroke", "blue")
-					.attr("stroke-width", 2)
+					.attr("stroke", function(d){ return colorize(d.key);})
+					.attr("stroke-width", 1)
 					.attr("fill", "none");
-				
+				//remove empty
 				chart.exit().transition()
 					.attr('d', function(d){return zeroline(d.values);})
 					.remove();
+
+				//circles
+				chart.selectAll('g').data(dataset).enter()
+					.append('g')
+					.selectAll('circle').data(function(d){return d.values;}).enter()
+					.append('circle')
+					.attr('cx', function(d){return x(d.ano);})
+					.attr('cy', function(d){return y(d.valor);})
+					.attr('r', 2);
 
 			});
 
@@ -117,13 +146,14 @@
 				.append('path')
 				.attr('class', 'line')
 				.attr("d", function(d){return line(d.values);})
-				.attr("stroke", "blue")
-				.attr("stroke-width", 2)
+				.attr("stroke", function(d){ return colorize(d.key);})
+				.attr("stroke-width", 1)
 				.attr("fill", "none");
 
 			//circles
 			// chart.selectAll('g').data(dataset).enter()
 			// 	.append('g')
+			// 	.attr('class', 'circles')
 			// 	.selectAll('circle').data(function(d){return d.values;}).enter()
 			// 	.append('circle')
 			// 	.attr('cx', function(d){return x(d.ano);})
@@ -141,7 +171,34 @@
 				.attr("class", "axis")
 				.attr("transform", "translate(" + padding + ",0)")
 				.call(yAxis);
+
+			//Checkboxes
+			d3.select('#g001').selectAll('input[type=checkbox]').data(dataset).enter()
+				.append('label')
+				.attr('for', function(d,i){ return 'r'+i; })
+				.attr('style', function(d){ return 'color:' + colorize(d.key); })
+    			.text(function(d) { return d.key; })
+				.append('input')
+				.attr('class', 'checkbox')
+				.attr('type', 'checkbox')
+				.attr('value', function(d){ return d.key; })
+				.attr('checked', 'checked')
+				.attr("id", function(d,i) { return 'r'+i; })
 		});
+
+		$('body').on('click', '.checkbox', function(){
+			var r = [];
+			$('.checkbox:checked').each(function(){
+				r.push($(this).val());
+			})
+			filter(r);
+		});
+		function checkRegion(region, arr) {
+			for (var i = 0; i < arr.length; i++) {
+			    if (region === arr[i]) return true;
+			}
+			return false;
+		}
 
 		</script>
 	</body>
