@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<title>TCC testes</title>
+		<script type="text/javascript" src="js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+
+		<div id="overview"></div>
+		<a href="#" id="abs">Absoluto</a><br/>
+		<a href="#" id="rel">Crescimento em relação a 2005</a>
+
+		<script type="text/javascript">
+
+		//graph config
+		var w = 600;
+		var h = 300;
+		var padding = 30;
+
+		d3.csv("data/tcc001a.csv", function(csv){
+
+			//grouping by region
+			var dataset = d3.nest()
+				.key(function(d) {return d.tipo;})
+				.entries(csv);
+
+			//line generator
+			var line = d3.svg.line()
+				.x(function(d) { return x(d.ano); })
+				.y(function(d) { return y(d.valor); })
+				.interpolate("linear");
+
+			//scales
+			var x = d3.scale.linear().domain([2005, 2011]).range([0+padding, w-padding]);
+			var y = d3.scale.linear().domain([0, 200000]).range([h-padding, 0+padding]);
+
+			//chart
+			var chart = d3.select('#overview')
+				.append('svg')
+				.attr('width', w)
+				.attr('height', h);
+			
+			// create yAxis
+			var xAxis = d3.svg.axis().scale(x).tickSize(-h).tickSubdivide(true);
+			// Add the x-axis.
+			chart.append("svg:g")
+			      .attr("class", "x axis")
+			      .attr("transform", "translate(0," + h + ")")
+			      .call(xAxis);			
+
+			//lines
+			chart.selectAll('path.line').data(dataset).enter()
+				.append('path')
+				.transition()
+				.attr('d', function(d){return line(d.values);})
+				.attr('class', function(d, i){ return 'line linec' + i; })
+
+			//circles
+			chart.selectAll('g.circles').data(dataset).enter()
+				.append('g')
+				.attr('class', function(d, i){ return 'circles linec' + i; })
+				.selectAll('circle').data(function(d){return d.values;}).enter()
+				.append('circle')
+				.transition()
+				.attr('cx', function(d){return x(d.ano);})
+				.attr('cy', function(d){return y(d.valor);})
+				.attr('r', 3)
+				.attr('class', 'circle');
+		});
+
+		$('#abs').on('click', function(e){
+			e.preventDefault();
+
+			d3.csv("data/tcc001a.csv", function(csv){
+
+				//grouping by region
+				var dataset = d3.nest()
+					.key(function(d) {return d.tipo;})
+					.entries(csv);
+
+				//line generator
+				var line = d3.svg.line()
+					.x(function(d) { return x(d.ano); })
+					.y(function(d) { return y(d.valor); })
+					.interpolate("linear");
+
+				//scales
+				var x = d3.scale.linear().domain([2005, 2011]).range([0+padding, w-padding]);
+				var y = d3.scale.linear().domain([0, 200000]).range([h-padding, 0+padding]);
+
+				//chart
+				var chart = d3.select('#overview svg');		
+
+				//lines
+				chart.selectAll('path.line').data(dataset)
+					.transition()
+					.attr('d', function(d){return line(d.values);})
+					.attr('class', function(d, i){ return 'line linec' + i; })
+
+				//circles
+				chart.selectAll('g.circles').data(dataset)
+					.selectAll('circle.circle').data(function(d){return d.values;})
+					.transition()
+					.attr('cy', function(d){return y(d.valor);})
+			});
+		})
+
+		$('#rel').on('click', function(e){
+			e.preventDefault();
+
+			d3.csv("data/tcc001b.csv", function(csv){
+
+				//grouping by region
+				var dataset = d3.nest()
+					.key(function(d) {return d.tipo;})
+					.entries(csv);
+
+				//line generator
+				var line = d3.svg.line()
+					.x(function(d) { return x(d.ano); })
+					.y(function(d) { return y(d.valor); })
+					.interpolate("linear");
+
+				//scales
+				var x = d3.scale.linear().domain([2005, 2011]).range([0+padding, w-padding]);
+				var y = d3.scale.linear().domain([0, 100000]).range([h-padding, 0+padding]);
+
+				//chart
+				var chart = d3.select('#overview svg');	
+
+				//lines
+				chart.selectAll('path.line').data(dataset)
+					.transition()
+					.attr('d', function(d){return line(d.values);});
+
+				//circles
+				chart.selectAll('g.circles').data(dataset)
+					.selectAll('circle').data(function(d){return d.values;})
+					.transition()
+					.attr('cy', function(d){return y(d.valor);});
+			});
+		})
+
+
+
+		</script>
+	</body>
+</html>

@@ -17,4 +17,21 @@ path {
 	fill: none;*/
 }
 
+.line {
+	stroke-width: 1;
+	fill: none;
+}
+.circle {
+	r: 3;
+	stroke-width: 1;
+	fill: white;
+}
+
 label { display: block; }
+
+body { background: #f0f0f0 }
+
+/* colors */
+.linec0 { stroke: #000 }
+.linec1 { stroke: #ed6756 }
+.linec2 { stroke: #42b3c6 }

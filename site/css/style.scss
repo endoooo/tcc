@@ -1,0 +1,113 @@
+/* ------------------------------ *\
+INDEX
+-
+Import Common (reset, reusable, etc.)
+Base
+Home
+About
+Products
+Downloads
+Contact
+\* ------------------------------ */
+
+@import "common";
+
+
+/* ------------------------------ *\
+BASE
+\* ------------------------------ */
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+body {
+	min-width: 960px;
+	min-height: 100%;
+	font-size: 100%;
+	font-family: 'ubuntu_mono', Courier, sans-serif;
+	line-height: 1.5em;
+	color: $c1;
+	background: $c3;
+}
+
+.content { padding: 2.5em 4em }
+.content.first { padding-top: 4em }
+.graph {
+	min-width: 100%;
+	height: 5em;
+	background: white;
+}
+
+
+/* ------------------------------ *\
+MENU
+\* ------------------------------ */
+#menu-link {
+	position: fixed;
+	top: 0.5em;
+	left: 0.5em;
+	font-size: 2em;
+	color: $c2;
+	&:hover { color: black }
+}
+#overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: 0.5;
+}
+#menu {
+	position: fixed;
+	top: 0;
+	left: -400px;
+	width: 400px;
+	height: 100%;
+	padding: 4em 0 4em 4em;
+	background: white;
+	opacity: 0;
+
+	li.active {
+		border-right: 4px solid black;
+		a { color: black }
+	}
+
+	.arcs {
+		position: absolute;
+		top: 123px;
+		left: -12px;
+		width: 61px;
+		height: 121px;
+		background: url('../img/arcs.png') no-repeat;
+	}
+
+	#close-menu-link {
+		position: absolute;
+		top: 0.5em;
+		left: 0.5em;
+		font-size: 2em;
+		color: $c2;
+		&:hover { color: black }
+	}
+}
+
+
+/* ------------------------------ *\
+COVER
+\* ------------------------------ */
+#cover {
+	min-height: 100%;
+	padding: 64px 120px;
+	color: white;
+	background: $main url('../img/connections.png') no-repeat center;
+
+	span {
+		display: inline-block;
+		margin-top: 2em;
+		font-size: 2em;
+	}
+}

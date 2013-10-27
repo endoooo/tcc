@@ -11,13 +11,6 @@
 	<body>
 
 		<div id="g001"></div>
-		<button type="button" value="all">Todos</button>
-		<button type="button" value="Brasil">Brasil</button>
-		<button type="button" value="Norte">Norte</button>
-		<button type="button" value="Nordeste">Nordeste</button>
-		<button type="button" value="Sudeste">Sudeste</button>
-		<button type="button" value="Sul">Sul</button>
-		<button type="button" value="Centro-Oeste">Centro-Oeste</button>
 
 		<script type="text/javascript">
 
@@ -64,10 +57,6 @@
 			}
 		}
 
-		$('button').on('click', function(){
-			filter($(this).val());
-		});
-
 		function filter(arr) {
 
 			console.log(arr);
@@ -79,34 +68,25 @@
 					.entries(csv);
 
 				//creating chart var
-				var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset.filter(
-					function(d){return checkRegion(d.key, arr);}
-				));
+				var chart = d3.select('#g001 svg').selectAll('path.line').data(dataset);
 
 				//new lines
-				chart.enter()
-					.append('path')
-					.attr('class', 'line')
-					.attr('d', function(d){return zeroline(d.values);});
+				// chart.enter()
+				// 	.append('path')
+				// 	.attr('class', 'line')
+				// 	.attr('d', function(d){return zeroline(d.values);});
 				//update lines
-				chart.transition()
+				chart.filter( function(d){return checkRegion(d.key, arr);} )
+					.transition()
 					.attr("d", function(d){return line(d.values);})
 					.attr("stroke", function(d){ return colorize(d.key);})
 					.attr("stroke-width", 1)
 					.attr("fill", "none");
 				//remove empty
-				chart.exit().transition()
+				chart.filter( function(d){return !checkRegion(d.key, arr);} )
+					.transition()
 					.attr('d', function(d){return zeroline(d.values);})
-					.remove();
-
-				//circles
-				chart.selectAll('g').data(dataset).enter()
-					.append('g')
-					.selectAll('circle').data(function(d){return d.values;}).enter()
-					.append('circle')
-					.attr('cx', function(d){return x(d.ano);})
-					.attr('cy', function(d){return y(d.valor);})
-					.attr('r', 2);
+					.attr('stroke-width', 0);
 
 			});
 
@@ -186,6 +166,7 @@
 				.attr("id", function(d,i) { return 'r'+i; })
 		});
 
+		//checkbox filter listener
 		$('body').on('click', '.checkbox', function(){
 			var r = [];
 			$('.checkbox:checked').each(function(){
@@ -193,6 +174,8 @@
 			})
 			filter(r);
 		});
+
+		//
 		function checkRegion(region, arr) {
 			for (var i = 0; i < arr.length; i++) {
 			    if (region === arr[i]) return true;
