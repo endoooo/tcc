@@ -43,13 +43,15 @@ $('document').ready(function() {
 	})
 
 
-	//education
+	//graph config
+	var padding = 16;
+
+	//education 1A
 	d3.csv("../educacao/data/001.csv", function(csv){
 
 		//graph config
 		var w = 940;
 		var h = 300;
-		var padding = 16;
 
 		//scale
 		var x = d3.scale.linear()
@@ -108,6 +110,178 @@ $('document').ready(function() {
 			.attr('x', function(d) { return x(d.total); })
 			.attr('dx', 8 )
 			.attr('class', 'gc2 cat');
+
+	});
+
+	$('#student-g1a').on('click', function(e){
+
+		$(this).parent('li').siblings().removeClass('active');
+		$(this).parent('li').addClass('active');
+
+		$('#graph1-title').html('Utilização da internet por condição de estudante (2011)');
+
+		d3.csv("../educacao/data/001.csv", function(csv){
+
+			//scale
+			var x = d3.scale.linear()
+				.domain([0, 129450])
+				.range(["0px", "800px"]);
+
+			//chart
+			var chart = d3.select('#graph1>.graph svg');
+
+			//total bar
+			chart.selectAll('rect.total').data(csv).enter()
+				.append('rect')
+				.attr('y', function(d, i) { return (i * 24) + (i * padding); })
+				.attr('width', 0)
+				.attr('height', 24)
+				.attr('class', 'gc2 total');
+			//users bar
+			chart.selectAll('rect.users').data(csv).enter()
+				.append('rect')
+				.attr('y', function(d, i) { return (i * 24) + (i * padding); })
+				.attr('width', 0)
+				.attr('height', 24)
+				.attr('class', 'gmain users');
+			//users text
+			chart.selectAll('text.users').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d['utilizam %'] + '%'; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
+				.attr('x', function(d) { return x(d.utilizam / 2); })
+				.attr('text-anchor', 'middle')
+				.attr('class', 'gw users');
+			//non-users text
+			chart.selectAll('text.non-users').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d['não utilizam %'] + '%'; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
+				.attr('x', function(d) { return x((d.utilizam * 1) + (d['não utilizam'] / 2)); })
+				.attr('text-anchor', 'middle')
+				.attr('class', 'gw non-users');
+			//total text
+			chart.selectAll('text.total').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d.total + '000'; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 12; })
+				.attr('x', function(d) { return x(d.total); })
+				.attr('dx', 8 )
+				.attr('class', 'gc2 total');
+			//cat text
+			chart.selectAll('text.cat').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d['condição de estudante']; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 24; })
+				.attr('x', function(d) { return x(d.total); })
+				.attr('dx', 8 )
+				.attr('class', 'gc2 cat');
+
+			//total bar
+			chart.selectAll('rect.total').data(csv)
+				.transition()
+				.attr('width', function(d) { return x(d.total); });
+			//users bar
+			chart.selectAll('rect.users').data(csv)
+				.transition()
+				.attr('width', function(d) { return x(d.utilizam); });
+
+			//total bar
+			chart.selectAll('rect.total').data(csv).exit().remove();
+			//users bar
+			chart.selectAll('rect.users').data(csv).exit().remove();;
+			//users text
+			chart.selectAll('text.users').data(csv).exit().remove();;
+			//non-users text
+			chart.selectAll('text.non-users').data(csv).exit().remove();;
+			//total text
+			chart.selectAll('text.total').data(csv).exit().remove();;
+			//cat text
+			chart.selectAll('text.cat').data(csv).exit().remove();;
+
+		});
+
+		e.preventDefault();
+
+	});
+
+	//education 1B
+	$('#student-g1b').on('click', function(e){
+
+		$(this).parent('li').siblings().removeClass('active');
+		$(this).parent('li').addClass('active');
+
+		$('#graph1-title').html('Utilização da internet por grupo de anos de estudo (2011)');
+
+		d3.csv("../educacao/data/002.csv", function(csv){
+
+			//scale
+			var x = d3.scale.linear()
+				.domain([0, 45022])
+				.range(["0px", "800px"]);
+
+			//chart
+			var chart = d3.select('#graph1>.graph svg');
+
+			//total bar
+			chart.selectAll('rect.total').data(csv).enter()
+				.append('rect')
+				.attr('y', function(d, i) { return (i * 24) + (i * padding); })
+				.attr('width', 0)
+				.attr('height', 24)
+				.attr('class', 'gc2 total');
+			//users bar
+			chart.selectAll('rect.users').data(csv).enter()
+				.append('rect')
+				.attr('y', function(d, i) { return (i * 24) + (i * padding); })
+				.attr('width', 0)
+				.attr('height', 24)
+				.attr('class', 'gmain users');
+			//users text
+			chart.selectAll('text.users').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d['utilizam %'] + '%'; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
+				.attr('x', function(d) { return x(d.utilizam / 2); })
+				.attr('text-anchor', 'middle')
+				.attr('class', 'gw users');
+			//non-users text
+			chart.selectAll('text.non-users').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d['não utilizam %'] + '%'; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
+				.attr('x', function(d) { return x((d.utilizam * 1) + (d['não utilizam'] / 2)); })
+				.attr('text-anchor', 'middle')
+				.attr('class', 'gw non-users');
+			//total text
+			chart.selectAll('text.total').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d.total + '000'; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 12; })
+				.attr('x', function(d) { return x(d.total); })
+				.attr('dx', 8 )
+				.attr('class', 'gc2 total');
+			//cat text
+			chart.selectAll('text.cat').data(csv).enter()
+				.append('text')
+				.text(function(d) { return d['anos de estudo']; })
+				.attr('y', function(d, i) { return (i * 24) + (i * padding) + 24; })
+				.attr('x', function(d) { return x(d.total); })
+				.attr('dx', 8 )
+				.attr('class', 'gc2 cat');
+
+			//total bar
+			chart.selectAll('rect.total').data(csv)
+				.transition()
+				.attr('width', function(d) { return x(d.total); });
+			//users bar
+			chart.selectAll('rect.users').data(csv)
+				.transition()
+				.attr('width', function(d) { return x(d.utilizam); });
+
+		});
+
+		e.preventDefault();
 
 	});
 

@@ -18,14 +18,15 @@
 			</p>
 		</div>
 		<div class="graph-container" id="graph1">
+			<h2 id="graph1-title">Utilização da internet por condição de estudante (2011)</h2>
 			<div class="graph"></div>
 			<a href="#" class="icon-cog settings-link" data-graph="graph1"></a>
 			<div class="settings" id="graph1-settings">
 				<ul>
 					Visualizar por:
-					<li class="active"><a href="#">Condição de estudante</a></li>
-					<li><a href="#">Anos de estudo</a></li>
-					<li><a href="#">Rede de ensino</a></li>
+					<li class="active"><a href="#" id="student-g1a">Condição de estudante</a></li>
+					<li><a href="#" id="student-g1b">Anos de estudo</a></li>
+					<li><a href="#" id="student-g1c">Rede de ensino</a></li>
 				</ul>
 				<a href="#" class="icon-close close-settings-link"></a>
 			</div>
