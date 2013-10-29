@@ -194,6 +194,10 @@ ICONS
   content: "\e6b8";
 }
 
+.icon-cog:before {
+  content: "\e68e";
+}
+
 /* ------------------------------ *\
 REUSABLE
 \* ------------------------------ */
@@ -226,12 +230,6 @@ body {
 
 .content.first {
   padding-top: 4em;
-}
-
-.graph {
-  min-width: 100%;
-  height: 5em;
-  background: white;
 }
 
 /* ------------------------------ *\
@@ -292,6 +290,77 @@ MENU
 }
 #menu #close-menu-link:hover {
   color: black;
+}
+
+/* ------------------------------ *\
+GRAPH
+\* ------------------------------ */
+.graph-container {
+  position: relative;
+  overflow: hidden;
+  min-width: 100%;
+  height: 20em;
+  padding: 2em 4em;
+  background: white;
+}
+.graph-container .settings-link {
+  display: block;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1em;
+  height: 1em;
+}
+.graph-container .settings {
+  position: absolute;
+  top: 0;
+  right: -320px;
+  width: 320px;
+  height: 100%;
+  padding: 1em 3em 1em 1em;
+  background: silver;
+  opacity: 0;
+}
+.graph-container .settings li.active {
+  position: relative;
+  left: -1em;
+  padding-left: 12px;
+  border-left: 4px solid black;
+}
+.graph-container .settings li.active a {
+  color: black;
+}
+.graph-container .settings a {
+  color: white;
+}
+.graph-container .settings a:hover {
+  color: black;
+}
+.graph-container .settings .close-settings-link {
+  display: block;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1em;
+  height: 1em;
+}
+
+svg,
+text {
+  font-family: 'ubuntu_mono', Courier, sans-serif;
+  font-size: 12px;
+}
+
+.gmain {
+  fill: #42b3c6;
+}
+
+.gc2 {
+  fill: silver;
+}
+
+.gw {
+  fill: white;
 }
 
 /* ------------------------------ *\
