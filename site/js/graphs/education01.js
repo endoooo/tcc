@@ -7,6 +7,11 @@ define(['jquery', 'd3js'], function($, ignore){
 	var w = 940;
 	var h = 300;
 
+	//scale
+	var x = d3.scale.linear()
+		.domain([0, 129450])
+		.range(["0px", "800px"]);
+
 	return {
 
 		initializeSettings: function() {
@@ -18,7 +23,13 @@ define(['jquery', 'd3js'], function($, ignore){
 				$(this).parent('li').siblings().removeClass('active');
 				$(this).parent('li').addClass('active');
 
-				edu01.activateG1();
+				graph = {
+					titleText: 'Utilização da internet por condição de estudante (2011)',
+					csvPath: '../educacao/data/001.csv',
+					parameter: 'condição de estudante'
+				}
+
+				edu01.activateGraph(graph);
 
 				e.preventDefault();
 			});
@@ -28,7 +39,29 @@ define(['jquery', 'd3js'], function($, ignore){
 				$(this).parent('li').siblings().removeClass('active');
 				$(this).parent('li').addClass('active');
 
-				edu01.activateG2();
+				graph = {
+					titleText: 'Utilização da internet por grupo de anos de estudo (2011)',
+					csvPath: '../educacao/data/002.csv',
+					parameter: 'anos de estudo'
+				}
+
+				edu01.activateGraph(graph);
+
+				e.preventDefault();
+			});
+
+			$('#student-g1c').on('click', function(e){
+
+				$(this).parent('li').siblings().removeClass('active');
+				$(this).parent('li').addClass('active');
+
+				graph = {
+					titleText: 'Utilização da internet por rede de ensino (2011)',
+					csvPath: '../educacao/data/003.csv',
+					parameter: 'rede de ensino'
+				}
+
+				edu01.activateGraph(graph);
 
 				e.preventDefault();
 			});
@@ -36,11 +69,6 @@ define(['jquery', 'd3js'], function($, ignore){
 
 		initializeGraph: function() {
 			d3.csv('../educacao/data/001.csv', function(csv){
-
-				//scale
-				var x = d3.scale.linear()
-					.domain([0, 129450])
-					.range(["0px", "800px"]);
 
 				//chart
 				var chart = d3.select('#graph1>.graph')
@@ -98,15 +126,11 @@ define(['jquery', 'd3js'], function($, ignore){
 			});
 		},
 
-		activateG1: function() {
-			$('#graph1-title').html('Utilização da internet por condição de estudante (2011)');
+		activateGraph: function(graph) {
+			
+			$('#graph1-title').html(graph.titleText);
 
-			d3.csv('../educacao/data/001.csv', function(csv){
-
-				//scale
-				var x = d3.scale.linear()
-					.domain([0, 129450])
-					.range(['0px', '800px']);
+			d3.csv(graph.csvPath, function(csv){
 
 				//chart
 				var chart = d3.select('#graph1>.graph svg');
@@ -130,7 +154,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.append('text')
 					.text(function(d) { return d['utilizam %'] + '%'; })
 					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
-					.attr('x', function(d) { return x(d.utilizam / 2); })
+					.attr('x', 0)
 					.attr('text-anchor', 'middle')
 					.attr('class', 'gw users');
 				//non-users text
@@ -138,7 +162,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.append('text')
 					.text(function(d) { return d['não utilizam %'] + '%'; })
 					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
-					.attr('x', function(d) { return x((d.utilizam * 1) + (d['não utilizam'] / 2)); })
+					.attr('x', 0)
 					.attr('text-anchor', 'middle')
 					.attr('class', 'gw non-users');
 				//total text
@@ -146,137 +170,73 @@ define(['jquery', 'd3js'], function($, ignore){
 					.append('text')
 					.text(function(d) { return d.total + '000'; })
 					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 12; })
-					.attr('x', function(d) { return x(d.total); })
+					.attr('x', 0)
 					.attr('dx', 8 )
 					.attr('class', 'gc2 total');
 				//cat text
 				chart.selectAll('text.cat').data(csv).enter()
 					.append('text')
-					.text(function(d) { return d['condição de estudante']; })
+					.text(function(d) { return d[graph.parameter]; })
 					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 24; })
-					.attr('x', function(d) { return x(d.total); })
+					.attr('x', 0)
 					.attr('dx', 8 )
 					.attr('class', 'gc2 cat');
 
 				//total bar
 				chart.selectAll('rect.total').data(csv)
-					.transition()
+					.transition().duration(500)
 					.attr('width', function(d) { return x(d.total); });
 				//users bar
 				chart.selectAll('rect.users').data(csv)
-					.transition()
+					.transition().duration(500)
 					.attr('width', function(d) { return x(d.utilizam); });
+				//users text
+				chart.selectAll('text.users').data(csv)
+					.transition().duration(500)
+					.attr('x', function(d) { return x(d.utilizam / 2); });
+				//non-users text
+				chart.selectAll('text.non-users').data(csv)
+					.transition().duration(500)
+					.attr('x', function(d) { return x((d.utilizam * 1) + (d['não utilizam'] / 2)); });
+				//total text
+				chart.selectAll('text.total').data(csv)
+					.transition().duration(500)
+					.attr('x', function(d) { return x(d.total); });
+				//cat text
+				chart.selectAll('text.cat').data(csv)
+					.transition().duration(500)
+					.attr('x', function(d) { return x(d.total); });
 
 				//total bar
 				chart.selectAll('rect.total').data(csv).exit()
-					.transition()
-					.duration(1000)
-					.attr('y', 0)
-					.attr('height', 0)
+					.transition().duration(500)
+					.attr('width', 0)
 					.remove();
 				//users bar
 				chart.selectAll('rect.users').data(csv).exit()
-					.transition()
-					.duration(1000)
-					.attr('y', 0)
-					.attr('height', 0)
+					.transition().duration(500)
+					.attr('width', 0)
 					.remove();
 				//users text
 				chart.selectAll('text.users').data(csv).exit()
-					.transition()
-					.duration(1000)
-					.attr('y', 0)
+					.transition().duration(500)
+					.attr('x', 0)
 					.remove();
 				//non-users text
 				chart.selectAll('text.non-users').data(csv).exit()
-					.transition()
-					.duration(1000)
-					.attr('y', 0)
+					.transition().duration(500)
+					.attr('x', 0)
 					.remove();
 				//total text
 				chart.selectAll('text.total').data(csv).exit()
-					.transition()
-					.duration(1000)
-					.attr('y', 0)
+					.transition().duration(500)
+					.attr('x', 0)
 					.remove();
 				//cat text
 				chart.selectAll('text.cat').data(csv).exit()
-					.transition()
-					.duration(1000)
-					.attr('y', 0)
+					.transition().duration(500)
+					.attr('x', 0)
 					.remove();
-
-			});
-		},
-
-		activateG2: function() {
-			$('#graph1-title').html('Utilização da internet por grupo de anos de estudo (2011)');
-
-			d3.csv("../educacao/data/002.csv", function(csv){
-
-				//scale
-				var x = d3.scale.linear()
-					.domain([0, 45022])
-					.range(["0px", "800px"]);
-
-				//chart
-				var chart = d3.select('#graph1>.graph svg');
-
-				//total bar
-				chart.selectAll('rect.total').data(csv).enter()
-					.append('rect')
-					.attr('y', function(d, i) { return (i * 24) + (i * padding); })
-					.attr('width', 0)
-					.attr('height', 24)
-					.attr('class', 'gc2 total');
-				//users bar
-				chart.selectAll('rect.users').data(csv).enter()
-					.append('rect')
-					.attr('y', function(d, i) { return (i * 24) + (i * padding); })
-					.attr('width', 0)
-					.attr('height', 24)
-					.attr('class', 'gmain users');
-				//users text
-				chart.selectAll('text.users').data(csv).enter()
-					.append('text')
-					.text(function(d) { return d['utilizam %'] + '%'; })
-					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
-					.attr('x', function(d) { return x(d.utilizam / 2); })
-					.attr('text-anchor', 'middle')
-					.attr('class', 'gw users');
-				//non-users text
-				chart.selectAll('text.non-users').data(csv).enter()
-					.append('text')
-					.text(function(d) { return d['não utilizam %'] + '%'; })
-					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 16; })
-					.attr('x', function(d) { return x((d.utilizam * 1) + (d['não utilizam'] / 2)); })
-					.attr('text-anchor', 'middle')
-					.attr('class', 'gw non-users');
-				//total text
-				chart.selectAll('text.total').data(csv).enter()
-					.append('text')
-					.text(function(d) { return d.total + '000'; })
-					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 12; })
-					.attr('x', function(d) { return x(d.total); })
-					.attr('dx', 8 )
-					.attr('class', 'gc2 total');
-				//cat text
-				chart.selectAll('text.cat').data(csv).enter()
-					.append('text')
-					.text(function(d) { return d['anos de estudo']; })
-					.attr('y', function(d, i) { return (i * 24) + (i * padding) + 24; })
-					.attr('x', function(d) { return x(d.total); })
-					.attr('dx', 8 )
-					.attr('class', 'gc2 cat');
-
-				//total bar
-				chart.selectAll('rect.total').data(csv)
-					.transition()
-					.attr('width', function(d) { return x(d.total); });
-				//users bar
-				chart.selectAll('rect.users').data(csv)
-					.transition()
-					.attr('width', function(d) { return x(d.utilizam); });
 
 			});
 		}
