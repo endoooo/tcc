@@ -187,17 +187,43 @@ $('document').ready(function() {
 				.attr('width', function(d) { return x(d.utilizam); });
 
 			//total bar
-			chart.selectAll('rect.total').data(csv).exit().remove();
+			chart.selectAll('rect.total').data(csv).exit()
+				.transition()
+				.duration(1000)
+				.attr('y', 0)
+				.attr('height', 0)
+				.remove();
 			//users bar
-			chart.selectAll('rect.users').data(csv).exit().remove();;
+			chart.selectAll('rect.users').data(csv).exit()
+				.transition()
+				.duration(1000)
+				.attr('y', 0)
+				.attr('height', 0)
+				.remove();
 			//users text
-			chart.selectAll('text.users').data(csv).exit().remove();;
+			chart.selectAll('text.users').data(csv).exit()
+				.transition()
+				.duration(1000)
+				.attr('y', 0)
+				.remove();
 			//non-users text
-			chart.selectAll('text.non-users').data(csv).exit().remove();;
+			chart.selectAll('text.non-users').data(csv).exit()
+				.transition()
+				.duration(1000)
+				.attr('y', 0)
+				.remove();
 			//total text
-			chart.selectAll('text.total').data(csv).exit().remove();;
+			chart.selectAll('text.total').data(csv).exit()
+				.transition()
+				.duration(1000)
+				.attr('y', 0)
+				.remove();
 			//cat text
-			chart.selectAll('text.cat').data(csv).exit().remove();;
+			chart.selectAll('text.cat').data(csv).exit()
+				.transition()
+				.duration(1000)
+				.attr('y', 0)
+				.remove();
 
 		});
 

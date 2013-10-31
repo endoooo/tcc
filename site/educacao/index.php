@@ -1,6 +1,7 @@
 <?php
 	$area = 'education';
 	$title = 'A educação e o acesso a internet | Visualizando o PNAD Internet 2011';
+	$script = 'education.js';
 	include '../inc/header.php';
 ?>
 
