@@ -141,6 +141,7 @@ h1 {
     margin-bottom: 0.75em;
     font-size: 4em;
     line-height: 1.125em;
+    color: black;
 }
 h2 {
     margin-bottom: 1em;
@@ -148,11 +149,18 @@ h2 {
 }
 
 b { font-weight: bold }
+small { font-size: 0.8em }
 a {
     text-decoration: none;
     color: $main;
 }
     a:hover { color: black }
+
+.note-indicator { color: $main }
+.note {
+    font-size: 1em;
+    .num { color: $main }
+}
 
 /* ------------------------------ *\
 ICONS
@@ -202,6 +210,12 @@ ICONS
 }
 .icon-menu:before {
     content: "\e606";
+}
+.icon-arrow-left:before {
+    content: "\e607";
+}
+.icon-pencil:before {
+    content: "\e608";
 }
 
 

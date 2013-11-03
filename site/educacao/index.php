@@ -15,7 +15,7 @@
 		<div class="graph-container" id="edu-graph1">
 			<h2 class="title"></h2>
 			<div class="graph"></div>
-			<a href="#" id="graph1-annotation" class="annotation icon-question" data-detail="graph1">O que olhar?</a>
+			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			<a href="#" class="icon-cog settings-link" data-settings="edu-settings1"></a>
 			<div class="settings" id="edu-settings1">
 				<ul>
@@ -41,7 +41,7 @@
 		<div class="graph-container" id="graph2">
 			<h2 id="graph1-title"></h2>
 			<div class="graph"></div>
-			<a href="#" id="graph2-annotation" class="annotation icon-question" data-detail="graph2"></a>
+			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			<a href="#" class="icon-cog settings-link" data-graph="graph2"></a>
 			<div class="settings" id="graph2-settings">
 				<ul>
@@ -51,6 +51,23 @@
 				</ul>
 				<a href="#" class="icon-close close-settings-link"></a>
 			</div>
+		</div>
+
+		<div class="content">
+			<h3>Links</h3>
+			<p><a href="http://www.ibge.gov.br/home/estatistica/populacao/acessoainternet2011/default_xls_internet.shtm" target="_blank"><span class="icon-link"></span> Lista de tabelas PNAD 2011 - Acesso à Internet</a></p>
+			<p>Tabelas utilizadas:</p>
+			<ul>
+				<li>1.4.1</li>
+				<li>1.4.2</li>
+				<li>1.5.1</li>
+				<li>1.5.2</li>
+				<li>1.5.3</li>
+				<li>1.6.1</li>
+				<li>1.6.2</li>
+				<li>1.7.1</li>
+				<li>1.7.2</li>
+			</ul>
 		</div>
 
 		<?php include '../inc/menu.php'; ?>

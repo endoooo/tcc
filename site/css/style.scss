@@ -41,7 +41,8 @@ body {
 /* ------------------------------ *\
 MENU
 \* ------------------------------ */
-#menu-link {
+#menu-link,
+#back-link {
 	position: fixed;
 	top: 0.5em;
 	left: 0.5em;
@@ -198,7 +199,6 @@ COVER
 #cover {
 	min-height: 100%;
 	padding: 4em;
-	color: white;
 	background: $main url('../img/connections.png') no-repeat center;
 
 	#start {
@@ -207,5 +207,10 @@ COVER
 		font-size: 2em;
 		color: white;
 		&:hover { color: black }
+	}
+
+	h1, h2, p {
+		max-width: 70%;
+		color: white;
 	}
 }

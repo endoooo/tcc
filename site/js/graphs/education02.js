@@ -1,6 +1,6 @@
 define(['jquery', 'd3js'], function($, ignore){
 
-	console.log('education01 required');
+	console.log('education02 required');
 
 	//graph config
 	var padding = 16;

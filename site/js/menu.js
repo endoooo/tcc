@@ -28,6 +28,10 @@ define(['jquery'], function($){
 				
 				e.preventDefault();
 			})
+			$('#overlay').click(function(e){
+				$('#close-menu-link').click();				
+				e.preventDefault();
+			})
 		},
 
 		initializeSettings: function() {

@@ -16,20 +16,20 @@ require(['jquery', 'menu','graphs/education01'], function($, menu, education01){
 
 		//graph parameters
 		var graph1a = {
-			titleText: 'Utilização da internet por condição de estudante (2011)',
-			csvPath: '../educacao/data/001.csv' + '?' + Math.floor(Math.random() * 1000),
+			titleText: 'Utilização da internet por condição atual de estudante (2011)',
+			csvPath: '../educacao/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'condição de estudante'
 		}
 
 		var graph1b = {
 			titleText: 'Utilização da internet por grupo de anos de estudo (2011)',
-			csvPath: '../educacao/data/002.csv' + '?' + Math.floor(Math.random() * 1000),
+			csvPath: '../educacao/data/01b.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'anos de estudo'
 		}
 
 		var graph1c = {
 			titleText: 'Utilização da internet por rede de ensino (2011)',
-			csvPath: '../educacao/data/003.csv' + '?' + Math.floor(Math.random() * 1000),
+			csvPath: '../educacao/data/01c.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'rede de ensino'
 		}
 
