@@ -166,7 +166,7 @@ ICONS
   font-style: normal;
 }
 
-[class*="icon-"] {
+[class*="icon-"]:before {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -180,27 +180,31 @@ ICONS
 }
 
 .icon-arrow-down:before {
-  content: "\e734";
+  content: "\e600";
 }
 
 .icon-link:before {
-  content: "\e6c3";
-}
-
-.icon-info:before {
-  content: "\e6f7";
-}
-
-.icon-close:before {
-  content: "\e6fd";
-}
-
-.icon-menu:before {
-  content: "\e6b8";
+  content: "\e601";
 }
 
 .icon-cog:before {
-  content: "\e68e";
+  content: "\e602";
+}
+
+.icon-question:before {
+  content: "\e603";
+}
+
+.icon-info:before {
+  content: "\e604";
+}
+
+.icon-close:before {
+  content: "\e605";
+}
+
+.icon-menu:before {
+  content: "\e606";
 }
 
 /* ------------------------------ *\
@@ -304,7 +308,6 @@ GRAPH
   position: relative;
   overflow: hidden;
   min-width: 100%;
-  height: 20em;
   padding: 1em 4em;
   background: white;
 }
@@ -349,11 +352,56 @@ GRAPH
   width: 1em;
   height: 1em;
 }
+.graph-container .annotation {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  margin-top: 1em;
+  color: black;
+}
+.graph-container .annotation:hover {
+  border-color: #42b3c6;
+  color: #42b3c6;
+}
+.graph-container .annotation:before {
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
 
 svg,
 text {
   font-family: 'ubuntu_mono', Courier, sans-serif;
   font-size: 12px;
+}
+
+.axis path {
+  display: none;
+}
+
+.axis line {
+  fill: none;
+  stroke: #f0f0f0;
+  stroke-dasharray: 2,2;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  fill: #f0f0f0;
+}
+
+.mark line {
+  fill: none;
+  stroke: silver;
+  shape-rendering: crispEdges;
+}
+
+.mark text {
+  fill: silver;
 }
 
 .gmain {
@@ -364,8 +412,12 @@ text {
   fill: silver;
 }
 
-.gw {
+.gwhite {
   fill: white;
+}
+
+.gblack {
+  fill: black;
 }
 
 /* ------------------------------ *\

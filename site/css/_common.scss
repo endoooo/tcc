@@ -168,7 +168,7 @@ ICONS
     font-style: normal;
 }
 
-[class*="icon-"] {
+[class*="icon-"]:before {
     font-family: 'icomoon';
     speak: none;
     font-style: normal;
@@ -183,22 +183,25 @@ ICONS
 }
 
 .icon-arrow-down:before {
-    content: "\e734";
+    content: "\e600";
 }
 .icon-link:before {
-    content: "\e6c3";
-}
-.icon-info:before {
-    content: "\e6f7";
-}
-.icon-close:before {
-    content: "\e6fd";
-}
-.icon-menu:before {
-    content: "\e6b8";
+    content: "\e601";
 }
 .icon-cog:before {
-    content: "\e68e";
+    content: "\e602";
+}
+.icon-question:before {
+    content: "\e603";
+}
+.icon-info:before {
+    content: "\e604";
+}
+.icon-close:before {
+    content: "\e605";
+}
+.icon-menu:before {
+    content: "\e606";
 }
 
 
