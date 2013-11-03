@@ -236,9 +236,11 @@ body {
 .content {
   padding: 2.5em 4em;
 }
-
 .content.first {
   padding-top: 4em;
+}
+.content h1, .content h2, .content p {
+  max-width: 70%;
 }
 
 /* ------------------------------ *\
@@ -328,6 +330,9 @@ GRAPH
   padding: 1em 3em 1em 1em;
   background: silver;
   opacity: 0;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) -1px 0 3px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) -1px 0 3px;
+  box-shadow: rgba(0, 0, 0, 0.3) -1px 0 3px;
 }
 .graph-container .settings li.active {
   position: relative;
@@ -338,10 +343,10 @@ GRAPH
 .graph-container .settings li.active a {
   color: black;
 }
-.graph-container .settings a {
+.graph-container .settings a, .graph-container .settings label {
   color: white;
 }
-.graph-container .settings a:hover {
+.graph-container .settings a:hover, .graph-container .settings label:hover {
   color: black;
 }
 .graph-container .settings .close-settings-link {
@@ -425,12 +430,16 @@ COVER
 \* ------------------------------ */
 #cover {
   min-height: 100%;
-  padding: 64px 120px;
+  padding: 4em;
   color: white;
   background: #42b3c6 url("../img/connections.png") no-repeat center;
 }
-#cover span {
+#cover #start {
   display: inline-block;
   margin-top: 2em;
   font-size: 2em;
+  color: white;
+}
+#cover #start:hover {
+  color: black;
 }

@@ -15,61 +15,57 @@ require(['jquery', 'menu','graphs/education01'], function($, menu, education01){
 		menu.initializeSettings();
 
 		//graph parameters
-		var graph1 = {
+		var graph1a = {
 			titleText: 'Utilização da internet por condição de estudante (2011)',
 			csvPath: '../educacao/data/001.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'condição de estudante',
-			annotation: 'Quem estuda acessa mais a internet?'
+			parameter: 'condição de estudante'
 		}
 
-		var graph2 = {
+		var graph1b = {
 			titleText: 'Utilização da internet por grupo de anos de estudo (2011)',
 			csvPath: '../educacao/data/002.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'anos de estudo',
-			annotation: 'Mais anos de estudo = mais acesso à internet?'
+			parameter: 'anos de estudo'
 		}
 
-		var graph3 = {
+		var graph1c = {
 			titleText: 'Utilização da internet por rede de ensino (2011)',
 			csvPath: '../educacao/data/003.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'rede de ensino',
-			annotation: 'Alunos da rede pública acessam mais ou menos do que alunos da rede privada?'
+			parameter: 'rede de ensino'
 		}
 
 		//initialize graphs
 		education01.initializeGraph(function(){
-			education01.activateGraph(graph1);
+			education01.activateAbsGraph(graph1a);
 		});
 
 		//bind settings control
-		$('#student-g1a').on('click', function(e){
+		$('#edu-settings1 .graph-link').on('click', function(e){
+			switch($(this).data('graph')) {
+				case 'graph1a':
+					var graphData = graph1a;
+					break;
+				case 'graph1b':
+					var graphData = graph1b;
+					break;
+				case 'graph1c':
+					var graphData = graph1c;
+					break;
+			}
 
 			$(this).parent('li').siblings().removeClass('active');
 			$(this).parent('li').addClass('active');
 
-			education01.activateGraph(graph1);
+			if($('#edu-settings1 input:checked').val() === 'absolute')
+				education01.activateAbsGraph(graphData);
+			else
+				education01.activateRelGraph(graphData);
 
-			e.preventDefault();
+			e.preventDefault();			
+		});
+		$('#edu-settings1 input').on('change', function(e){
+			$('#edu-settings1 .active .graph-link').click();
 		});
 
-		$('#student-g1b').on('click', function(e){
 
-			$(this).parent('li').siblings().removeClass('active');
-			$(this).parent('li').addClass('active');
-
-			education01.activateGraph(graph2);
-
-			e.preventDefault();
-		});
-
-		$('#student-g1c').on('click', function(e){
-
-			$(this).parent('li').siblings().removeClass('active');
-			$(this).parent('li').addClass('active');
-
-			education01.activateGraph(graph3);
-
-			e.preventDefault();
-		});
 	});
 });

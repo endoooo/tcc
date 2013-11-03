@@ -33,8 +33,8 @@ define(['jquery'], function($){
 		initializeSettings: function() {
 			//settings
 			$('.settings-link').click(function(e){
-				var graph = '#' + $(this).data('graph') + '-settings';
-				$(graph).animate({
+				var settings = '#' + $(this).data('settings');
+				$(settings).animate({
 					opacity: 1,
 					right: '0'
 				}, 300);

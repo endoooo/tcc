@@ -9,7 +9,7 @@
 		<div id="cover">
 			<h1>Visualizando dados da utilização da internet no Brasil</h1>
 			<p>Um ponto de vista diferente da publicação “Acesso à Internet e posse de telefone móvel celular para uso pessoal 2011”, publicado pelo IBGE.</p>
-			<span class="icon-arrow-down" id="start"></span>
+			<a href="#" class="icon-arrow-down" id="start"></a>
 		</div>
 
 		<div class="first content">
