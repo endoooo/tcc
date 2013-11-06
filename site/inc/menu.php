@@ -8,7 +8,7 @@
 		<li <?= ($area == 'population') ? 'class="active"' : '' ?>><a href="#">Crescimento populacional</a></li>
 		<li <?= ($area == 'education') ? 'class="active"' : '' ?>><a href="<?= $root ?>/educacao">Educação</a></li>
 		<li <?= ($area == 'incoming') ? 'class="active"' : '' ?>><a href="#">Renda</a></li>
-		<li <?= ($area == 'location') ? 'class="active"' : '' ?>><a href="#">Localização</a></li>
+		<li <?= ($area == 'region') ? 'class="active"' : '' ?>><a href="<?= $root ?>/regiao">Região</a></li>
 		<li <?= ($area == 'gender') ? 'class="active"' : '' ?>><a href="#">Sexo/idade</a></li>
 		<br/>
 		<span class="icon-info"></span> Info

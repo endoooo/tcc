@@ -121,9 +121,8 @@ GRAPH
 		width: 320px;
 		height: 100%;
 		padding: 1em 3em 1em 1em;
-		background: $c2;
+		background: rgba(200,200,200,0.9);
 		opacity: 0;
-		@include box-shadow(rgba(0,0,0,0.3) -1px 0 3px);
 
 		li.active {
 			position: relative;

@@ -354,11 +354,8 @@ GRAPH
   width: 320px;
   height: 100%;
   padding: 1em 3em 1em 1em;
-  background: silver;
+  background: rgba(200, 200, 200, 0.9);
   opacity: 0;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.3) -1px 0 3px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.3) -1px 0 3px;
-  box-shadow: rgba(0, 0, 0, 0.3) -1px 0 3px;
 }
 .graph-container .settings li.active {
   position: relative;
