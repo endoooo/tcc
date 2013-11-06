@@ -7,7 +7,7 @@ require.config({
     urlArgs: 'bust=' + (new Date()).getTime()
 });
 
-require(['jquery', 'menu','graphs/region01'], function($, menu, region01){
+require(['jquery', 'menu', 'graphs/region01', 'graphs/region02'], function($, menu, region01, region02){
 	$('document').ready(function() {
 		
 		//initialize menu and settings
@@ -31,8 +31,9 @@ require(['jquery', 'menu','graphs/region01'], function($, menu, region01){
 		region01.initializeGraph(function(){
 			region01.activateAbsGraph(graph1a);
 		});
+		region02.activateMap('map-abs');
 
-		//bind settings control
+		//bind settings control to graph01
 		$('#reg-settings1 .graph-link').on('click', function(e){
 			switch($(this).data('graph')) {
 				case 'graph1a':
@@ -56,6 +57,14 @@ require(['jquery', 'menu','graphs/region01'], function($, menu, region01){
 		$('#reg-settings1 input').on('change', function(e){
 			$('#reg-settings1 .active .graph-link').click();
 		});
+
+		//bind settings control to graph02
+		$('#reg-settings2 input').on('change', function(e){
+			var mapId = $('#reg-settings2 input:checked').data('map');
+			region02.activateMap(mapId);
+		});
+
+
 
 
 	});

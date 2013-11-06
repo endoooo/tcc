@@ -34,6 +34,28 @@
 		</div>
 
 		<div class="content">
+			<p>Lorem ipsum</p>
+		</div>
+
+		<div class="graph-container" id="reg-graph2">
+			<h2 class="title">Mapa da utilização da internet no Brasil (2011)</h2>
+			<div class="graph">
+				<img src="<?= $root ?>/img/choropleth-abs.png" alt="utilização da internet - valores absolutos" id="map-abs" class="choropleth-map" />
+				<img src="<?= $root ?>/img/choropleth-rel.png" alt="utilização da internet - valores relativos" id="map-rel" class="choropleth-map" />
+			</div>
+			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+			<a href="#" class="icon-cog settings-link" data-settings="reg-settings2"></a>
+			<div class="settings" id="reg-settings2">
+				<ul>
+					Valores:
+					<li><label><input type="radio" name="reg1type" value="absolute" checked data-map="map-abs"> absolutos (milhões)</label></li>
+					<li><label><input type="radio" name="reg1type" value="percentage" data-map="map-rel"> relativos (%)</label></li>
+				</ul>
+				<a href="#" class="icon-close close-settings-link"></a>
+			</div>
+		</div>
+
+		<div class="content">
 			<h3>Links</h3>
 			<p><a href="http://www.ibge.gov.br/home/estatistica/populacao/acessoainternet2011/default_xls_internet.shtm" target="_blank"><span class="icon-link"></span> Lista de tabelas PNAD 2011 - Acesso à Internet</a></p>
 			<p>Tabelas utilizadas:</p>

@@ -213,3 +213,21 @@ COVER
 		color: white;
 	}
 }
+
+
+/* ------------------------------ *\
+REGION
+\* ------------------------------ */
+#reg-graph2 {
+	.graph {
+		position: relative;
+		width: 600px;
+		height: 496px;
+	}
+	.choropleth-map {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}

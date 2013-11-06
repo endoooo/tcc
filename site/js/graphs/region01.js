@@ -75,49 +75,38 @@ define(['jquery', 'd3js'], function($, ignore){
 				//chart
 				var chart = d3.select('#reg-graph1 svg');
 
-				//bar group
-				var bar = chart.selectAll('.group-bar').data(dataset).enter()
-					.append('g')
-					.attr('trasform', function(d, i) { return 'translate(' + padding + ',' + ((i * barHeight) + (i * spacing)) + ')'; })
-					.attr('width', '100%')
-					.attr('height', barHeight)
-					.attr('class', 'group-bar');
 				//total bar
-				bar
+				chart.selectAll('.total').data(dataset).enter()
 					.append('rect')
-					.attr('x', 0)
-					.attr('y', 0)
+					.attr('x', padding)
+					.attr('y', function(d, i){ return (i * barHeight) + (i * spacing); })
 					.attr('width', 0)
 					.attr('height', barHeight)
 					.attr('class', 'gc2 total');
 				//users bar
-				bar
+				chart.selectAll('rect.users').data(dataset).enter()
 					.append('rect')
-					.attr('x', 0)
-					.attr('y', 0)
+					.attr('x', padding)
+					.attr('y', function(d, i){ return (i * barHeight) + (i * spacing); })
 					.attr('width', 0)
 					.attr('height', barHeight)
 					.attr('class', 'gmain users');
 				//users text
-				bar
+				chart.selectAll('text.users').data(dataset).enter()
 					.append('text')
 					.attr('x', 0)
-					.attr('y', 16)
+					.attr('y', function(d, i){ return (i * barHeight) + (i * spacing) + 16; })
 					.attr('text-anchor', 'middle')
 					.attr('class', 'gwhite users');
 				//cat text
 				chart.selectAll('text.cat').data(dataset).enter()
 					.append('text')
 					.attr('x', 0)
-					.attr('y', function(d) { return barHeight/2; })
+					.attr('y', function(d, i) { return (i * barHeight) + (i * spacing) + 16; })
 					.attr('dx', 8 )
 					.attr('class', 'gblack cat');
 
 				//update
-				//bar group
-				chart.selectAll('.group-bar').data(dataset)
-					.transition().duration(500)
-					.attr('trasform', function(d, i) { return 'translate(' + padding + ',' + i + ')'; });
 				//total bar
 				chart.selectAll('rect.total').data(dataset)
 					.transition().duration(500)
