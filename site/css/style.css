@@ -432,6 +432,25 @@ text {
   fill: silver;
 }
 
+.axes line,
+.ruler path {
+  fill: none;
+  shape-rendering: crispEdges;
+}
+
+.axes line {
+  stroke: #f0f0f0;
+}
+
+.ruler path {
+  stroke: silver;
+}
+
+.axes text,
+.ruler text {
+  fill: silver;
+}
+
 .gmain {
   fill: #42b3c6;
 }

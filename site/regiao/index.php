@@ -26,8 +26,8 @@
 				<br/>
 				<ul>
 					Valores:
-					<li><label><input type="radio" name="reg1type" value="absolute" checked> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="reg1type" value="percentage"> relativos (%)</label></li>
+					<li><label><input type="radio" name="reg1type" value="absolute" checked /> absolutos (milhões)</label></li>
+					<li><label><input type="radio" name="reg1type" value="percentage" /> relativos (%)</label></li>
 				</ul>
 				<a href="#" class="icon-close close-settings-link"></a>
 			</div>
@@ -48,8 +48,8 @@
 			<div class="settings" id="reg-settings2">
 				<ul>
 					Valores:
-					<li><label><input type="radio" name="reg1type" value="absolute" checked data-map="map-abs"> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="reg1type" value="percentage" data-map="map-rel"> relativos (%)</label></li>
+					<li><label><input type="radio" name="reg2type" value="absolute" data-map="map-abs" checked /> absolutos (milhões)</label></li>
+					<li><label><input type="radio" name="reg2type" value="percentage" data-map="map-rel" /> relativos (%)</label></li>
 				</ul>
 				<a href="#" class="icon-close close-settings-link"></a>
 			</div>

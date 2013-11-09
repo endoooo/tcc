@@ -33,6 +33,8 @@ require(['jquery', 'menu', 'graphs/region01', 'graphs/region02'], function($, me
 		});
 		region02.activateMap('map-abs');
 
+		region01.teste();
+
 		//bind settings control to graph01
 		$('#reg-settings1 .graph-link').on('click', function(e){
 			switch($(this).data('graph')) {

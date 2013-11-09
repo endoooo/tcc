@@ -186,6 +186,18 @@ text {
 }
 .mark text { fill: $c2 }
 
+.axes line,
+.ruler path {
+	fill: none;
+    shape-rendering: crispEdges;
+}
+.axes line { stroke: $c3 }
+.ruler path { stroke: $c2 }
+.axes text,
+.ruler text {
+	fill: $c2;
+}
+
 .gmain { fill: $main }
 .gc2 { fill: $c2 }
 .gwhite { fill: white }

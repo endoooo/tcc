@@ -27,8 +27,8 @@
 				<br/>
 				<ul>
 					Valores:
-					<li><label><input type="radio" name="edu1type" value="absolute" checked> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="edu1type" value="percentage"> relativos (%)</label></li>
+					<li><label><input type="radio" name="edu1type" value="absolute" checked /> absolutos (milhões)</label></li>
+					<li><label><input type="radio" name="edu1type" value="percentage" /> relativos (%)</label></li>
 				</ul>
 				<a href="#" class="icon-close close-settings-link"></a>
 			</div>
@@ -46,8 +46,8 @@
 			<div class="settings" id="graph2-settings">
 				<ul>
 					Valores:
-					<li><label><input type="radio" name="student2type" value="absolute"> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="student2type" value="percentage"> relativos (%)</label></li>
+					<li><label><input type="radio" name="student2type" value="absolute" checked /> absolutos (milhões)</label></li>
+					<li><label><input type="radio" name="student2type" value="percentage" /> relativos (%)</label></li>
 				</ul>
 				<a href="#" class="icon-close close-settings-link"></a>
 			</div>
