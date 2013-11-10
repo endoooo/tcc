@@ -15,22 +15,21 @@
 		<div class="graph-container" id="edu-graph1">
 			<h2 class="title"></h2>
 			<div class="graph"></div>
-			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
-			<a href="#" class="icon-cog settings-link" data-settings="edu-settings1"></a>
 			<div class="settings" id="edu-settings1">
-				<ul>
-					Visualizar por:
-					<li class="active"><a href="#" class="graph-link" data-graph="graph1a">condição de estudante</a></li>
-					<li><a href="#" class="graph-link" data-graph="graph1b">anos de estudo</a></li>
-					<li><a href="#" class="graph-link" data-graph="graph1c">rede de ensino</a></li>
+				<ul class="type-list">
+					<span class="setting-title">Visualizar por:</span>
+					<li class="active"><a href="#" class="graph-type" data-graph="graph1a">condição de estudante</a></li>
+					<li><a href="#" class="graph-type" data-graph="graph1b">anos de estudo</a></li>
+					<li><a href="#" class="graph-type" data-graph="graph1c">rede de ensino</a></li>
 				</ul>
 				<br/>
-				<ul>
-					Valores:
-					<li><label><input type="radio" name="edu1type" value="absolute" checked /> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="edu1type" value="percentage" /> relativos (%)</label></li>
+				<ul class="value-list">
+					<span class="setting-title">Valores:</span>
+					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
+					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
 				</ul>
-				<a href="#" class="icon-close close-settings-link"></a>
+				<br/>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			</div>
 		</div>
 

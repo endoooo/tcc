@@ -39,7 +39,7 @@ require(['jquery', 'menu','graphs/education01'], function($, menu, education01){
 		});
 
 		//bind settings control
-		$('#edu-settings1 .graph-link').on('click', function(e){
+		$('#edu-settings1 .graph-type').on('click', function(e){
 			switch($(this).data('graph')) {
 				case 'graph1a':
 					var graphData = graph1a;
@@ -55,15 +55,21 @@ require(['jquery', 'menu','graphs/education01'], function($, menu, education01){
 			$(this).parent('li').siblings().removeClass('active');
 			$(this).parent('li').addClass('active');
 
-			if($('#edu-settings1 input:checked').val() === 'absolute')
+			var type = $('#edu-settings1 .value-list .active a').data('value');
+			if (type === 'absolute')
 				education01.activateAbsGraph(graphData);
 			else
 				education01.activateRelGraph(graphData);
 
 			e.preventDefault();			
 		});
-		$('#edu-settings1 input').on('change', function(e){
-			$('#edu-settings1 .active .graph-link').click();
+		$('#edu-settings1 .graph-value').on('click', function(e){
+			$(this).parent('li').siblings().removeClass('active');
+			$(this).parent('li').addClass('active');
+
+			$('#edu-settings1 .type-list .active .graph-type').click();
+
+			e.preventDefault();			
 		});
 
 

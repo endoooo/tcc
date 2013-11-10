@@ -15,21 +15,14 @@
 		<div class="graph-container" id="reg-graph1">
 			<h2 class="title"></h2>
 			<div class="graph"></div>
-			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
-			<a href="#" class="icon-cog settings-link" data-settings="reg-settings1"></a>
 			<div class="settings" id="reg-settings1">
-				<ul>
-					Visualizar por:
-					<li class="active"><a href="#" class="graph-link" data-graph="graph1a">estados</a></li>
-					<li><a href="#" class="graph-link" data-graph="graph1b">regiões</a></li>
+				<ul class="value-list">
+					<span class="setting-title">Valores:</span>
+					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
+					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
 				</ul>
 				<br/>
-				<ul>
-					Valores:
-					<li><label><input type="radio" name="reg1type" value="absolute" checked /> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="reg1type" value="percentage" /> relativos (%)</label></li>
-				</ul>
-				<a href="#" class="icon-close close-settings-link"></a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			</div>
 		</div>
 
@@ -43,15 +36,14 @@
 				<img src="<?= $root ?>/img/choropleth-abs.png" alt="utilização da internet - valores absolutos" id="map-abs" class="choropleth-map" />
 				<img src="<?= $root ?>/img/choropleth-rel.png" alt="utilização da internet - valores relativos" id="map-rel" class="choropleth-map" />
 			</div>
-			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
-			<a href="#" class="icon-cog settings-link" data-settings="reg-settings2"></a>
 			<div class="settings" id="reg-settings2">
 				<ul>
-					Valores:
-					<li><label><input type="radio" name="reg2type" value="absolute" data-map="map-abs" checked /> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="reg2type" value="percentage" data-map="map-rel" /> relativos (%)</label></li>
+					<span class="setting-title">Valores:</span>
+					<li class="active"><a href="#" class="graph-value" data-map="map-abs">absolutos</a></li>
+					<li><a href="#" class="graph-value" data-map="map-rel">relativos</a></li>
 				</ul>
-				<a href="#" class="icon-close close-settings-link"></a>
+				<br/>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			</div>
 		</div>
 

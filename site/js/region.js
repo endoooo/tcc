@@ -21,49 +21,35 @@ require(['jquery', 'menu', 'graphs/region01', 'graphs/region02'], function($, me
 			parameter: 'estado'
 		}
 
-		var graph1b = {
-			titleText: 'Utilização da internet nas regiões do Brasil  (2011)',
-			csvPath: '../regiao/data/01b.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'estado'
-		}
-
 		//initialize graphs
 		region01.initializeGraph(function(){
 			region01.activateAbsGraph(graph1a);
 		});
 		region02.activateMap('map-abs');
 
-		region01.teste();
-
 		//bind settings control to graph01
-		$('#reg-settings1 .graph-link').on('click', function(e){
-			switch($(this).data('graph')) {
-				case 'graph1a':
-					var graphData = graph1a;
-					break;
-				case 'graph1b':
-					var graphData = graph1b;
-					break;
-			}
-
+		$('#reg-settings1 .graph-value').on('click', function(e){
 			$(this).parent('li').siblings().removeClass('active');
 			$(this).parent('li').addClass('active');
 
-			if($('#reg-settings1 input:checked').val() === 'absolute')
-				region01.activateAbsGraph(graphData);
+			var type = $(this).data('value');
+			if (type === 'absolute')
+				region01.activateAbsGraph(graph1a);
 			else
-				region01.activateRelGraph(graphData);
+				region01.activateRelGraph(graph1a);
 
 			e.preventDefault();			
 		});
-		$('#reg-settings1 input').on('change', function(e){
-			$('#reg-settings1 .active .graph-link').click();
-		});
 
 		//bind settings control to graph02
-		$('#reg-settings2 input').on('change', function(e){
-			var mapId = $('#reg-settings2 input:checked').data('map');
+		$('#reg-settings2 .graph-value').on('click', function(e){
+			$(this).parent('li').siblings().removeClass('active');
+			$(this).parent('li').addClass('active');
+
+			var mapId = $(this).data('map');
 			region02.activateMap(mapId);
+
+			e.preventDefault();
 		});
 
 

@@ -288,6 +288,7 @@ MENU
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   width: 100%;
   height: 100%;
   background: black;
@@ -298,6 +299,7 @@ MENU
   position: fixed;
   top: 0;
   left: -400px;
+  z-index: 101;
   width: 400px;
   height: 100%;
   padding: 4em 0 4em 4em;
@@ -335,8 +337,7 @@ GRAPH
 .graph-container {
   position: relative;
   overflow: hidden;
-  min-width: 100%;
-  padding: 1em 4em;
+  padding: 1em 22em 1em 4em;
   background: white;
 }
 .graph-container .settings-link {
@@ -350,12 +351,14 @@ GRAPH
 .graph-container .settings {
   position: absolute;
   top: 0;
-  right: -320px;
-  width: 320px;
+  right: 0;
+  width: 18em;
   height: 100%;
   padding: 1em 3em 1em 1em;
-  background: rgba(200, 200, 200, 0.9);
-  opacity: 0;
+  background: #f0f0f0;
+}
+.graph-container .settings .setting-title {
+  text-transform: uppercase;
 }
 .graph-container .settings li.active {
   position: relative;
@@ -364,12 +367,6 @@ GRAPH
   border-left: 4px solid black;
 }
 .graph-container .settings li.active a {
-  color: black;
-}
-.graph-container .settings a, .graph-container .settings label {
-  color: white;
-}
-.graph-container .settings a:hover, .graph-container .settings label:hover {
   color: black;
 }
 .graph-container .settings .close-settings-link {
@@ -432,23 +429,38 @@ text {
   fill: silver;
 }
 
-.axes line,
-.ruler path {
+.axes line {
   fill: none;
   shape-rendering: crispEdges;
-}
-
-.axes line {
   stroke: #f0f0f0;
 }
 
+.axes text {
+  fill: silver;
+}
+
 .ruler path {
+  fill: none;
+  shape-rendering: crispEdges;
   stroke: silver;
 }
 
-.axes text,
 .ruler text {
-  fill: silver;
+  fill: black;
+}
+
+.ref line {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: black;
+}
+
+.ref text {
+  fill: black;
+}
+
+text.cat {
+  cursor: default;
 }
 
 .gmain {

@@ -13,7 +13,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 	//scales
 	var x = d3.scale.linear()
-		.range([0, w - (4 * padding) - textSpace]);
+		.range([0, w - padding - textSpace]);
 	var y = d3.scale.ordinal()
 		.rangeRoundBands([0,26], 1, 0);
 
@@ -35,21 +35,19 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('class', 'axes')
 				.attr('transform', 'translate(' + textSpace + ',4)');
 			//axis
-			axes.selectAll('line')
-				.data([0,0,0,0,0])
-				.enter().append('line')
-				.attr('x1', 0)
+			axes.selectAll('line').data([0,10,20,30,40]).enter()
+				.append('line')
+				.attr('x1', function(d) { return x(d); })
 				.attr('y1', 0)
-				.attr('x2', 0)
+				.attr('x2', function(d) { return x(d); })
 				.attr('y2', 27 * (barHeight + spacing));
 			//axes text
-			axes.selectAll('text')
-				.data([0,0,0,0,0])
-				.enter().append('text')
+			axes.selectAll('text').data([0,10,20,30,40]).enter()
+				.append('text')
 				.text(function(d) { return d; })
-				.attr('x', 0)
+				.attr('x', function(d) { return x(d); })
 				.attr('y', 27 * (barHeight + spacing) + padding)
-				.attr('text-anchor', 'middle');
+				.attr('text-anchor', 'middle');				
 
 			//ruler
 			var ruler = chart.append('g')
@@ -60,6 +58,23 @@ define(['jquery', 'd3js'], function($, ignore){
 			ruler.append('text')
 				.attr('x', x(20))
 				.attr('y', rulerSpace)
+				.attr('text-anchor', 'middle');
+
+			//ref
+			var ref = chart.append('g')
+				.attr('class', 'ref')
+				.attr('transform', 'translate(' + textSpace + ',4)');
+			//ref line
+			ref.append('line')
+				.attr('x1', 0)
+				.attr('y1', 0)
+				.attr('x2', 0)
+				.attr('y2', 27 * (barHeight + spacing));
+			//ref text
+			ref.append('text')
+				.text('0')
+				.attr('x', 0)
+				.attr('y', 27 * (barHeight + spacing) + padding)
 				.attr('text-anchor', 'middle');
 
 			callbackFn();
@@ -135,20 +150,37 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('text.cat').data(csv)
 					.text(function(d) { return d[graph.parameter]; })
 					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + 8); });
-				//axes
-				chart.select('g.axes').selectAll('line').data([0,10,20,30,40])
-					.transition().duration(1000)
-					.attr('x1', function(d) { return x(d); })
-					.attr('x2', function(d) { return x(d); });
+					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + 8); })
+					.attr('data-abs-val', function(d){ return d.utilizam; });
 				//axes text
-				chart.select('g.axes').selectAll('text').data([0,10,20,30,40])
-					.transition().duration(1000)
-					.text(function(d) { return d; })
-					.attr('x', function(d) { return x(d); });
+				chart.selectAll('g.axes text').data([0,10,20,30,40])
+					.text(function(d) { return d; });
 				//ruler text
-				chart.select('g.ruler').select('text')
+				chart.select('g.ruler text')
 					.text('milhões de pessoas');
+				//ref line
+				chart.select('g.ref line')
+					.attr('x1', 0)
+					.attr('x2', 0);
+				//ref text
+				chart.select('g.ref text')
+					.text(0)
+					.attr('x', 0);
+
+				//ref interaction
+				$('#reg-graph1 svg').on('mouseenter', 'text.cat', function(e){
+					var val = $(this).data('abs-val');				
+
+					chart.select('g.ref line')
+						.transition().duration(200)
+						.attr('x1', x(val))
+						.attr('x2', x(val));
+
+					chart.select('g.ref text')
+						.text(val)
+						.transition().duration(200)
+						.attr('x', x(val));
+				});
 
 			});
 		},
@@ -167,9 +199,6 @@ define(['jquery', 'd3js'], function($, ignore){
 				y.domain(sorted.sort(function(a,b){
 					return b - a;	
 				}));
-
-				console.log(sorted);
-				console.log(x(41.2));
 
 				//chart
 				var chart = d3.select('#reg-graph1 svg');
@@ -224,34 +253,41 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('cx', function(d) { return x(d['utilizam %']) + textSpace; });
 				//cat text
 				chart.selectAll('text.cat').data(csv)
+					.text(function(d) { return d[graph.parameter]; })
 					.transition().duration(1000)
 					.attr('y', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + 8); })
-					.text(function(d) { return d[graph.parameter]; });
-				//axes
-				chart.select('g.axes').selectAll('line').data([0,25,50,75,100])
-					.transition().duration(1000)
-					.attr('x1', function(d) { return x(d); })
-					.attr('x2', function(d) { return x(d); });
+					.attr('data-rel-val', function(d){ return d['utilizam %']; });
 				//axes text
-				chart.select('g.axes').selectAll('text').data([0,25,50,75,100])
-					.transition().duration(1000)
-					.text(function(d) { return d + '%'; })
-					.attr('x', function(d) { return x(d); });
+				chart.selectAll('g.axes text').data([0,25,50,75,100])
+					.text(function(d) { return d + '%'; });
 				//ruler text
-				chart.select('g.ruler').select('text')
-					.text('percentual de usuários no estado');
+				chart.select('g.ruler text')
+					.text('percentual de pessoas no estado');
+				//ref line
+				chart.select('g.ref line')
+					.attr('x1', 0)
+					.attr('x2', 0);
+				//ref text
+				chart.select('g.ref text')
+					.text('0%')
+					.attr('x', 0);
+
+				//ref interaction
+				$('#reg-graph1 svg').on('mouseenter', 'text.cat', function(e){
+					var val = $(this).data('rel-val');				
+
+					chart.select('g.ref line')
+						.transition().duration(200)
+						.attr('x1', x(val))
+						.attr('x2', x(val));
+
+					chart.select('g.ref text')
+						.text(val + '%')
+						.transition().duration(200)
+						.attr('x', x(val));
+				});
 
 			});
-		},
-
-		teste: function() {
-
-			var chart = d3.select('#reg-graph1 svg');
-
-			chart.on('mouseover', function(){
-				console.log('mouseover');
-			});
-
 		}
 
 
