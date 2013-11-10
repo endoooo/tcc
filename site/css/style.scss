@@ -103,6 +103,7 @@ GRAPH
 .graph-container {
 	position: relative;
 	overflow: hidden;
+	min-height: 20em;
 	padding: 1em 22em 1em 4em;
 	background: white;
 
@@ -134,10 +135,6 @@ GRAPH
 			a { color: black }
 		}
 
-		a, label {
-			
-		}
-
 		.close-settings-link {
 			display: block;
 			position: absolute;
@@ -163,6 +160,15 @@ GRAPH
 			margin-right: 0.5em;
 			vertical-align: middle;
 		}
+	}
+
+	.info {
+		font-size: 0.75em;
+		span {
+			display: block;
+			color: black;
+		}
+		span:before { margin-right: 0.5em }
 	}
 }
 svg,
@@ -201,6 +207,13 @@ text {
 }
 .ruler text { fill: black }
 
+.support line {
+	fill: none;
+    shape-rendering: crispEdges;
+    stroke: $c2;
+}
+.support text { fill: $c1 }
+
 .ref line {
 	fill: none;
     shape-rendering: crispEdges;
@@ -214,6 +227,11 @@ text.cat { cursor: default }
 .gc2 { fill: $c2 }
 .gwhite { fill: white }
 .gblack { fill: black }
+
+.connection {
+	fill: none;
+    stroke: $main;
+}
 
 
 /* ------------------------------ *\

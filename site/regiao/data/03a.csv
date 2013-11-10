@@ -1,10 +1,10 @@
-estado,utilização estado,capital,utilização capital
-Pará,30.7,Belém,51.5
-Ceará,33.4,Fortaleza,44.6
-Pernambuco,37.2,Recife,50.5
-Bahia,37.2,Salvador,58.0
-Minas Gerais,43.6,Belo Horizonte,55.7
-Rio de Janeiro,54.5,Rio de Janeiro,56.6
-São Paulo,59.5,São Paulo,64.2
-Paraná,51.1,Curitiba,59.5
-Rio Grande do Sul,48.0,Porto Alegre,58.0
+estado,utilização estado,utilização estado %,capital,utilização capital,utilização capital %
+Pará,1.962,30.7,Belém,0.947,51.5
+Ceará,2.468,33.4,Fortaleza,1.43,44.6
+Pernambuco,2.82,37.2,Recife,1.656,50.5
+Bahia,4.436,37.2,Salvador,1.829,58
+Minas Gerais,7.549,43.6,Belo Horizonte,2.437,55.7
+Rio de Janeiro,7.801,54.5,Rio de Janeiro,6.017,56.6
+São Paulo,21.872,59.5,São Paulo,11.237,64.2
+Paraná,4.715,51.1,Curitiba,1.677,59.5
+Rio Grande do Sul,4.517,48,Porto Alegre,2.032,58

@@ -7,25 +7,32 @@ require.config({
     urlArgs: 'bust=' + (new Date()).getTime()
 });
 
-require(['jquery', 'menu', 'graphs/region01', 'graphs/region02'], function($, menu, region01, region02){
+require(['jquery', 'menu', 'graphs/region01', 'graphs/region02', 'graphs/region03'], function($, menu, region01, region02, region03){
 	$('document').ready(function() {
 		
-		//initialize menu and settings
+		//initialize menu
 		menu.initializeMain();
-		menu.initializeSettings();
 
 		//graph parameters
 		var graph1a = {
-			titleText: 'Utilização da internet nos Estados do Brasil (2011)',
+			titleText: 'Utilização da internet nos estados do Brasil (2011)',
 			csvPath: '../regiao/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'estado'
-		}
+		};
+		var graph3a = {
+			titleText: 'Utilização da internet nos estados vs. regiões metropolitanas do Brasil (2011)',
+			csvPath: '../regiao/data/03a.csv' + '?' + Math.floor(Math.random() * 1000),
+			parameter: ['estado','região metropolitana']
+		};
 
 		//initialize graphs
 		region01.initializeGraph(function(){
 			region01.activateAbsGraph(graph1a);
 		});
 		region02.activateMap('map-abs');
+		region03.initializeGraph(function(){
+			region03.activateAbsGraph(graph3a);
+		});
 
 		//bind settings control to graph01
 		$('#reg-settings1 .graph-value').on('click', function(e){
@@ -52,8 +59,19 @@ require(['jquery', 'menu', 'graphs/region01', 'graphs/region02'], function($, me
 			e.preventDefault();
 		});
 
+		//bind settings control to graph03
+		$('#reg-settings3 .graph-value').on('click', function(e){
+			$(this).parent('li').siblings().removeClass('active');
+			$(this).parent('li').addClass('active');
 
+			var type = $(this).data('value');
+			if (type === 'absolute')
+				region03.activateAbsGraph(graph3a);
+			else
+				region03.activateRelGraph(graph3a);
 
+			e.preventDefault();			
+		});
 
 	});
 });

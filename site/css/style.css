@@ -337,6 +337,7 @@ GRAPH
 .graph-container {
   position: relative;
   overflow: hidden;
+  min-height: 20em;
   padding: 1em 22em 1em 4em;
   background: white;
 }
@@ -397,6 +398,16 @@ GRAPH
   margin-right: 0.5em;
   vertical-align: middle;
 }
+.graph-container .info {
+  font-size: 0.75em;
+}
+.graph-container .info span {
+  display: block;
+  color: black;
+}
+.graph-container .info span:before {
+  margin-right: 0.5em;
+}
 
 svg,
 text {
@@ -449,6 +460,16 @@ text {
   fill: black;
 }
 
+.support line {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: silver;
+}
+
+.support text {
+  fill: #909090;
+}
+
 .ref line {
   fill: none;
   shape-rendering: crispEdges;
@@ -477,6 +498,11 @@ text.cat {
 
 .gblack {
   fill: black;
+}
+
+.connection {
+  fill: none;
+  stroke: #42b3c6;
 }
 
 /* ------------------------------ *\
