@@ -135,6 +135,14 @@ GRAPH
 			a { color: black }
 		}
 
+		hr {
+			width: 1em;
+			height: 4px;
+			border: 0 none;
+			margin: 1.5em 0;
+			background: white;
+		}
+
 		.close-settings-link {
 			display: block;
 			position: absolute;
@@ -150,7 +158,6 @@ GRAPH
 		padding: 8px 16px;
 		border: 1px solid black;
 		@include border-radius(8px);
-		margin-top: 1em;
 		color: black;
 		&:hover {
 			border-color: $main;
@@ -228,7 +235,7 @@ text.cat { cursor: default }
 .gwhite { fill: white }
 .gblack { fill: black }
 
-.connection {
+line.connection {
 	fill: none;
     stroke: $main;
 }

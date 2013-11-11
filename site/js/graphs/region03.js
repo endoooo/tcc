@@ -7,7 +7,7 @@ define(['jquery', 'd3js'], function($, ignore){
 	var graphWidth = 560;
 	var catSpace = 128;
 	var subSpace = 32;
-	var radius = 4;
+	var radius = 2;
 	var w = $('#reg-graph3 .graph').width();
 	var h = graphHeight + (2 * subSpace);
 
@@ -39,7 +39,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('y1', function(d) { return y(d); })
 				.attr('x2', graphWidth)
 				.attr('y2', function(d) { return y(d); });
-			//axes text
+			//axis text
 			axes.selectAll('text').data([0,6,12,18,24]).enter()
 				.append('text')
 				.text(function(d) { return d; })
@@ -64,6 +64,36 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('y', 16)
 				.attr('text-anchor', 'middle');
 
+			//reference
+			chart.append('text')
+				.text('usuários (em milhões de pessoas)')
+				.attr('x', catSpace + (graphWidth/2))
+				.attr('y', h - 4)
+				.attr('text-anchor', 'middle')
+				.attr('class','reference');
+
+			//detail
+			chart.append('text')
+				.text('')
+				.attr('x', catSpace + (graphWidth/2))
+				.attr('y', h - 4)
+				.attr('text-anchor', 'middle')
+				.attr('class','details');
+
+			d3.csv('../regiao/data/03a.csv' + '?' + Math.floor(Math.random() * 1000), function(csv){
+				//relations details list
+				var list = d3.select('#reg-settings3 .cat-list');
+				list.selectAll('.connection').data(csv).enter()
+					.append('li')
+					.attr('class', 'connection')
+					.append('a')
+					.attr('href', '#')
+					.attr('data-detail', function(d){ return d['utilização estado'] + ' milhões (' + d['utilização estado %'] + '%) | ' + d['utilização capital'] + ' milhões (' + d['utilização capital %'] + '%)'; })
+					.attr('data-connection', function(d,i){ return 'connection' + i; })
+					.attr('class', 'graph-cat')
+					.text(function(d){ return d['capital']});
+			});
+
 			callbackFn();
 		},
 
@@ -85,7 +115,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('cx', catSpace)
 					.attr('cy', graphHeight + subSpace)
 					.attr('r', radius)
-					.attr('class', 'gmain point1');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection gmain point1'; });
 				//point 1 text
 				chart.selectAll('text.point1').data(csv).enter()
 					.append('text')
@@ -93,14 +123,14 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('dx', -8)
 					.attr('y', graphHeight + subSpace)
 					.attr('text-anchor', 'end')
-					.attr('class', 'cat point1');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection cat point1'; });
 				//point 2
 				chart.selectAll('circle.point2').data(csv).enter()
 					.append('circle')
 					.attr('cx', catSpace + graphWidth)
 					.attr('cy', graphHeight + subSpace)
 					.attr('r', radius)
-					.attr('class', 'gmain point2');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection gmain point2'; });
 				//point 2 text
 				chart.selectAll('text.point2').data(csv).enter()
 					.append('text')
@@ -108,15 +138,15 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('dx', 8)
 					.attr('y', graphHeight + subSpace)
 					.attr('text-anchor', 'start')
-					.attr('class', 'cat point2');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection cat point2'; });
 				//line
-				chart.selectAll('.connection').data(csv).enter()
+				chart.selectAll('line.connection').data(csv).enter()
 					.append('line')
 					.attr('x1', catSpace)
 					.attr('y1', graphHeight + subSpace)
 					.attr('x2', catSpace + graphWidth)
 					.attr('y2', graphHeight + subSpace)
-					.attr('class', 'gmain connection');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection gmain'; });
 
 				//update
 				//point 1
@@ -127,7 +157,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('text.point1').data(csv)
 					.text(function(d){ return d.estado })
 					.transition().duration(1000)
-					.attr('y', function(d){ return y(d['utilização estado']) + subSpace + (radius/2); });
+					.attr('y', function(d){ return y(d['utilização estado']) + subSpace + radius; });
 				//point 2
 				chart.selectAll('circle.point2').data(csv)
 					.transition().duration(1000)
@@ -136,15 +166,18 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('text.point2').data(csv)
 					.text(function(d){ return d.capital })
 					.transition().duration(1000)
-					.attr('y', function(d){ return y(d['utilização capital']) + subSpace + (radius/2); });
+					.attr('y', function(d){ return y(d['utilização capital']) + subSpace + radius; });
 				//connection
-				chart.selectAll('.connection').data(csv)
+				chart.selectAll('line.connection').data(csv)
 					.transition().duration(1000)
 					.attr('y1', function(d){ return y(d['utilização estado']) + subSpace; })
 					.attr('y2', function(d){ return y(d['utilização capital']) + subSpace; });
 				//axes text
 				chart.selectAll('g.axes text').data([0,6,12,18,24])
 					.text(function(d) { return d; });
+				//reference
+				chart.select('.reference')
+					.text('usuários (em milhões de pessoas)');
 			});
 		},
 
@@ -166,7 +199,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('cx', catSpace)
 					.attr('cy', graphHeight + subSpace)
 					.attr('r', radius)
-					.attr('class', 'gmain point1');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection gmain point1'; });
 				//point 1 text
 				chart.selectAll('text.point1').data(csv).enter()
 					.append('text')
@@ -174,14 +207,14 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('dx', -8)
 					.attr('y', graphHeight + subSpace)
 					.attr('text-anchor', 'end')
-					.attr('class', 'cat point1');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection cat point1'; });
 				//point 2
 				chart.selectAll('circle.point2').data(csv).enter()
 					.append('circle')
 					.attr('cx', catSpace + graphWidth)
 					.attr('cy', graphHeight + subSpace)
 					.attr('r', radius)
-					.attr('class', 'gmain point2');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection gmain point2'; });
 				//point 2 text
 				chart.selectAll('text.point2').data(csv).enter()
 					.append('text')
@@ -189,15 +222,15 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('dx', 8)
 					.attr('y', graphHeight + subSpace)
 					.attr('text-anchor', 'start')
-					.attr('class', 'cat point2');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection cat point2'; });
 				//line
-				chart.selectAll('.connection').data(csv).enter()
+				chart.selectAll('line.connection').data(csv).enter()
 					.append('line')
 					.attr('x1', catSpace)
 					.attr('y1', graphHeight + subSpace)
 					.attr('x2', catSpace + graphWidth)
 					.attr('y2', graphHeight + subSpace)
-					.attr('class', 'gmain connection');
+					.attr('class', function(d, i){ return 'connection' + i + ' connection gmain'; });
 
 				//update
 				//point 1
@@ -208,7 +241,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('text.point1').data(csv)
 					.text(function(d){ return d.estado })
 					.transition().duration(1000)
-					.attr('y', function(d){ return y(d['utilização estado %']) + subSpace + (radius/2); });
+					.attr('y', function(d){ return y(d['utilização estado %']) + subSpace + radius; });
 				//point 2
 				chart.selectAll('circle.point2').data(csv)
 					.transition().duration(1000)
@@ -217,17 +250,52 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('text.point2').data(csv)
 					.text(function(d){ return d.capital })
 					.transition().duration(1000)
-					.attr('y', function(d){ return y(d['utilização capital %']) + subSpace + (radius/2); });
+					.attr('y', function(d){ return y(d['utilização capital %']) + subSpace + radius; });
 				//connection
-				chart.selectAll('.connection').data(csv)
+				chart.selectAll('line.connection').data(csv)
 					.transition().duration(1000)
 					.attr('y1', function(d){ return y(d['utilização estado %']) + subSpace; })
 					.attr('y2', function(d){ return y(d['utilização capital %']) + subSpace; });
 				//axes text
 				chart.selectAll('g.axes text').data([0,25,50,75,100])
 					.text(function(d) { return d + '%'; });
+				//reference
+				chart.select('.reference')
+					.text('percentual de usuários');
 
 			});
+		},
+
+		detail: function(detailText, connection) {
+
+			var chart = d3.select('#reg-graph3 svg');
+
+			if (detailText === 'none') {
+				chart.selectAll('.connection')
+					.transition().duration(500)
+					.style('opacity', 1);
+
+				chart.select('text.reference')
+					.style('opacity', 1);
+				chart.select('text.details')
+					.style('opacity', 0);
+			}
+			else {
+				chart.selectAll('.connection')
+					.transition().duration(500)
+					.style('opacity', 0.1)
+					.each('end', function(){
+						chart.selectAll('.' + connection)
+							.transition().duration(500)
+							.style('opacity', 1);
+							
+						chart.select('text.reference')
+							.style('opacity', 0);
+						chart.select('text.details')
+							.text(detailText)
+							.style('opacity', 1);
+					});
+			}
 		}
 
 

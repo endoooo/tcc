@@ -370,6 +370,13 @@ GRAPH
 .graph-container .settings li.active a {
   color: black;
 }
+.graph-container .settings hr {
+  width: 1em;
+  height: 4px;
+  border: 0 none;
+  margin: 1.5em 0;
+  background: white;
+}
 .graph-container .settings .close-settings-link {
   display: block;
   position: absolute;
@@ -387,7 +394,6 @@ GRAPH
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
   border-radius: 8px;
-  margin-top: 1em;
   color: black;
 }
 .graph-container .annotation:hover {
@@ -500,7 +506,7 @@ text.cat {
   fill: black;
 }
 
-.connection {
+line.connection {
   fill: none;
   stroke: #42b3c6;
 }

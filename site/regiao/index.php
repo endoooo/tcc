@@ -27,12 +27,12 @@
 					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
 				</ul>
-				<br/>
+				<hr/>
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<span class="icon-info">Interação:</span>
-					passe o mouse sobre os nomes dos estados para ver os valores exatos das barras.
+					passe o mouse sobre os nomes dos estados/regiões para ver os valores exatos das barras.
 				</p>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 					<li class="active"><a href="#" class="graph-value" data-map="map-abs">absolutos</a></li>
 					<li><a href="#" class="graph-value" data-map="map-rel">relativos</a></li>
 				</ul>
-				<br/>
+				<hr/>
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			</div>
 		</div>
@@ -70,6 +70,11 @@
 					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
 				</ul>
 				<br/>
+				<ul class="cat-list">
+					<span class="setting-title">Detalhar:</span>
+					<li class="active"><a href="#" class="graph-cat" data-detail="none" data-connection="0">nenhum</a></li>
+				</ul>
+				<hr/>
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 			</div>
 		</div>

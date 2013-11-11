@@ -94,6 +94,17 @@ require(['jquery', 'menu', 'graphs/region01', 'graphs/region02', 'graphs/region0
 
 			e.preventDefault();			
 		});
+		$('#reg-settings3').on('click', '.graph-cat', function(e){
+			$(this).parent('li').siblings().removeClass('active');
+			$(this).parent('li').addClass('active');
+
+			var detailText = $(this).data('detail');
+			var connection = $(this).data('connection');
+
+			region03.detail(detailText,connection);
+
+			e.preventDefault();			
+		});
 
 	});
 });

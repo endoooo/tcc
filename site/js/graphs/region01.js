@@ -134,22 +134,22 @@ define(['jquery', 'd3js'], function($, ignore){
 				//remove
 				//total bar
 				chart.selectAll('rect.total').data(csv).exit()
-					.transition().duration(1000)
+					.transition().duration(400)
 					.attr('width', 0)
 					.remove();
 				//users bar
 				chart.selectAll('rect.users').data(csv).exit()
-					.transition().duration(1000)
+					.transition().duration(400)
 					.attr('width', 0)
 					.remove();
 				//cat text
 				chart.selectAll('text.cat').data(csv).exit()
-					.transition().duration(1000)
-					.attr('fill', 'white')
+					.transition().duration(400)
+					.style('opacity', 0)
 					.remove();
 				//users point
 				chart.selectAll('circle.users').data(csv).exit()
-					.transition().duration(1000)
+					.transition().duration(400)
 					.attr('cx', textSpace)
 					.remove();
 
@@ -265,22 +265,22 @@ define(['jquery', 'd3js'], function($, ignore){
 				//remove
 				//total bar
 				chart.selectAll('rect.total').data(csv).exit()
-					.transition().duration(1000)
+					.transition().duration(400)
 					.attr('width', 0)
 					.remove();
 				//users bar
 				chart.selectAll('rect.users').data(csv).exit()
-					.transition().duration(1000)
+					.transition().duration(400)
 					.attr('width', 0)
 					.remove();
 				//cat text
 				chart.selectAll('text.cat').data(csv).exit()
-					.transition().duration(1000)
-					.attr('fill', 'white')
+					.transition().duration(400)
+					.style('opacity', 0)
 					.remove();
 				//users point
 				chart.selectAll('circle.users').data(csv).exit()
-					.transition().duration(1000)
+					.transition().duration(400)
 					.attr('cx', textSpace)
 					.remove();
 
