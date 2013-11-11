@@ -28,21 +28,21 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('height', h);
 
 			//scale adjustment
-			x.domain([0, 40]);
+			x.domain([0, 72]);
 
 			//vertical axes
 			var axes = chart.append('g')
 				.attr('class', 'axes')
 				.attr('transform', 'translate(' + textSpace + ',4)');
 			//axis
-			axes.selectAll('line').data([0,10,20,30,40]).enter()
+			axes.selectAll('line').data([0,18,36,54,72]).enter()
 				.append('line')
 				.attr('x1', function(d) { return x(d); })
 				.attr('y1', 0)
 				.attr('x2', function(d) { return x(d); })
 				.attr('y2', 27 * (barHeight + spacing));
 			//axes text
-			axes.selectAll('text').data([0,10,20,30,40]).enter()
+			axes.selectAll('text').data([0,18,36,54,72]).enter()
 				.append('text')
 				.text(function(d) { return d; })
 				.attr('x', function(d) { return x(d); })
@@ -54,9 +54,9 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('class', 'ruler')
 				.attr('transform', 'translate(' + textSpace + ',' + (27 * (barHeight + spacing) + (3 * spacing)) + ')');
 			ruler.append('path')
-				.attr('d', 'M0 0 l0 8 l' + x(40) + ' 0 l0 -8');
+				.attr('d', 'M0 0 l0 8 l' + x(72) + ' 0 l0 -8');
 			ruler.append('text')
-				.attr('x', x(20))
+				.attr('x', x(36))
 				.attr('y', rulerSpace)
 				.attr('text-anchor', 'middle');
 
@@ -90,7 +90,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				var sorted = csv.map(function(d,i) {
 					return d.utilizam;
 				});
-				x.domain([0, 40]);
+				x.domain([0, 72]);
 				y.domain(sorted.sort(function(a,b){
 					return b - a;	
 				}));
@@ -128,7 +128,30 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y', function(d, i) { return (i * barHeight) + (i * spacing) + 8; })
 					.attr('dx', -8 )
 					.attr('text-anchor', 'end')
+					.attr('data-abs-val', null)
 					.attr('class', 'gblack cat');
+
+				//remove
+				//total bar
+				chart.selectAll('rect.total').data(csv).exit()
+					.transition().duration(1000)
+					.attr('width', 0)
+					.remove();
+				//users bar
+				chart.selectAll('rect.users').data(csv).exit()
+					.transition().duration(1000)
+					.attr('width', 0)
+					.remove();
+				//cat text
+				chart.selectAll('text.cat').data(csv).exit()
+					.transition().duration(1000)
+					.attr('fill', 'white')
+					.remove();
+				//users point
+				chart.selectAll('circle.users').data(csv).exit()
+					.transition().duration(1000)
+					.attr('cx', textSpace)
+					.remove();
 
 				//update
 				//total bar
@@ -168,7 +191,10 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('x', 0);
 
 				//ref interaction
-				$('#reg-graph1 svg').on('mouseenter', 'text.cat', function(e){
+				//reset event binding first
+				$('#reg-graph1 svg text.cat').on('mouseenter', function(e){
+					//clear previous stored data first
+					$(this).removeData('abs-val');
 					var val = $(this).data('abs-val');				
 
 					chart.select('g.ref line')
@@ -206,7 +232,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				//total bar
 				chart.selectAll('rect.total').data(csv).enter()
 					.append('rect')
-					.attr('x', padding)
+					.attr('x', textSpace)
 					.attr('y', function(d, i) { return (i * (barHeight + spacing)); })
 					.attr('width', 0)
 					.attr('height', barHeight)
@@ -214,7 +240,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				//users bar
 				chart.selectAll('rect.users').data(csv).enter()
 					.append('rect')
-					.attr('x', padding)
+					.attr('x', textSpace)
 					.attr('y', function(d, i) { return (i * (barHeight + spacing)); })
 					.attr('width', 0)
 					.attr('height', barHeight)
@@ -233,7 +259,30 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y', function(d, i) { return (i * (barHeight + spacing) + 8); })
 					.attr('dx', -8 )
 					.attr('text-anchor', 'end')
+					.attr('data-abs-val', null)
 					.attr('class', 'gblack cat');
+
+				//remove
+				//total bar
+				chart.selectAll('rect.total').data(csv).exit()
+					.transition().duration(1000)
+					.attr('width', 0)
+					.remove();
+				//users bar
+				chart.selectAll('rect.users').data(csv).exit()
+					.transition().duration(1000)
+					.attr('width', 0)
+					.remove();
+				//cat text
+				chart.selectAll('text.cat').data(csv).exit()
+					.transition().duration(1000)
+					.attr('fill', 'white')
+					.remove();
+				//users point
+				chart.selectAll('circle.users').data(csv).exit()
+					.transition().duration(1000)
+					.attr('cx', textSpace)
+					.remove();
 
 				//update
 				//total bar
@@ -273,8 +322,10 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('x', 0);
 
 				//ref interaction
-				$('#reg-graph1 svg').on('mouseenter', 'text.cat', function(e){
-					var val = $(this).data('rel-val');				
+				$('#reg-graph1 svg text.cat').on('mouseenter', function(e){
+					//clear previous stored data first
+					$(this).removeData('rel-val');
+					var val = $(this).data('rel-val');
 
 					chart.select('g.ref line')
 						.transition().duration(200)

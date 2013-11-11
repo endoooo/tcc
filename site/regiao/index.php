@@ -16,6 +16,12 @@
 			<h2 class="title"></h2>
 			<div class="graph"></div>
 			<div class="settings" id="reg-settings1">
+				<ul class="type-list">
+					<span class="setting-title">Visualizar por:</span>
+					<li class="active"><a href="#" class="graph-type" data-graph="graph1a">estados</a></li>
+					<li><a href="#" class="graph-type" data-graph="graph1b">regiões</a></li>
+				</ul>
+				<br/>
 				<ul class="value-list">
 					<span class="setting-title">Valores:</span>
 					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
@@ -31,9 +37,7 @@
 			</div>
 		</div>
 
-		<div class="content">
-			<p>Lorem ipsum</p>
-		</div>
+		<br/>
 
 		<div class="graph-container" id="reg-graph2">
 			<h2 class="title">Mapa da utilização da internet no Brasil (2011)</h2>
