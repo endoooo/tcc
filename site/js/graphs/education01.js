@@ -6,16 +6,16 @@ define(['jquery', 'd3js'], function($, ignore){
 	var padding = 16;
 	var spacing = 12;
 	var barHeight = 4;
-	var textSpace = 128;
+	var textSpace = 96;
 	var rulerSpace = 24;
 	var w = $('#edu-graph1 .graph').width();
-	var h = (15 * barHeight) + (15 * spacing) + (3 *padding) + rulerSpace;
+	var h = (17 * barHeight) + (17 * spacing) + (3 *padding) + rulerSpace;
 
 	//scales
 	var x = d3.scale.linear()
 		.range([0, w - padding - textSpace]);
 	var y = d3.scale.ordinal()
-		.rangeRoundBands([0,14], 1, 0);
+		.rangeRoundBands([0,16], 1, 0);
 
 	return {
 
@@ -40,19 +40,19 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('x1', function(d) { return x(d); })
 				.attr('y1', 0)
 				.attr('x2', function(d) { return x(d); })
-				.attr('y2', 15 * (barHeight + spacing));
+				.attr('y2', 17 * (barHeight + spacing));
 			//axes text
 			axes.selectAll('text').data([0,33,66,99,132]).enter()
 				.append('text')
 				.text(function(d) { return d; })
 				.attr('x', function(d) { return x(d); })
-				.attr('y', 15 * (barHeight + spacing) + padding)
+				.attr('y', 17 * (barHeight + spacing) + padding)
 				.attr('text-anchor', 'middle');				
 
 			//ruler
 			var ruler = chart.append('g')
 				.attr('class', 'ruler')
-				.attr('transform', 'translate(' + textSpace + ',' + (15 * (barHeight + spacing) + (3 * spacing)) + ')');
+				.attr('transform', 'translate(' + textSpace + ',' + (17 * (barHeight + spacing) + (3 * spacing)) + ')');
 			ruler.append('path')
 				.attr('d', 'M0 0 l0 8 l' + x(132) + ' 0 l0 -8');
 			ruler.append('text')
@@ -69,12 +69,12 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('x1', 0)
 				.attr('y1', 0)
 				.attr('x2', 0)
-				.attr('y2', 15 * (barHeight + spacing));
+				.attr('y2', 17 * (barHeight + spacing));
 			//ref text
 			ref.append('text')
 				.text('0')
 				.attr('x', 0)
-				.attr('y', 15 * (barHeight + spacing) + padding)
+				.attr('y', 17 * (barHeight + spacing) + padding)
 				.attr('text-anchor', 'middle');
 
 			callbackFn();
@@ -311,7 +311,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text(function(d) { return d + '%'; });
 				//ruler text
 				chart.select('g.ruler text')
-					.text('percentual de pessoas no estado');
+					.text('percentual de pessoas na classificação');
 				//ref line
 				chart.select('g.ref line')
 					.attr('x1', 0)

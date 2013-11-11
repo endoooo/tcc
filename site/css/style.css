@@ -337,7 +337,7 @@ GRAPH
 .graph-container {
   position: relative;
   overflow: hidden;
-  min-height: 20em;
+  min-height: 26em;
   padding: 1em 22em 1em 4em;
   background: white;
 }
@@ -533,6 +533,9 @@ COVER
   color: white;
 }
 
+/* ------------------------------ *\
+EDUCATION
+\* ------------------------------ */
 /* ------------------------------ *\
 REGION
 \* ------------------------------ */
