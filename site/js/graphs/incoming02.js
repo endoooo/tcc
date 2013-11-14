@@ -1,6 +1,6 @@
 define(['jquery', 'd3js'], function($, ignore){
 
-	console.log('region01 required');
+	console.log('incoming02 required');
 
 	//graph config
 	var padding = 16;
@@ -8,55 +8,55 @@ define(['jquery', 'd3js'], function($, ignore){
 	var barHeight = 4;
 	var textSpace = 128;
 	var rulerSpace = 24;
-	var w = $('#reg-graph1 .graph').width();
-	var h = (27 * barHeight) + (27 * spacing) + (3 *padding) + rulerSpace;
+	var w = $('#inc-graph2 .graph').width();
+	var h = (13 * barHeight) + (13 * spacing) + (3 *padding) + rulerSpace;
 
 	//scales
 	var x = d3.scale.linear()
 		.range([0, w - padding - textSpace]);
 	var y = d3.scale.ordinal()
-		.rangeRoundBands([0,26], 1, 0);
+		.rangeRoundBands([0,12], 1, 0);
 
 	return {
 
 		initializeGraph: function( callbackFn ) {
 
 			//create svg
-			var chart = d3.select('#reg-graph1>.graph')
+			var chart = d3.select('#inc-graph2>.graph')
 				.append('svg')
 				.attr('width', w)
 				.attr('height', h);
 
 			//scale adjustment
-			x.domain([0, 72]);
+			x.domain([0, 48]);
 
 			//vertical axes
 			var axes = chart.append('g')
 				.attr('class', 'axes')
 				.attr('transform', 'translate(' + textSpace + ',4)');
 			//axis
-			axes.selectAll('line').data([0,18,36,54,72]).enter()
+			axes.selectAll('line').data([0,12,24,36,48]).enter()
 				.append('line')
 				.attr('x1', function(d) { return x(d); })
 				.attr('y1', 0)
 				.attr('x2', function(d) { return x(d); })
-				.attr('y2', 27 * (barHeight + spacing));
+				.attr('y2', 13 * (barHeight + spacing));
 			//axes text
-			axes.selectAll('text').data([0,18,36,54,72]).enter()
+			axes.selectAll('text').data([0,12,24,36,48]).enter()
 				.append('text')
 				.text(function(d) { return d; })
 				.attr('x', function(d) { return x(d); })
-				.attr('y', 27 * (barHeight + spacing) + padding)
+				.attr('y', 13 * (barHeight + spacing) + padding)
 				.attr('text-anchor', 'middle');				
 
 			//ruler
 			var ruler = chart.append('g')
 				.attr('class', 'ruler')
-				.attr('transform', 'translate(' + textSpace + ',' + (27 * (barHeight + spacing) + (3 * spacing)) + ')');
+				.attr('transform', 'translate(' + textSpace + ',' + (13 * (barHeight + spacing) + (3 * spacing)) + ')');
 			ruler.append('path')
-				.attr('d', 'M0 0 l0 8 l' + x(72) + ' 0 l0 -8');
+				.attr('d', 'M0 0 l0 8 l' + x(48) + ' 0 l0 -8');
 			ruler.append('text')
-				.attr('x', x(36))
+				.attr('x', x(24))
 				.attr('y', rulerSpace)
 				.attr('text-anchor', 'middle');
 
@@ -69,12 +69,12 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('x1', 0)
 				.attr('y1', 0)
 				.attr('x2', 0)
-				.attr('y2', 27 * (barHeight + spacing));
+				.attr('y2', 13 * (barHeight + spacing));
 			//ref text
 			ref.append('text')
 				.text('0')
 				.attr('x', 0)
-				.attr('y', 27 * (barHeight + spacing) + padding)
+				.attr('y', 13 * (barHeight + spacing) + padding)
 				.attr('text-anchor', 'middle');
 
 			callbackFn();
@@ -82,7 +82,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 		activateAbsGraph: function(graph) {
 
-			$('#reg-graph1 .title').html(graph.titleText);
+			$('#inc-graph2 .title').html(graph.titleText);
 
 			d3.csv(graph.csvPath, function(csv){
 
@@ -90,13 +90,13 @@ define(['jquery', 'd3js'], function($, ignore){
 				var sorted = csv.map(function(d,i) {
 					return d.utilizam;
 				});
-				x.domain([0, 72]);
+				x.domain([0, 48]);
 				y.domain(sorted.sort(function(a,b){
 					return b - a;	
 				}));
 
 				//chart
-				var chart = d3.select('#reg-graph1 svg');
+				var chart = d3.select('#inc-graph2 svg');
 
 				//total bar
 				chart.selectAll('.total').data(csv).enter()
@@ -193,7 +193,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 				//ref interaction
 				//reset event binding first
-				$('#reg-graph1 svg .interactive').on('mouseenter', function(e){
+				$('#inc-graph2 svg .interactive').on('mouseenter', function(e){
 					//clear previous stored data first
 					$(this).removeData('abs-val');
 					var val = $(this).data('abs-val');				
@@ -214,7 +214,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 		activateRelGraph: function(graph) {
 
-			$('#reg-graph1 .title').html(graph.titleText);
+			$('#inc-graph2 .title').html(graph.titleText);
 
 			d3.csv(graph.csvPath, function(csv){
 
@@ -228,7 +228,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				}));
 
 				//chart
-				var chart = d3.select('#reg-graph1 svg');
+				var chart = d3.select('#inc-graph2 svg');
 
 				//total bar
 				chart.selectAll('rect.total').data(csv).enter()
@@ -324,7 +324,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('x', 0);
 
 				//ref interaction
-				$('#reg-graph1 svg .interactive').on('mouseenter', function(e){
+				$('#inc-graph2 svg .interactive').on('mouseenter', function(e){
 					//clear previous stored data first
 					$(this).removeData('rel-val');
 					var val = $(this).data('rel-val');

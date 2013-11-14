@@ -31,8 +31,8 @@
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 				<br/><br/>
 				<p class="info">
-					<span class="icon-info">Interação:</span>
-					passe o mouse sobre os nomes dos estados/regiões para ver os valores exatos das barras.
+					<span class="icon-lightning">Interação:</span>
+					passe o mouse sobre a barra para ver seu valor exato.
 				</p>
 			</div>
 		</div>

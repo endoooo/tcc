@@ -6,7 +6,7 @@ define(['jquery', 'd3js'], function($, ignore){
 	var padding = 16;
 	var spacing = 12;
 	var barHeight = 4;
-	var textSpace = 96;
+	var textSpace = 102;
 	var rulerSpace = 24;
 	var w = $('#edu-graph1 .graph').width();
 	var h = (17 * barHeight) + (17 * spacing) + (3 *padding) + rulerSpace;
@@ -113,7 +113,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y', function(d, i){ return (i * (barHeight + spacing) + barHeight); })
 					.attr('width', 0)
 					.attr('height', barHeight)
-					.attr('class', 'gmain users');
+					.attr('class', 'gmain users interactive');
 				//users point
 				chart.selectAll('circle.users').data(csv).enter()
 					.append('circle')
@@ -129,7 +129,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('dx', -8 )
 					.attr('text-anchor', 'end')
 					.attr('data-abs-val', null)
-					.attr('class', 'gblack cat');
+					.attr('class', 'gblack cat interactive');
 
 				//remove
 				//total bar
@@ -163,7 +163,8 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('rect.users').data(csv)
 					.transition().duration(1000)
 					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + barHeight); })
-					.attr('width', function(d) { return x(d.utilizam); });
+					.attr('width', function(d) { return x(d.utilizam); })
+					.attr('data-abs-val', function(d){ return d.utilizam; });
 				//users point
 				chart.selectAll('circle.users').data(csv)
 					.transition().duration(1000)
@@ -192,7 +193,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 				//ref interaction
 				//reset event binding first
-				$('#edu-graph1 svg text.cat').on('mouseenter', function(e){
+				$('#edu-graph1 svg .interactive').on('mouseenter', function(e){
 					//clear previous stored data first
 					$(this).removeData('abs-val');
 					var val = $(this).data('abs-val');				
@@ -244,7 +245,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y', function(d, i) { return (i * (barHeight + spacing)); })
 					.attr('width', 0)
 					.attr('height', barHeight)
-					.attr('class', 'gmain users');
+					.attr('class', 'gmain users interactive');
 				//users point
 				chart.selectAll('circle.users').data(csv).enter()
 					.append('circle')
@@ -260,7 +261,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('dx', -8 )
 					.attr('text-anchor', 'end')
 					.attr('data-abs-val', null)
-					.attr('class', 'gblack cat');
+					.attr('class', 'gblack cat interactive');
 
 				//remove
 				//total bar
@@ -294,7 +295,8 @@ define(['jquery', 'd3js'], function($, ignore){
 				chart.selectAll('rect.users').data(csv)
 					.transition().duration(1000)
 					.attr('y', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + barHeight); })
-					.attr('width', function(d) { return x(d['utilizam %']); });
+					.attr('width', function(d) { return x(d['utilizam %']); })
+					.attr('data-rel-val', function(d){ return d['utilizam %']; });
 				//users point
 				chart.selectAll('circle.users').data(csv)
 					.transition().duration(1000)
@@ -322,7 +324,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('x', 0);
 
 				//ref interaction
-				$('#edu-graph1 svg text.cat').on('mouseenter', function(e){
+				$('#edu-graph1 svg .interactive').on('mouseenter', function(e){
 					//clear previous stored data first
 					$(this).removeData('rel-val');
 					var val = $(this).data('rel-val');
