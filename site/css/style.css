@@ -1,13 +1,9 @@
 /* ------------------------------ *\
-INDEX
+CONTENTS
 -
 Import Common (reset, reusable, etc.)
-Base
-Home
-About
-Products
-Downloads
-Contact
+?
+Import Vis (graphs, SVG, etc.)
 \* ------------------------------ */
 /* ------------------------------ *\
 COMMON CONTENTS
@@ -15,10 +11,8 @@ COMMON CONTENTS
 Reset
 Variables
 Typography
+Icons
 Reusable
-Tables
-Forms
-JQuery UI
 \* ------------------------------ */
 /* ------------------------------ *\
 RESET
@@ -127,20 +121,29 @@ TYPOGRAPHY
 }
 
 p {
-  font-size: 1.5em;
+  font-size: 1.125em;
   line-height: 1.333em;
 }
 
 h1 {
-  margin-bottom: 0.75em;
-  font-size: 4em;
-  line-height: 1.125em;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  text-transform: uppercase;
   color: black;
 }
 
-h2 {
+h2, h3 {
   margin-bottom: 1em;
+  font-size: 1.125em;
   color: black;
+}
+
+hr {
+  width: 3em;
+  height: 4px;
+  border: 0 none;
+  margin: 1.5em 0;
+  background: black;
 }
 
 b {
@@ -161,13 +164,12 @@ a:hover {
 }
 
 .note-indicator {
+  font-size: 0.6em;
+  vertical-align: super;
   color: #42b3c6;
 }
 
-.note {
-  font-size: 1em;
-}
-.note .num {
+.num {
   color: #42b3c6;
 }
 
@@ -195,44 +197,44 @@ ICONS
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-pencil:before {
-  content: "\e608";
-}
-
-.icon-menu:before {
-  content: "\e606";
-}
-
-.icon-arrow-left:before {
-  content: "\e607";
-}
-
 .icon-arrow-down:before {
-  content: "\e600";
+  content: "\e734";
 }
 
 .icon-link:before {
-  content: "\e601";
-}
-
-.icon-close:before {
-  content: "\e605";
+  content: "\e6c3";
 }
 
 .icon-info:before {
-  content: "\e604";
+  content: "\e6f7";
 }
 
-.icon-lightning:before {
-  content: "\e609";
+.icon-close:before {
+  content: "\e6fd";
+}
+
+.icon-menu:before {
+  content: "\e6b8";
 }
 
 .icon-cog:before {
-  content: "\e602";
+  content: "\e68e";
 }
 
-.icon-question:before {
-  content: "\e603";
+.icon-point-up:before {
+  content: "\e6f0";
+}
+
+.icon-arrow-left:before {
+  content: "\e72e";
+}
+
+.icon-pencil:before {
+  content: "\e605";
+}
+
+.icon-file-excel:before {
+  content: "\e7b5";
 }
 
 /* ------------------------------ *\
@@ -262,13 +264,41 @@ body {
 }
 
 .content {
-  padding: 2.5em 4em;
+  padding: 2.5em 40% 2.5em 4em;
 }
 .content.first {
   padding-top: 4em;
 }
-.content h1, .content h2, .content p {
-  max-width: 70%;
+
+.link-list {
+  margin-top: 2em;
+  background: #e0e0e0;
+}
+.link-list ul {
+  padding-top: 1em;
+  border-top: 1px solid silver;
+}
+.link-list li {
+  padding-bottom: 1em;
+  border-bottom: 1px solid silver;
+  margin-bottom: 1em;
+  font-size: 0.75em;
+}
+.link-list a {
+  display: inline-block;
+  padding: 0 0.5em;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  background: white;
+}
+.link-list a:hover {
+  background: #f0f0f0;
+}
+.link-list a:before {
+  margin-right: 0.5em;
 }
 
 /* ------------------------------ *\
@@ -336,6 +366,31 @@ MENU
 }
 
 /* ------------------------------ *\
+COVER
+\* ------------------------------ */
+#cover {
+  min-height: 100%;
+  background: #42b3c6 url("../img/connections.png") no-repeat center;
+}
+#cover #start {
+  display: inline-block;
+  margin-top: 2em;
+  font-size: 2em;
+  color: white;
+}
+#cover #start:hover {
+  color: black;
+}
+#cover h1, #cover p {
+  color: white;
+}
+
+/* ------------------------------ *\
+GRAPH CONTENTS
+-
+?
+\* ------------------------------ */
+/* ------------------------------ *\
 GRAPH
 \* ------------------------------ */
 .graph-container {
@@ -376,9 +431,6 @@ GRAPH
 }
 .graph-container .settings hr {
   width: 1em;
-  height: 4px;
-  border: 0 none;
-  margin: 1.5em 0;
   background: white;
 }
 .graph-container .settings .close-settings-link {
@@ -411,14 +463,19 @@ GRAPH
 .graph-container .info {
   font-size: 0.75em;
 }
-.graph-container .info span {
+.graph-container .info strong {
   display: block;
+  margin-bottom: 0.5em;
+  font-weight: normal;
   color: black;
 }
-.graph-container .info span:before {
+.graph-container .info strong:before {
   margin-right: 0.5em;
 }
 
+/* ------------------------------ *\
+SVG
+\* ------------------------------ */
 svg,
 text {
   font-family: 'ubuntu_mono', Courier, sans-serif;
@@ -515,31 +572,6 @@ line.connection {
   stroke: #42b3c6;
 }
 
-/* ------------------------------ *\
-COVER
-\* ------------------------------ */
-#cover {
-  min-height: 100%;
-  padding: 4em;
-  background: #42b3c6 url("../img/connections.png") no-repeat center;
-}
-#cover #start {
-  display: inline-block;
-  margin-top: 2em;
-  font-size: 2em;
-  color: white;
-}
-#cover #start:hover {
-  color: black;
-}
-#cover h1, #cover h2, #cover p {
-  max-width: 70%;
-  color: white;
-}
-
-/* ------------------------------ *\
-EDUCATION
-\* ------------------------------ */
 /* ------------------------------ *\
 REGION
 \* ------------------------------ */

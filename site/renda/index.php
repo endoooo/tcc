@@ -9,9 +9,42 @@
 
 		<div class="first content">
 			<h1>A utilização da internet e a renda da população</h1>
+			<hr/>
 			<p>Qual a relação entre renda e internet?</p>
 		</div>
 
+		<div class="graph-container" id="inc-graph1">
+			<h2 class="title"></h2>
+			<div class="graph"></div>
+			<div class="settings" id="inc-settings1">
+				<ul class="type-list">
+					<span class="setting-title">Visualizar por:</span>
+					<li class="active"><a href="#" class="graph-type" data-graph="graph1a">PIB do estado</a></li>
+					<li><a href="#" class="graph-type" data-graph="graph1b">Renda per capita <span class="note-indicator">1</span></a></li>
+				</ul>
+				<br/>
+				<ul class="value-list">
+					<span class="setting-title">Valores:</span>
+					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
+					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
+				</ul>
+				<hr/>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<br/><br/>
+				<p class="info">
+					<strong class="icon-point-up">Interação</strong>
+					Passe o mouse sobre o ponto para ver os valores exatos.
+				</p>
+				<br/>
+				<p class="info">
+					<strong class="icon-info">Info</strong>
+					<span class="num">1.</span> Média da renda mensal per capita da população do estado.
+				</p>
+			</div>
+		</div>
+
+		<br/>
+		
 		<div class="graph-container" id="inc-graph2">
 			<h2 class="title"></h2>
 			<div class="graph"></div>
@@ -25,12 +58,12 @@
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 				<br/><br/>
 				<p class="info">
-					<span class="icon-lightning">Interação:</span>
-					passe o mouse sobre a barra para ver seu valor exato.
+					<strong class="icon-point-up">Interação</strong>
+					Passe o mouse sobre a barra para ver seu valor exato.
 				</p>
 				<br/>
 				<p class="info">
-					<span class="icon-info">Info:</span>
+					<strong class="icon-info">Info</strong>
 					S.M. = salário mínimo
 				</p>
 			</div>
@@ -60,16 +93,8 @@
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
 				<br/><br/>
 				<p class="info">
-					<span class="icon-lightning">Interação:</span>
-					passe o mouse sobre a barra para ver seu valor exato.
-				</p>
-				<br/>
-				<p class="info">
-					<span class="icon-info">Info:</span>
-					(1) Profissionais das ciências e das artes
-					(2) Vendedores e prestadores de serviço do comércio
-					(3) Trabalhadores da produção de bens e serviços e de reparação e manutenção
-					(4) Membros das forças armadas e auxiliares
+					<strong class="icon-point-up">Interação</strong>
+					Passe o mouse sobre a barra para ver seu valor exato.
 				</p>
 			</div>
 		</div>

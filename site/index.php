@@ -6,8 +6,9 @@
 ?>
 
 	<body id="intro">
-		<div id="cover">
+		<div id="cover" class="content">
 			<h1>Visualizando dados da utilização da internet no Brasil</h1>
+			<hr/>
 			<p>Um ponto de vista diferente da publicação “Acesso à Internet e posse de telefone móvel celular para uso pessoal 2011”, publicado pelo IBGE.</p>
 			<a href="#" class="icon-arrow-down" id="start"></a>
 		</div>

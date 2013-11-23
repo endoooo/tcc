@@ -1,13 +1,9 @@
 /* ------------------------------ *\
-INDEX
+CONTENTS
 -
 Import Common (reset, reusable, etc.)
-Base
-Home
-About
-Products
-Downloads
-Contact
+?
+Import Vis (graphs, SVG, etc.)
 \* ------------------------------ */
 
 @import "common";
@@ -32,11 +28,34 @@ body {
 }
 
 .content {
-	padding: 2.5em 4em;
+	padding: 2.5em 40% 2.5em 4em;
 	&.first { padding-top: 4em }
-	h1, h2, p { max-width: 70% }
 }
 
+.link-list {
+	margin-top: 2em;
+	background: $c4;
+
+	ul {
+		padding-top: 1em;
+		border-top: 1px solid $c2;
+	}
+	li {
+		padding-bottom: 1em;
+		border-bottom: 1px solid $c2;
+		margin-bottom: 1em;
+		font-size: 0.75em;
+	}
+
+	a {
+		display: inline-block;
+		padding: 0 0.5em;
+		@include border-radius(4px);
+		background: white;
+	}
+	a:hover { background: $c3 }
+	a:before { margin-right: 0.5em }
+}
 
 /* ------------------------------ *\
 MENU
@@ -98,155 +117,10 @@ MENU
 
 
 /* ------------------------------ *\
-GRAPH
-\* ------------------------------ */
-.graph-container {
-	position: relative;
-	overflow: hidden;
-	min-height: 26em;
-	padding: 1em 22em 1em 4em;
-	background: white;
-
-	.settings-link {
-		display: block;
-		position: absolute;
-		top: 1em;
-		right: 1em;
-		width: 1em;
-		height: 1em;
-	}
-
-	.settings {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 18em;
-		height: 100%;
-		padding: 1em 3em 1em 1em;
-		background: $c3;
-
-		.setting-title { text-transform: uppercase }
-
-		li.active {
-			position: relative;
-			left: -1em;
-			padding-left: 12px;
-			border-left: 4px solid black;
-			a { color: black }
-		}
-
-		hr {
-			width: 1em;
-			height: 4px;
-			border: 0 none;
-			margin: 1.5em 0;
-			background: white;
-		}
-
-		.close-settings-link {
-			display: block;
-			position: absolute;
-			top: 1em;
-			right: 1em;
-			width: 1em;
-			height: 1em;
-		}
-	}
-
-	.annotation {
-		display: inline-block;
-		padding: 8px 16px;
-		border: 1px solid black;
-		@include border-radius(8px);
-		color: black;
-		&:hover {
-			border-color: $main;
-			color: $main;
-		}
-		&:before {
-			margin-right: 0.5em;
-			vertical-align: middle;
-		}
-	}
-
-	.info {
-		font-size: 0.75em;
-		span {
-			display: block;
-			color: black;
-		}
-		span:before { margin-right: 0.5em }
-	}
-}
-svg,
-text {
-	font-family: 'ubuntu_mono', Courier, sans-serif;
-	font-size: 12px;
-}
-
-.axis path { display: none }
-.axis line {
-    fill: none;
-    stroke: $c3;
-    stroke-dasharray: 2,2;
-    shape-rendering: crispEdges;
-}
-.axis text { fill: $c3 }
-
-.mark line {
-	fill: none;
-	stroke: $c2;
-    shape-rendering: crispEdges;
-}
-.mark text { fill: $c2 }
-
-.axes line {
-	fill: none;
-    shape-rendering: crispEdges;
-    stroke: $c3;
-}
-.axes text { fill: $c2 }
-
-.ruler path {
-	fill: none;
-    shape-rendering: crispEdges;
-    stroke: $c2;
-}
-.ruler text { fill: black }
-
-.support line {
-	fill: none;
-    shape-rendering: crispEdges;
-    stroke: $c2;
-}
-.support text { fill: $c1 }
-
-.ref line {
-	fill: none;
-    shape-rendering: crispEdges;
-    stroke: black;
-}
-.ref text { fill: black }
-
-text.cat { cursor: default }
-
-.gmain { fill: $main }
-.gc2 { fill: $c2 }
-.gwhite { fill: white }
-.gblack { fill: black }
-
-line.connection {
-	fill: none;
-    stroke: $main;
-}
-
-
-/* ------------------------------ *\
 COVER
 \* ------------------------------ */
 #cover {
 	min-height: 100%;
-	padding: 4em;
 	background: $main url('../img/connections.png') no-repeat center;
 
 	#start {
@@ -257,30 +131,10 @@ COVER
 		&:hover { color: black }
 	}
 
-	h1, h2, p {
-		max-width: 70%;
+	h1, p {
 		color: white;
 	}
 }
 
-/* ------------------------------ *\
-EDUCATION
-\* ------------------------------ */
-#edu-graph1 {}
 
-/* ------------------------------ *\
-REGION
-\* ------------------------------ */
-#reg-graph2 {
-	.graph {
-		position: relative;
-		width: 600px;
-		height: 496px;
-	}
-	.choropleth-map {
-		display: none;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-}
+@import "vis";

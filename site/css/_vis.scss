@@ -1,0 +1,170 @@
+/* ------------------------------ *\
+GRAPH CONTENTS
+-
+?
+\* ------------------------------ */
+
+/* ------------------------------ *\
+GRAPH
+\* ------------------------------ */
+.graph-container {
+	position: relative;
+	overflow: hidden;
+	min-height: 26em;
+	padding: 1em 22em 1em 4em;
+	background: white;
+
+	.settings-link {
+		display: block;
+		position: absolute;
+		top: 1em;
+		right: 1em;
+		width: 1em;
+		height: 1em;
+	}
+
+	.settings {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 18em;
+		height: 100%;
+		padding: 1em 3em 1em 1em;
+		background: $c3;
+
+		.setting-title { text-transform: uppercase }
+
+		li.active {
+			position: relative;
+			left: -1em;
+			padding-left: 12px;
+			border-left: 4px solid black;
+			a { color: black }
+		}
+
+		hr {
+			width: 1em;
+			background: white;
+		}
+
+		.close-settings-link {
+			display: block;
+			position: absolute;
+			top: 1em;
+			right: 1em;
+			width: 1em;
+			height: 1em;
+		}
+	}
+
+	.annotation {
+		display: inline-block;
+		padding: 8px 16px;
+		border: 1px solid black;
+		@include border-radius(8px);
+		color: black;
+		&:hover {
+			border-color: $main;
+			color: $main;
+		}
+		&:before {
+			margin-right: 0.5em;
+			vertical-align: middle;
+		}
+	}
+
+	.info {
+		font-size: 0.75em;
+		strong {
+			display: block;
+			margin-bottom: 0.5em;
+			font-weight: normal;
+			color: black;
+		}
+		strong:before { margin-right: 0.5em }
+	}
+}
+
+
+/* ------------------------------ *\
+SVG
+\* ------------------------------ */
+svg,
+text {
+	font-family: 'ubuntu_mono', Courier, sans-serif;
+	font-size: 12px;
+}
+
+.axis path { display: none }
+.axis line {
+    fill: none;
+    stroke: $c3;
+    stroke-dasharray: 2,2;
+    shape-rendering: crispEdges;
+}
+.axis text { fill: $c3 }
+
+.mark line {
+	fill: none;
+	stroke: $c2;
+    shape-rendering: crispEdges;
+}
+.mark text { fill: $c2 }
+
+.axes line {
+	fill: none;
+    shape-rendering: crispEdges;
+    stroke: $c3;
+}
+.axes text { fill: $c2 }
+
+.ruler path {
+	fill: none;
+    shape-rendering: crispEdges;
+    stroke: $c2;
+}
+.ruler text { fill: black }
+
+.support line {
+	fill: none;
+    shape-rendering: crispEdges;
+    stroke: $c2;
+}
+.support text { fill: $c1 }
+
+.ref line {
+	fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+.ref text { fill: black }
+
+text.cat { cursor: default }
+
+.gmain { fill: $main }
+.gc2 { fill: $c2 }
+.gwhite { fill: white }
+.gblack { fill: black }
+
+line.connection {
+	fill: none;
+    stroke: $main;
+}
+
+
+/* ------------------------------ *\
+REGION
+\* ------------------------------ */
+#reg-graph2 {
+	.graph {
+		position: relative;
+		width: 600px;
+		height: 496px;
+	}
+	.choropleth-map {
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
