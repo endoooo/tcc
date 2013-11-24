@@ -14,9 +14,55 @@
 		</div>
 
 		<div class="graph-container" id="edu-graph1">
+			<h2 class="title">Acesso a internet por situação de estudante (2011)</h2>
+			<div class="graph">
+				<img src="<?= $root ?>/img/edu1a.svg" alt="Acesso a internet por situação de estudante (2011)" id="edu-1a" />
+				<img src="<?= $root ?>/img/edu1a-piece.svg" alt="Acesso a internet por situação de estudante (2011)" id="edu-1a-piece" />
+				<img src="<?= $root ?>/img/edu1b.svg" alt="Acesso a internet por rede de ensino (2011)" id="edu-1b" />
+			</div>
+			<p class="obs">Valores em milhões de pessoas</p>
+			<div class="settings" id="edu-settings1">
+				<ul>
+					<span class="setting-title">Visualizar por:</span>
+					<li class="active"><a href="#" class="graph-type" data-graph="edu-1a">situação de estudante</a></li>
+					<li><a href="#" class="graph-type" data-graph="edu-1b">rede de ensino</a></li>
+				</ul>
+				<hr/>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+			</div>
+		</div>
+
+		<br/>
+
+		<div class="graph-container" id="edu-graph2">
 			<h2 class="title"></h2>
 			<div class="graph"></div>
-			<div class="settings" id="edu-settings1">
+			<div class="settings" id="edu-settings2">
+				<ul class="value-list">
+					<span class="setting-title">Valores:</span>
+					<li class="active"><a href="#" class="graph-value" data-value="relative">relativos</a></li>
+					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
+				</ul>
+				<hr/>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<br/><br/>
+				<p class="info">
+					<strong class="icon-point-up">Interação</strong>
+					Passe o mouse sobre a barra para ver seu valor exato.
+				</p>
+			</div>
+		</div>
+
+		<div class="content">
+			<p>Existe alguma relação entre a taxa de analfabetismo e o acesso à internet?</p>
+		</div>
+
+		<div class="graph-container" id="edu-graph3">
+			<h2 id="graph1-title"></h2>
+			<div class="graph"></div>
+			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+			<a href="#" class="icon-cog settings-link" data-graph="graph2"></a>
+			<div class="settings" id="edu-settings3">
 				<ul class="type-list">
 					<span class="setting-title">Visualizar por:</span>
 					<li class="active"><a href="#" class="graph-type" data-graph="graph1a">condição de estudante</a></li>
@@ -36,25 +82,6 @@
 					<strong class="icon-point-up">Interação</strong>
 					Passe o mouse sobre a barra para ver seu valor exato.
 				</p>
-			</div>
-		</div>
-
-		<div class="content">
-			<p>Existe alguma relação entre a taxa de analfabetismo e o acesso à internet?</p>
-		</div>
-
-		<div class="graph-container" id="graph2">
-			<h2 id="graph1-title"></h2>
-			<div class="graph"></div>
-			<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
-			<a href="#" class="icon-cog settings-link" data-graph="graph2"></a>
-			<div class="settings" id="graph2-settings">
-				<ul>
-					Valores:
-					<li><label><input type="radio" name="student2type" value="absolute" checked /> absolutos (milhões)</label></li>
-					<li><label><input type="radio" name="student2type" value="percentage" /> relativos (%)</label></li>
-				</ul>
-				<a href="#" class="icon-close close-settings-link"></a>
 			</div>
 		</div>
 

@@ -407,7 +407,6 @@ GRAPH
 .graph-container {
   position: relative;
   overflow: hidden;
-  min-height: 26em;
   padding: 1em 22em 1em 4em;
   background: white;
 }
@@ -499,6 +498,13 @@ GRAPH
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
+}
+
+.obs {
+  margin-top: 1em;
+  font-size: 0.75em;
+  text-align: center;
+  color: black;
 }
 
 /* ------------------------------ *\
@@ -610,16 +616,36 @@ line.connection {
 }
 
 /* ------------------------------ *\
+EDUCATION
+\* ------------------------------ */
+#edu-graph1 .graph {
+  position: relative;
+}
+#edu-graph1 img {
+  display: block;
+  width: 100%;
+}
+#edu-graph1 #edu-1a-piece,
+#edu-graph1 #edu-1b {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#edu-graph1 #edu-1b {
+  opacity: 0;
+}
+
+/* ------------------------------ *\
 REGION
 \* ------------------------------ */
 #reg-graph2 .graph {
   position: relative;
-  width: 600px;
   height: 496px;
 }
 #reg-graph2 .choropleth-map {
   display: none;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 50%;
+  margin-left: -300px;
 }

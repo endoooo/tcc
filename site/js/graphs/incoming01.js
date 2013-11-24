@@ -345,7 +345,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('data-y-val', function(d) { return d['utilizam %']; });
 				//cat text
 				chart.selectAll('text.cat').data(csv)
-					.text(function(d) { return d.estado; })
+					.text(function(d) { return d.sigla; })
 					.transition().duration(1000)
 					.attr('x', function(d) { return x(d[graph.parameter]) + textSpace; })
 					.attr('y', function(d) { return y(d['utilizam %']) + (2 * padding); });
