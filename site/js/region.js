@@ -32,11 +32,11 @@ require(['jquery', 'menu', 'graphs/region01', 'graphs/region02', 'graphs/region0
 
 		//initialize graphs
 		region01.initializeGraph(function(){
-			region01.activateAbsGraph(graph1a);
+			region01.activateRelGraph(graph1a);
 		});
-		region02.activateMap('map-abs');
+		region02.activateMap('map-rel');
 		region03.initializeGraph(function(){
-			region03.activateAbsGraph(graph3a);
+			region03.activateRelGraph(graph3a);
 		});
 
 		//bind settings control to graph01

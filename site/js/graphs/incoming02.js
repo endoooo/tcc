@@ -17,6 +17,12 @@ define(['jquery', 'd3js'], function($, ignore){
 	var y = d3.scale.ordinal()
 		.rangeRoundBands([0,12], 1, 0);
 
+	//values array
+	var absMaxVal = 40;
+	var absValues = [0,absMaxVal*0.25,absMaxVal*0.5,absMaxVal*0.75,absMaxVal];
+	var relMaxVal = 100;
+	var relValues = [0,relMaxVal*0.25,relMaxVal*0.5,relMaxVal*0.75,relMaxVal];
+
 	return {
 
 		initializeGraph: function( callbackFn ) {
@@ -28,21 +34,21 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('height', h);
 
 			//scale adjustment
-			x.domain([0, 48]);
+			x.domain([0, relMaxVal]);
 
 			//vertical axes
 			var axes = chart.append('g')
 				.attr('class', 'axes')
 				.attr('transform', 'translate(' + textSpace + ',4)');
 			//axis
-			axes.selectAll('line').data([0,12,24,36,48]).enter()
+			axes.selectAll('line').data(relValues).enter()
 				.append('line')
 				.attr('x1', function(d) { return x(d); })
 				.attr('y1', 0)
 				.attr('x2', function(d) { return x(d); })
 				.attr('y2', 13 * (barHeight + spacing));
 			//axes text
-			axes.selectAll('text').data([0,12,24,36,48]).enter()
+			axes.selectAll('text').data(relValues).enter()
 				.append('text')
 				.text(function(d) { return d; })
 				.attr('x', function(d) { return x(d); })
@@ -54,9 +60,9 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('class', 'ruler')
 				.attr('transform', 'translate(' + textSpace + ',' + (13 * (barHeight + spacing) + (3 * spacing)) + ')');
 			ruler.append('path')
-				.attr('d', 'M0 0 l0 8 l' + x(48) + ' 0 l0 -8');
+				.attr('d', 'M0 0 l0 8 l' + x(relMaxVal) + ' 0 l0 -8');
 			ruler.append('text')
-				.attr('x', x(24))
+				.attr('x', x(relMaxVal/2))
 				.attr('y', rulerSpace)
 				.attr('text-anchor', 'middle');
 
@@ -90,7 +96,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				var sorted = csv.map(function(d,i) {
 					return d.utilizam;
 				});
-				x.domain([0, 48]);
+				x.domain([0, absMaxVal]);
 				y.domain(sorted.sort(function(a,b){
 					return b - a;	
 				}));
@@ -177,7 +183,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + 8); })
 					.attr('data-abs-val', function(d){ return d.utilizam; });
 				//axes text
-				chart.selectAll('g.axes text').data([0,10,20,30,40])
+				chart.selectAll('g.axes text').data(absValues)
 					.text(function(d) { return d; });
 				//ruler text
 				chart.select('g.ruler text')
@@ -204,7 +210,7 @@ define(['jquery', 'd3js'], function($, ignore){
 						.attr('x2', x(val));
 
 					chart.select('g.ref text')
-						.text(val)
+						.text(d3.round(val))
 						.transition().duration(200)
 						.attr('x', x(val));
 				});
@@ -222,7 +228,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				var sorted = csv.map(function(d,i) {
 					return d['utilizam %'];
 				});
-				x.domain([0, 100]);
+				x.domain([0, relMaxVal]);
 				y.domain(sorted.sort(function(a,b){
 					return b - a;	
 				}));
@@ -309,7 +315,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + 8); })
 					.attr('data-rel-val', function(d){ return d['utilizam %']; });
 				//axes text
-				chart.selectAll('g.axes text').data([0,25,50,75,100])
+				chart.selectAll('g.axes text').data(relValues)
 					.text(function(d) { return d + '%'; });
 				//ruler text
 				chart.select('g.ruler text')
@@ -335,7 +341,7 @@ define(['jquery', 'd3js'], function($, ignore){
 						.attr('x2', x(val));
 
 					chart.select('g.ref text')
-						.text(val + '%')
+						.text(d3.round(val,2) + '%')
 						.transition().duration(200)
 						.attr('x', x(val));
 				});

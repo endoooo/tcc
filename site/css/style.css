@@ -340,11 +340,22 @@ MENU
   background: white;
   opacity: 0;
 }
+#menu li, #menu p {
+  padding-right: 4em;
+  font-size: 1em;
+}
+#menu p {
+  text-transform: uppercase;
+}
 #menu li.active {
   border-right: 4px solid black;
 }
 #menu li.active a {
   color: black;
+}
+#menu hr {
+  height: 1px;
+  background: silver;
 }
 #menu .arcs {
   position: absolute;
@@ -471,6 +482,23 @@ GRAPH
 }
 .graph-container .info strong:before {
   margin-right: 0.5em;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  padding: 0 0.5em;
+  border: 1px solid black;
+  margin: -2em 0 0 0.5em;
+  font-size: 0.75em;
+  color: black;
+  background: white;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
 }
 
 /* ------------------------------ *\

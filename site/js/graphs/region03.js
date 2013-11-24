@@ -15,6 +15,12 @@ define(['jquery', 'd3js'], function($, ignore){
 	var y = d3.scale.linear()
 		.range([graphHeight, 0]);
 
+	//values array
+	var absMaxVal = 24;
+	var absValues = [0,absMaxVal*0.25,absMaxVal*0.5,absMaxVal*0.75,absMaxVal];
+	var relMaxVal = 100;
+	var relValues = [0,relMaxVal*0.25,relMaxVal*0.5,relMaxVal*0.75,relMaxVal];
+
 	return {
 
 		initializeGraph: function( callbackFn ) {
@@ -26,21 +32,21 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('height', h);
 
 			//scale adjustment
-			y.domain([0, 24]);
+			y.domain([0, relMaxVal]);
 
 			//horizontal axes
 			var axes = chart.append('g')
 				.attr('class', 'axes')
 				.attr('transform', 'translate(' + catSpace + ',' + subSpace + ')');
 			//axis
-			axes.selectAll('line').data([0,6,12,18,24]).enter()
+			axes.selectAll('line').data(relValues).enter()
 				.append('line')
 				.attr('x1', 0)
 				.attr('y1', function(d) { return y(d); })
 				.attr('x2', graphWidth)
 				.attr('y2', function(d) { return y(d); });
 			//axis text
-			axes.selectAll('text').data([0,6,12,18,24]).enter()
+			axes.selectAll('text').data(relValues).enter()
 				.append('text')
 				.text(function(d) { return d; })
 				.attr('x', graphWidth/2)
@@ -104,7 +110,7 @@ define(['jquery', 'd3js'], function($, ignore){
 			d3.csv(graph.csvPath, function(csv){
 
 				//scale adjustment
-				y.domain([0, 24]);
+				y.domain([0, absMaxVal]);
 
 				//chart
 				var chart = d3.select('#reg-graph3 svg');
@@ -173,7 +179,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y1', function(d){ return y(d['utilização estado']) + subSpace; })
 					.attr('y2', function(d){ return y(d['utilização capital']) + subSpace; });
 				//axes text
-				chart.selectAll('g.axes text').data([0,6,12,18,24])
+				chart.selectAll('g.axes text').data(absValues)
 					.text(function(d) { return d; });
 				//reference
 				chart.select('.reference')
@@ -188,7 +194,7 @@ define(['jquery', 'd3js'], function($, ignore){
 			d3.csv(graph.csvPath, function(csv){
 
 				//scale adjustment
-				y.domain([0, 100]);
+				y.domain([0, relMaxVal]);
 
 				//chart
 				var chart = d3.select('#reg-graph3 svg');
@@ -257,7 +263,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y1', function(d){ return y(d['utilização estado %']) + subSpace; })
 					.attr('y2', function(d){ return y(d['utilização capital %']) + subSpace; });
 				//axes text
-				chart.selectAll('g.axes text').data([0,25,50,75,100])
+				chart.selectAll('g.axes text').data(relValues)
 					.text(function(d) { return d + '%'; });
 				//reference
 				chart.select('.reference')

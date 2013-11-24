@@ -91,9 +91,18 @@ MENU
 	background: white;
 	opacity: 0;
 
+	li, p {
+		padding-right: 4em;
+		font-size: 1em;
+	}
+	p { text-transform: uppercase }
 	li.active {
 		border-right: 4px solid black;
 		a { color: black }
+	}
+	hr {
+		height: 1px;
+		background: $c2;
 	}
 
 	.arcs {

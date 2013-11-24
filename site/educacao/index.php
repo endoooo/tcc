@@ -61,7 +61,7 @@
 		<div class="content link-list">
 			<h3><span class="icon-link"></span> Referências</h3>
 			<ul>
-				<li><a href="http://www.ibge.gov.br/home/estatistica/populacao/acessoainternet2011/default_xls_internet.shtm" target="_blank">Lista de tabelas PNAD 2011 - Acesso à Internet</a></p></li>
+				<li><a href="http://www.ibge.gov.br/home/estatistica/populacao/acessoainternet2011/default_xls_internet.shtm" target="_blank">Lista de tabelas PNAD 2011 - Acesso à Internet</a></li>
 			</ul>
 			<br/>
 			<h3><span class="icon-file-excel"></span> Tabelas utilizadas</h3>

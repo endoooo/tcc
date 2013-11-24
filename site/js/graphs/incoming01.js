@@ -5,7 +5,7 @@ define(['jquery', 'd3js'], function($, ignore){
 	//graph config
 	var padding = 16;
 	var spacing = 12;
-	var radius = 3;
+	var radius = 4;
 	var textSpace = 56;
 	var rulerSpace = 24;
 	var chartH = 400;
@@ -266,7 +266,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 						$(id).fadeIn(200);
 					},
-					mouseout: function(e){
+					mouseleave: function(e){
 						//clear previous stored data first
 						$(this).removeData('state');
 						var id = '#' + $(this).data('state');
@@ -411,7 +411,7 @@ define(['jquery', 'd3js'], function($, ignore){
 
 						$(id).fadeIn(200);
 					},
-					mouseout: function(e){
+					mouseleave: function(e){
 						//clear previous stored data first
 						$(this).removeData('state');
 						var id = '#' + $(this).data('state');

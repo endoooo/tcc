@@ -25,8 +25,8 @@
 				<br/>
 				<ul class="value-list">
 					<span class="setting-title">Valores:</span>
-					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
-					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
+					<li class="active"><a href="#" class="graph-value" data-value="relative">relativos</a></li>
+					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
@@ -49,8 +49,8 @@
 			<div class="settings" id="reg-settings2">
 				<ul>
 					<span class="setting-title">Valores:</span>
-					<li class="active"><a href="#" class="graph-value" data-map="map-abs">absolutos</a></li>
-					<li><a href="#" class="graph-value" data-map="map-rel">relativos</a></li>
+					<li class="active"><a href="#" class="graph-value" data-map="map-rel">relativos</a></li>
+					<li><a href="#" class="graph-value" data-map="map-abs">absolutos</a></li>
 				</ul>
 				<hr/>
 				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
@@ -67,8 +67,8 @@
 			<div class="settings" id="reg-settings3">
 				<ul class="value-list">
 					<span class="setting-title">Valores:</span>
-					<li class="active"><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
-					<li><a href="#" class="graph-value" data-value="relative">relativos</a></li>
+					<li class="active"><a href="#" class="graph-value" data-value="relative">relativos</a></li>
+					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<br/>
 				<ul class="cat-list">
@@ -83,22 +83,26 @@
 		<div class="content link-list">
 			<h3><span class="icon-link"></span> Referências</h3>
 			<ul>
-				<li><a href="http://www.ibge.gov.br/home/estatistica/populacao/acessoainternet2011/default_xls_internet.shtm" target="_blank">Lista de tabelas PNAD 2011 - Acesso à Internet</a></p></li>
+				<li><a href="http://www.ibge.gov.br/home/estatistica/populacao/acessoainternet2011/default_xls_internet.shtm" target="_blank">Lista de tabelas PNAD 2011 - Acesso à Internet</a></li>
 			</ul>
 			<br/>
 			<h3><span class="icon-file-excel"></span> Tabelas utilizadas</h3>
 			<ul>
 				<li>
-					<a href="#">1.2.1</a> Pessoas de 10 anos ou mais de idade que utilizaram a Internet, no período de referência dos últimos três meses, por Grandes Regiões, segundo o sexo e os grupos de idade - 2005/2011
+					<a href="ftp://ftp.ibge.gov.br/Acesso_a_internet_e_posse_celular/2011/tabelas_xls/tab1021.zip" target="_blank">1.2.1</a>
+					Pessoas de 10 anos ou mais de idade que utilizaram a Internet, no período de referência dos últimos três meses, por Grandes Regiões, segundo o sexo e os grupos de idade - 2005/2011
 				</li>
 				<li>
-					<a href="#">1.2.3</a> Percentual das pessoas que utilizaram a Internet, no período de referência dos últimos três meses, na população de 10 anos ou mais de idade, por Grandes Regiões, segundo o sexo e os grupos de idade - 2005/2011
+					<a href="ftp://ftp.ibge.gov.br/Acesso_a_internet_e_posse_celular/2011/tabelas_xls/tab1023.zip" target="_blank">1.2.3</a>
+					Percentual das pessoas que utilizaram a Internet, no período de referência dos últimos três meses, na população de 10 anos ou mais de idade, por Grandes Regiões, segundo o sexo e os grupos de idade - 2005/2011
 				</li>
 				<li>
-					<a href="#">1.16.1</a> Pessoas de 10 anos ou mais de idade, por condição de estudante e utilização da Internet, no período de referência dos últimos três meses, segundo as Unidades da Federação e as Regiões Metropolitanas - 2005/2011
+					<a href="ftp://ftp.ibge.gov.br/Acesso_a_internet_e_posse_celular/2011/tabelas_xls/tab1161.zip" target="_blank">1.16.1</a>
+					Pessoas de 10 anos ou mais de idade, por condição de estudante e utilização da Internet, no período de referência dos últimos três meses, segundo as Unidades da Federação e as Regiões Metropolitanas - 2005/2011
 				</li>
 				<li>
-					<a href="#">1.16.2</a> Distribuição das pessoas de 10 anos ou mais de idade, por condição de estudante e utilização da Internet, no período de referência dos últimos três meses, segundo as Unidades da Federação e as Regiões Metropolitanas - 2005/2011
+					<a href="ftp://ftp.ibge.gov.br/Acesso_a_internet_e_posse_celular/2011/tabelas_xls/tab1162.zip" target="_blank">1.16.2</a>
+					Distribuição das pessoas de 10 anos ou mais de idade, por condição de estudante e utilização da Internet, no período de referência dos últimos três meses, segundo as Unidades da Federação e as Regiões Metropolitanas - 2005/2011
 				</li>
 			</ul>
 		</div>

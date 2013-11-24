@@ -15,14 +15,14 @@ require(['jquery', 'menu', 'graphs/incoming01', 'graphs/incoming02', 'graphs/inc
 
 		//graph parameters
 		var graph1a = {
-			titleText: 'PIB estadual (2010) e utilização da internet (2011)',
-			csvPath: '../renda/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'PIB estadual 2010'
-		};
-		var graph1b = {
 			titleText: 'Renda per capita no estado e utilização da internet (2011)',
 			csvPath: '../renda/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'renda per capita'
+		};
+		var graph1b = {
+			titleText: 'PIB estadual (2010) e utilização da internet (2011)',
+			csvPath: '../renda/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
+			parameter: 'PIB estadual 2010'
 		};
 		var graph2a = {
 			titleText: 'Rendimento mensal per capita e utilização da internet (2011)',
@@ -47,14 +47,15 @@ require(['jquery', 'menu', 'graphs/incoming01', 'graphs/incoming02', 'graphs/inc
 
 		//initialize graphs
 		incoming01.initializeGraph(function(){
-			incoming01.activateAbsGraph(graph1a);
+			incoming01.activateRelGraph(graph1a);
 		});
 		incoming02.initializeGraph(function(){
-			incoming02.activateAbsGraph(graph2a);
+			incoming02.activateRelGraph(graph2a);
 		});
 		incoming03.initializeGraph(function(){
-			incoming03.activateAbsGraph(graph3a);
+			incoming03.activateRelGraph(graph3a);
 		});
+		incoming03.setTooltip();
 
 		//bind settings control to graph01
 		$('#inc-settings1 .graph-type').on('click', function(e){
