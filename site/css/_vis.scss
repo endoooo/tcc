@@ -118,6 +118,11 @@ text {
 }
 .axes text { fill: $c2 }
 
+.x-axes line:first-child,
+.y-axes line:first-child {
+	stroke: $c2;
+}
+
 .ruler path {
 	fill: none;
     shape-rendering: crispEdges;
@@ -142,6 +147,7 @@ text {
 text.cat { cursor: default }
 
 .gmain { fill: $main }
+.gc1 { fill: $c1 }
 .gc2 { fill: $c2 }
 .gwhite { fill: white }
 .gblack { fill: black }

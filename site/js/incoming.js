@@ -15,12 +15,17 @@ require(['jquery', 'menu', 'graphs/incoming01', 'graphs/incoming02', 'graphs/inc
 
 		//graph parameters
 		var graph1a = {
-			titleText: 'PIB estadual e utilização da internet (2011)',
+			titleText: 'PIB estadual (2010) e utilização da internet (2011)',
 			csvPath: '../renda/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'rendimento'
+			parameter: 'PIB estadual 2010'
+		};
+		var graph1b = {
+			titleText: 'Renda per capita no estado e utilização da internet (2011)',
+			csvPath: '../renda/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
+			parameter: 'renda per capita'
 		};
 		var graph2a = {
-			titleText: 'Rendimento mensal per capta e utilização da internet (2011)',
+			titleText: 'Rendimento mensal per capita e utilização da internet (2011)',
 			csvPath: '../renda/data/02a.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'rendimento'
 		};
@@ -42,7 +47,7 @@ require(['jquery', 'menu', 'graphs/incoming01', 'graphs/incoming02', 'graphs/inc
 
 		//initialize graphs
 		incoming01.initializeGraph(function(){
-			incoming01.activateAbsGraph(graph2a);
+			incoming01.activateAbsGraph(graph1a);
 		});
 		incoming02.initializeGraph(function(){
 			incoming02.activateAbsGraph(graph2a);

@@ -517,6 +517,11 @@ text {
   fill: silver;
 }
 
+.x-axes line:first-child,
+.y-axes line:first-child {
+  stroke: silver;
+}
+
 .ruler path {
   fill: none;
   shape-rendering: crispEdges;
@@ -553,6 +558,10 @@ text.cat {
 
 .gmain {
   fill: #42b3c6;
+}
+
+.gc1 {
+  fill: #909090;
 }
 
 .gc2 {

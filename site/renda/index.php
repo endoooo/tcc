@@ -33,7 +33,7 @@
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
-					Passe o mouse sobre o ponto para ver os valores exatos.
+					Passe o mouse sobre o ponto para ver os valores exatos e a sigla do estado.
 				</p>
 				<br/>
 				<p class="info">

@@ -5,17 +5,29 @@ define(['jquery', 'd3js'], function($, ignore){
 	//graph config
 	var padding = 16;
 	var spacing = 12;
-	var barHeight = 4;
-	var textSpace = 128;
+	var radius = 3;
+	var textSpace = 56;
 	var rulerSpace = 24;
+	var chartH = 400;
 	var w = $('#inc-graph1 .graph').width();
-	var h = (13 * barHeight) + (13 * spacing) + (3 *padding) + rulerSpace;
+	var h = chartH + (6 * padding);
+	var chartW = w - textSpace - (2 * padding);
 
 	//scales
 	var x = d3.scale.linear()
-		.range([0, w - padding - textSpace]);
-	var y = d3.scale.ordinal()
-		.rangeRoundBands([0,12], 1, 0);
+		.range([0, chartW]);
+	var y = d3.scale.linear()
+		.range([chartH, 0]);
+
+	//values array
+	var absMaxVal = 24;
+	var absValues = [0,absMaxVal*0.25,absMaxVal*0.5,absMaxVal*0.75,absMaxVal];
+	var relMaxVal = 100;
+	var relValues = [0,relMaxVal*0.25,relMaxVal*0.5,relMaxVal*0.75,relMaxVal];
+	var pibMaxVal = 1400000;
+	var pibValues = [0,pibMaxVal*0.25,pibMaxVal*0.5,pibMaxVal*0.75,pibMaxVal];
+	var incMaxVal = 1800;
+	var incValues = [0,incMaxVal*0.25,incMaxVal*0.5,incMaxVal*0.75,incMaxVal];
 
 	return {
 
@@ -28,54 +40,95 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('height', h);
 
 			//scale adjustment
-			x.domain([0, 48]);
+			x.domain([0, pibMaxVal]);
+			y.domain([0, absMaxVal]);
 
-			//vertical axes
-			var axes = chart.append('g')
-				.attr('class', 'axes')
-				.attr('transform', 'translate(' + textSpace + ',4)');
+			//x axes
+			var xAxes = chart.append('g')
+				.attr('class', 'axes x-axes')
+				.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')');
 			//axis
-			axes.selectAll('line').data([0,12,24,36,48]).enter()
+			xAxes.selectAll('line').data(pibValues).enter()
 				.append('line')
 				.attr('x1', function(d) { return x(d); })
 				.attr('y1', 0)
 				.attr('x2', function(d) { return x(d); })
-				.attr('y2', 13 * (barHeight + spacing));
+				.attr('y2', chartH);
 			//axes text
-			axes.selectAll('text').data([0,12,24,36,48]).enter()
+			xAxes.selectAll('text').data(pibValues).enter()
 				.append('text')
 				.text(function(d) { return d; })
 				.attr('x', function(d) { return x(d); })
-				.attr('y', 13 * (barHeight + spacing) + padding)
-				.attr('text-anchor', 'middle');				
-
-			//ruler
-			var ruler = chart.append('g')
-				.attr('class', 'ruler')
-				.attr('transform', 'translate(' + textSpace + ',' + (13 * (barHeight + spacing) + (3 * spacing)) + ')');
-			ruler.append('path')
-				.attr('d', 'M0 0 l0 8 l' + x(48) + ' 0 l0 -8');
-			ruler.append('text')
-				.attr('x', x(24))
-				.attr('y', rulerSpace)
+				.attr('y', chartH + rulerSpace)
 				.attr('text-anchor', 'middle');
+			//axes title
+			chart.append('text')
+				.text('PIB do estado (milhões de reais)')
+				.attr('x', chartW + textSpace)
+				.attr('y', chartH + (2 * padding) + (2 * rulerSpace))
+				.attr('text-anchor', 'end')
+				.attr('class', 'x-title gc1');
 
-			//ref
-			var ref = chart.append('g')
-				.attr('class', 'ref')
-				.attr('transform', 'translate(' + textSpace + ',4)');
-			//ref line
-			ref.append('line')
+			//y axes
+			var yAxes = chart.append('g')
+				.attr('class', 'axes y-axes')
+				.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')');
+			//axis
+			yAxes.selectAll('line').data(absValues).enter()
+				.append('line')
 				.attr('x1', 0)
-				.attr('y1', 0)
+				.attr('y1', function(d) { return y(d); })
+				.attr('x2', chartW)
+				.attr('y2', function(d) { return y(d); });
+			//axes text
+			yAxes.selectAll('text').data(absValues).enter()
+				.append('text')
+				.text(function(d) { return d; })
+				.attr('x', (-1 * padding))
+				.attr('y', function(d) { return y(d); })
+				.attr('dy', 4)
+				.attr('text-anchor', 'end');
+			//axes title
+			chart.append('text')
+				.text('Acesso à internet (milhões de pessoas)')
+				.attr('x', textSpace)
+				.attr('y', padding)
+				.attr('class', 'y-title gc1');
+
+			//x ref
+			var hRef = chart.append('g')
+				.attr('class', 'ref x-ref')
+				.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')');
+			//ref line
+			hRef.append('line')
+				.attr('x1', 0)
+				.attr('y1', chartH)
 				.attr('x2', 0)
-				.attr('y2', 13 * (barHeight + spacing));
+				.attr('y2', chartH);
 			//ref text
-			ref.append('text')
+			hRef.append('text')
 				.text('0')
 				.attr('x', 0)
-				.attr('y', 13 * (barHeight + spacing) + padding)
+				.attr('y', chartH + rulerSpace)
 				.attr('text-anchor', 'middle');
+
+			//y ref
+			var vRef = chart.append('g')
+				.attr('class', 'ref y-ref')
+				.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')');
+			//ref line
+			vRef.append('line')
+				.attr('x1', 0)
+				.attr('y1', chartH)
+				.attr('x2', 0)
+				.attr('y2', chartH);
+			//ref text
+			vRef.append('text')
+				.text('0')
+				.attr('x', (-1 * padding))
+				.attr('y', chartH)
+				.attr('dy', 4)
+				.attr('text-anchor', 'end');
 
 			callbackFn();
 		},
@@ -87,126 +140,139 @@ define(['jquery', 'd3js'], function($, ignore){
 			d3.csv(graph.csvPath, function(csv){
 
 				//scale adjustment
-				var sorted = csv.map(function(d,i) {
-					return d.utilizam;
-				});
-				x.domain([0, 48]);
-				y.domain(sorted.sort(function(a,b){
-					return b - a;	
-				}));
+				if (graph.parameter === 'PIB estadual 2010') {
+					x.domain([0, pibMaxVal]);
+					var xValues = pibValues;
+					var xTitle = 'PIB do estado (milhões de reais)';
+				}
+				else {
+					x.domain([0, incMaxVal]);
+					var xValues = incValues;
+					var xTitle = 'Renda mensal per capita (R$)';
+				}
+				y.domain([0, absMaxVal]);
 
 				//chart
 				var chart = d3.select('#inc-graph1 svg');
 
-				//total bar
-				chart.selectAll('.total').data(csv).enter()
-					.append('rect')
-					.attr('x', textSpace)
-					.attr('y', function(d, i){ return (i * (barHeight + spacing) + barHeight); })
-					.attr('width', 0)
-					.attr('height', barHeight)
-					.attr('class', 'gc2 total');
-				//users bar
-				chart.selectAll('rect.users').data(csv).enter()
-					.append('rect')
-					.attr('x', textSpace)
-					.attr('y', function(d, i){ return (i * (barHeight + spacing) + barHeight); })
-					.attr('width', 0)
-					.attr('height', barHeight)
-					.attr('class', 'gmain users interactive');
 				//users point
 				chart.selectAll('circle.users').data(csv).enter()
 					.append('circle')
 					.attr('cx', textSpace)
-					.attr('cy', function(d, i){ return (i * (barHeight + spacing) + (1.5 * barHeight)); })
-					.attr('r', barHeight)
-					.attr('class', 'gmain users');
+					.attr('cy', chartH + (2 * padding))
+					.attr('r', radius)
+					.attr('class', 'gmain users interactive')
+					.attr('data-state', function(d){ return d.sigla; });
 				//cat text
 				chart.selectAll('text.cat').data(csv).enter()
 					.append('text')
 					.attr('x', textSpace)
-					.attr('y', function(d, i) { return (i * barHeight) + (i * spacing) + 8; })
-					.attr('dx', -8 )
-					.attr('text-anchor', 'end')
-					.attr('data-abs-val', null)
-					.attr('class', 'gblack cat interactive');
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', radius)
+					.attr('dy', (-1 * radius))
+					.style('display', 'none')
+					.attr('class', 'gblack cat')
+					.attr('id', function(d){ return d.sigla; });
 
 				//remove
-				//total bar
-				chart.selectAll('rect.total').data(csv).exit()
-					.transition().duration(400)
-					.attr('width', 0)
-					.remove();
-				//users bar
-				chart.selectAll('rect.users').data(csv).exit()
-					.transition().duration(400)
-					.attr('width', 0)
-					.remove();
-				//cat text
-				chart.selectAll('text.cat').data(csv).exit()
-					.transition().duration(400)
-					.style('opacity', 0)
-					.remove();
 				//users point
 				chart.selectAll('circle.users').data(csv).exit()
 					.transition().duration(400)
 					.attr('cx', textSpace)
+					.attr('cy', chartH + (2 * padding))
+					.style('opacity', 0)
+					.remove();
+				//cat text
+				chart.selectAll('text.cat').data(csv).exit()
+					.transition().duration(400)
+					.attr('x', textSpace)
+					.attr('y', chartH + (2 * padding))
+					.style('opacity', 0)
 					.remove();
 
 				//update
-				//total bar
-				chart.selectAll('rect.total').data(csv)
-					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + barHeight); })
-					.attr('width', function(d) { return x(d.total); });
-				//users bar
-				chart.selectAll('rect.users').data(csv)
-					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + barHeight); })
-					.attr('width', function(d) { return x(d.utilizam); })
-					.attr('data-abs-val', function(d){ return d.utilizam; });
 				//users point
 				chart.selectAll('circle.users').data(csv)
 					.transition().duration(1000)
-					.attr('cy', function(d){ return (y(d.utilizam) * (barHeight + spacing) + (1.5 * barHeight)); })
-					.attr('cx', function(d) { return x(d.utilizam) + textSpace; });
+					.attr('cx', function(d) { return x(d[graph.parameter]) + textSpace; })
+					.attr('cy', function(d) { return y(d.utilizam) + (2 * padding); })
+					.attr('data-x-val', function(d) { return d[graph.parameter]; })
+					.attr('data-y-val', function(d) { return d.utilizam; });
 				//cat text
 				chart.selectAll('text.cat').data(csv)
-					.text(function(d) { return d[graph.parameter]; })
+					.text(function(d) { return d.sigla; })
 					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d.utilizam) * (barHeight + spacing) + 8); })
-					.attr('data-abs-val', function(d){ return d.utilizam; });
+					.attr('x', function(d) { return x(d[graph.parameter]) + textSpace; })
+					.attr('y', function(d) { return y(d.utilizam) + (2 * padding); });
 				//axes text
-				chart.selectAll('g.axes text').data([0,10,20,30,40])
+				chart.selectAll('g.x-axes text').data(xValues)
 					.text(function(d) { return d; });
-				//ruler text
-				chart.select('g.ruler text')
-					.text('milhões de pessoas');
+				chart.selectAll('g.y-axes text').data(absValues)
+					.text(function(d) { return d; });
+				//axes title
+				chart.select('text.x-title')
+					.text(xTitle);
+				chart.select('text.y-title')
+					.text('Acesso à internet (milhões de pessoas)');
 				//ref line
-				chart.select('g.ref line')
+				chart.selectAll('g.ref line')
+					.transition().duration(1000)
 					.attr('x1', 0)
-					.attr('x2', 0);
+					.attr('y1', chartH)
+					.attr('x2', 0)
+					.attr('y2', chartH);
 				//ref text
-				chart.select('g.ref text')
+				chart.selectAll('g.x-ref text')
 					.text(0)
+					.transition().duration(1000)
 					.attr('x', 0);
+				chart.selectAll('g.y-ref text')
+					.text(0)
+					.transition().duration(1000)
+					.attr('y', chartH);
 
 				//ref interaction
 				//reset event binding first
-				$('#inc-graph1 svg .interactive').on('mouseenter', function(e){
-					//clear previous stored data first
-					$(this).removeData('abs-val');
-					var val = $(this).data('abs-val');				
+				$('#inc-graph1 svg .interactive').on({
+					mouseenter: function(e){
+						var point = $(this);
 
-					chart.select('g.ref line')
-						.transition().duration(200)
-						.attr('x1', x(val))
-						.attr('x2', x(val));
+						//clear previous stored data first
+						var id = '#' + point.attr('data-state');
+						var hVal = point.attr('data-x-val');
+						var vVal = point.attr('data-y-val');
 
-					chart.select('g.ref text')
-						.text(val)
-						.transition().duration(200)
-						.attr('x', x(val));
+						chart.select('g.x-ref line')
+							.transition().duration(200)
+							.attr('x1', x(hVal))
+							.attr('y1', y(vVal))
+							.attr('x2', x(hVal));
+
+						chart.select('g.y-ref line')
+							.transition().duration(200)
+							.attr('y1', y(vVal))
+							.attr('y2', y(vVal))
+							.attr('x2', x(hVal));
+
+						chart.select('g.x-ref text')
+							.text(d3.round(hVal,2))
+							.transition().duration(200)
+							.attr('x', x(hVal));
+
+						chart.select('g.y-ref text')
+							.text(d3.round(vVal,2))
+							.transition().duration(200)
+							.attr('y', y(vVal));
+
+						$(id).fadeIn(200);
+					},
+					mouseout: function(e){
+						//clear previous stored data first
+						$(this).removeData('state');
+						var id = '#' + $(this).data('state');
+
+						$(id).fadeOut(200);
+					}
 				});
 
 			});
@@ -219,125 +285,139 @@ define(['jquery', 'd3js'], function($, ignore){
 			d3.csv(graph.csvPath, function(csv){
 
 				//scale adjustment
-				var sorted = csv.map(function(d,i) {
-					return d['utilizam %'];
-				});
-				x.domain([0, 100]);
-				y.domain(sorted.sort(function(a,b){
-					return b - a;	
-				}));
+				if (graph.parameter === 'PIB estadual 2010') {
+					x.domain([0, pibMaxVal]);
+					var xValues = pibValues;
+					var xTitle = 'PIB do estado (milhões de reais)';
+				}
+				else {
+					x.domain([0, incMaxVal]);
+					var xValues = incValues;
+					var xTitle = 'Renda mensal per capita (R$)';
+				}
+				y.domain([0, relMaxVal]);
 
 				//chart
 				var chart = d3.select('#inc-graph1 svg');
 
-				//total bar
-				chart.selectAll('rect.total').data(csv).enter()
-					.append('rect')
-					.attr('x', textSpace)
-					.attr('y', function(d, i) { return (i * (barHeight + spacing)); })
-					.attr('width', 0)
-					.attr('height', barHeight)
-					.attr('class', 'gc2 total');
-				//users bar
-				chart.selectAll('rect.users').data(csv).enter()
-					.append('rect')
-					.attr('x', textSpace)
-					.attr('y', function(d, i) { return (i * (barHeight + spacing)); })
-					.attr('width', 0)
-					.attr('height', barHeight)
-					.attr('class', 'gmain users interactive');
 				//users point
 				chart.selectAll('circle.users').data(csv).enter()
 					.append('circle')
 					.attr('cx', textSpace)
-					.attr('cy', function(d, i){ return (i * (barHeight + spacing) + (1.5 * barHeight)); })
-					.attr('r', barHeight)
-					.attr('class', 'gmain users');
+					.attr('cy', chartH + (2 * padding))
+					.attr('r', radius)
+					.attr('class', 'gmain users interactive')
+					.attr('data-state', function(d){ return d.sigla; });
 				//cat text
 				chart.selectAll('text.cat').data(csv).enter()
 					.append('text')
 					.attr('x', textSpace)
-					.attr('y', function(d, i) { return (i * (barHeight + spacing) + 8); })
-					.attr('dx', -8 )
-					.attr('text-anchor', 'end')
-					.attr('data-abs-val', null)
-					.attr('class', 'gblack cat interactive');
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', radius)
+					.attr('dy', (-1 * radius))
+					.style('display', 'none')
+					.attr('class', 'gblack cat')
+					.attr('id', function(d){ return d.sigla; });
 
 				//remove
-				//total bar
-				chart.selectAll('rect.total').data(csv).exit()
-					.transition().duration(400)
-					.attr('width', 0)
-					.remove();
-				//users bar
-				chart.selectAll('rect.users').data(csv).exit()
-					.transition().duration(400)
-					.attr('width', 0)
-					.remove();
-				//cat text
-				chart.selectAll('text.cat').data(csv).exit()
-					.transition().duration(400)
-					.style('opacity', 0)
-					.remove();
 				//users point
 				chart.selectAll('circle.users').data(csv).exit()
 					.transition().duration(400)
 					.attr('cx', textSpace)
+					.attr('cy', chartH + (2 * padding))
+					.style('opacity', 0)
+					.remove();
+				//cat text
+				chart.selectAll('text.cat').data(csv).exit()
+					.transition().duration(400)
+					.attr('x', textSpace)
+					.attr('y', chartH + (2 * padding))
+					.style('opacity', 0)
 					.remove();
 
 				//update
-				//total bar
-				chart.selectAll('rect.total').data(csv)
-					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + barHeight); })
-					.attr('width', x(100));
-				//users bar
-				chart.selectAll('rect.users').data(csv)
-					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + barHeight); })
-					.attr('width', function(d) { return x(d['utilizam %']); })
-					.attr('data-rel-val', function(d){ return d['utilizam %']; });
 				//users point
 				chart.selectAll('circle.users').data(csv)
 					.transition().duration(1000)
-					.attr('cy', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + (1.5 * barHeight)); })
-					.attr('cx', function(d) { return x(d['utilizam %']) + textSpace; });
+					.attr('cx', function(d) { return x(d[graph.parameter]) + textSpace; })
+					.attr('cy', function(d) { return y(d['utilizam %']) + (2 * padding); })
+					.attr('data-x-val', function(d) { return d[graph.parameter]; })
+					.attr('data-y-val', function(d) { return d['utilizam %']; });
 				//cat text
 				chart.selectAll('text.cat').data(csv)
-					.text(function(d) { return d[graph.parameter]; })
+					.text(function(d) { return d.estado; })
 					.transition().duration(1000)
-					.attr('y', function(d){ return (y(d['utilizam %']) * (barHeight + spacing) + 8); })
-					.attr('data-rel-val', function(d){ return d['utilizam %']; });
+					.attr('x', function(d) { return x(d[graph.parameter]) + textSpace; })
+					.attr('y', function(d) { return y(d['utilizam %']) + (2 * padding); });
 				//axes text
-				chart.selectAll('g.axes text').data([0,25,50,75,100])
+				chart.selectAll('g.x-axes text').data(xValues)
+					.text(function(d) { return d; });
+				chart.selectAll('g.y-axes text').data(relValues)
 					.text(function(d) { return d + '%'; });
-				//ruler text
-				chart.select('g.ruler text')
-					.text('percentual de pessoas no estado');
+				//axes title
+				chart.select('text.x-title')
+					.text(xTitle);
+				chart.select('text.y-title')
+					.text('Acesso à internet (relativo à população do estado)');
 				//ref line
-				chart.select('g.ref line')
+				chart.selectAll('g.ref line')
+					.transition().duration(1000)
 					.attr('x1', 0)
-					.attr('x2', 0);
+					.attr('y1', chartH)
+					.attr('x2', 0)
+					.attr('y2', chartH);
 				//ref text
-				chart.select('g.ref text')
-					.text('0%')
+				chart.selectAll('g.x-ref text')
+					.text(0)
+					.transition().duration(1000)
 					.attr('x', 0);
+				chart.selectAll('g.y-ref text')
+					.text('0%')
+					.transition().duration(1000)
+					.attr('y', chartH);
 
 				//ref interaction
-				$('#inc-graph1 svg .interactive').on('mouseenter', function(e){
-					//clear previous stored data first
-					$(this).removeData('rel-val');
-					var val = $(this).data('rel-val');
+				//reset event binding first
+				$('#inc-graph1 svg .interactive').on({
+					mouseenter: function(e){
+						var point = $(this);
 
-					chart.select('g.ref line')
-						.transition().duration(200)
-						.attr('x1', x(val))
-						.attr('x2', x(val));
+						//clear previous stored data first
+						var id = '#' + point.attr('data-state');
+						var hVal = point.attr('data-x-val');
+						var vVal = point.attr('data-y-val');
 
-					chart.select('g.ref text')
-						.text(val + '%')
-						.transition().duration(200)
-						.attr('x', x(val));
+						chart.select('g.x-ref line')
+							.transition().duration(200)
+							.attr('x1', x(hVal))
+							.attr('y1', y(vVal))
+							.attr('x2', x(hVal));
+
+						chart.select('g.y-ref line')
+							.transition().duration(200)
+							.attr('y1', y(vVal))
+							.attr('y2', y(vVal))
+							.attr('x2', x(hVal));
+
+						chart.select('g.x-ref text')
+							.text(d3.round(hVal,2))
+							.transition().duration(200)
+							.attr('x', x(hVal));
+
+						chart.select('g.y-ref text')
+							.text(d3.round(vVal,2) + '%')
+							.transition().duration(200)
+							.attr('y', y(vVal));
+
+						$(id).fadeIn(200);
+					},
+					mouseout: function(e){
+						//clear previous stored data first
+						$(this).removeData('state');
+						var id = '#' + $(this).data('state');
+
+						$(id).fadeOut(200);
+					}
 				});
 
 			});
