@@ -586,8 +586,19 @@ text {
   fill: black;
 }
 
+line.connection {
+  fill: none;
+  stroke: #42b3c6;
+}
+
 text.cat {
   cursor: default;
+}
+
+.dif line {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: silver;
 }
 
 .gmain {
@@ -608,11 +619,6 @@ text.cat {
 
 .gblack {
   fill: black;
-}
-
-line.connection {
-  fill: none;
-  stroke: #42b3c6;
 }
 
 /* ------------------------------ *\
@@ -638,13 +644,12 @@ EDUCATION
 #edu-graph3 .line1,
 #edu-graph3 .line2 {
   stroke: silver;
-  stroke-width: 1;
+  stroke-width: 2;
   fill: none;
 }
 #edu-graph3 circle {
-  r: 4;
   stroke: silver;
-  stroke-width: 1;
+  stroke-width: 2;
   fill: white;
 }
 #edu-graph3 .line1,
@@ -653,7 +658,7 @@ EDUCATION
 }
 #edu-graph3 .line2,
 #edu-graph3 .circles2 circle {
-  stroke: black;
+  stroke: #c8c8b4;
 }
 
 /* ------------------------------ *\

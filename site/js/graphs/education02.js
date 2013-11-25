@@ -190,19 +190,19 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text('milhões de pessoas');
 				//ref line
 				chart.select('g.ref line')
+					.transition().duration(200)
 					.attr('x1', 0)
 					.attr('x2', 0);
 				//ref text
 				chart.select('g.ref text')
+					.transition().duration(200)
 					.text(0)
 					.attr('x', 0);
 
 				//ref interaction
 				//reset event binding first
 				$('#edu-graph2 svg .interactive').on('mouseenter', function(e){
-					//clear previous stored data first
-					$(this).removeData('abs-val');
-					var val = $(this).data('abs-val');				
+					var val = $(this).attr('data-abs-val');
 
 					chart.select('g.ref line')
 						.transition().duration(200)
@@ -210,7 +210,7 @@ define(['jquery', 'd3js'], function($, ignore){
 						.attr('x2', x(val));
 
 					chart.select('g.ref text')
-						.text(val)
+						.text(d3.round(val,2))
 						.transition().duration(200)
 						.attr('x', x(val));
 				});
@@ -322,18 +322,18 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text('percentual de pessoas na classificação');
 				//ref line
 				chart.select('g.ref line')
+					.transition().duration(200)
 					.attr('x1', 0)
 					.attr('x2', 0);
 				//ref text
 				chart.select('g.ref text')
+					.transition().duration(200)
 					.text('0%')
 					.attr('x', 0);
 
 				//ref interaction
 				$('#edu-graph2 svg .interactive').on('mouseenter', function(e){
-					//clear previous stored data first
-					$(this).removeData('rel-val');
-					var val = $(this).data('rel-val');
+					var val = $(this).attr('data-rel-val');
 
 					chart.select('g.ref line')
 						.transition().duration(200)
@@ -341,7 +341,7 @@ define(['jquery', 'd3js'], function($, ignore){
 						.attr('x2', x(val));
 
 					chart.select('g.ref text')
-						.text(val + '%')
+						.text(d3.round(val,2) + '%')
 						.transition().duration(200)
 						.attr('x', x(val));
 				});

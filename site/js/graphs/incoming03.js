@@ -201,19 +201,19 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text('milhões de pessoas');
 				//ref line
 				chart.select('g.ref line')
+					.transition().duration(200)
 					.attr('x1', 0)
 					.attr('x2', 0);
 				//ref text
 				chart.select('g.ref text')
 					.text(0)
+					.transition().duration(200)
 					.attr('x', 0);
 
 				//ref interaction
 				//reset event binding first
 				$('#inc-graph3 svg .interactive').on('mouseenter', function(e){
-					//clear previous stored data first
-					$(this).removeData('abs-val');
-					var val = $(this).data('abs-val');				
+					var val = $(this).attr('data-abs-val');				
 
 					chart.select('g.ref line')
 						.transition().duration(200)
@@ -344,18 +344,18 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text('percentual de pessoas no estado');
 				//ref line
 				chart.select('g.ref line')
+					.transition().duration(200)
 					.attr('x1', 0)
 					.attr('x2', 0);
 				//ref text
 				chart.select('g.ref text')
 					.text('0%')
+					.transition().duration(200)
 					.attr('x', 0);
 
 				//ref interaction
 				$('#inc-graph3 svg .interactive').on('mouseenter', function(e){
-					//clear previous stored data first
-					$(this).removeData('rel-val');
-					var val = $(this).data('rel-val');
+					var val = $(this).attr('data-rel-val');
 
 					chart.select('g.ref line')
 						.transition().duration(200)

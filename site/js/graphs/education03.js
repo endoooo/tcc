@@ -88,17 +88,17 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('class', 'y-title gc1');
 
 			//y ref
-			var vRef = chart.append('g')
-				.attr('class', 'ref y-ref')
+			var ref = chart.append('g')
+				.attr('class', 'ref')
 				.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')');
 			//ref line
-			vRef.append('line')
+			ref.append('line')
 				.attr('x1', 0)
 				.attr('y1', chartH)
 				.attr('x2', chartW)
 				.attr('y2', chartH);
 			//ref text
-			vRef.append('text')
+			ref.append('text')
 				.text('0%')
 				.attr('x', (-1 * padding))
 				.attr('y', chartH)
@@ -123,7 +123,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				//line generator
 				var zeroLine = d3.svg.line()
 					.x(function(d) { return x(d.ano) + textSpace; })
-					.y(function(d) { return y(0); })
+					.y(function(d) { return y(0) + (2 * padding); })
 					.interpolate("linear");
 				var line1 = d3.svg.line()
 					.x(function(d) { return x(d.ano) + textSpace; })
@@ -137,6 +137,38 @@ define(['jquery', 'd3js'], function($, ignore){
 				//chart
 				var chart = d3.select('#edu-graph3 svg');
 
+				//create differences lines
+				chart.selectAll('g.dif').data(dataset).enter()
+					.append('g')
+					.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')')
+					.attr('class', 'dif')
+					.selectAll('line').data(function(d){ return d.values; }).enter()
+					.append('line')
+					.attr('x1', function(d){ return x(d.ano); })
+					.attr('y1', chartH)
+					.attr('x2', function(d){ return x(d.ano); })
+					.attr('y2', chartH)
+					.attr('stroke', 'black');
+
+				//create illiteracy lines and circles
+				//lines
+				chart.selectAll('path.line2').data(dataset).enter()
+					.append('path')
+					.attr('d', function(d){return zeroLine(d.values); })
+					.attr('class', 'line2')
+
+				//circles
+				chart.selectAll('g.circles2').data(dataset).enter()
+					.append('g')
+					.attr('class', 'circles2')
+					.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')')
+					.selectAll('circle').data(function(d){ return d.values; }).enter()
+					.append('circle')
+					.attr('cx', function(d){ return x(d.ano); })
+					.attr('cy', function(d){ return y(0); })
+					.attr('r', 4)
+					.attr('class', 'interactive');
+
 				//create internet usage lines and circles
 				//lines
 				chart.selectAll('path.line1').data(dataset).enter()
@@ -149,175 +181,104 @@ define(['jquery', 'd3js'], function($, ignore){
 					.append('g')
 					.attr('class', 'circles1')
 					.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')')
-					.selectAll('circle').data(function(d){return d.values;}).enter()
+					.selectAll('circle').data(function(d){ return d.values; }).enter()
 					.append('circle')
-					.attr('cx', function(d){return x(d.ano);})
-					.attr('cy', function(d){return y(0);})
-					.attr('r', 3);
+					.attr('cx', function(d){ return x(d.ano); })
+					.attr('cy', function(d){ return y(0); })
+					.attr('r', 4)
+					.attr('class', 'interactive');
 
-				//create illiteracy lines and circles
-				//lines
-				chart.selectAll('path.line2').data(dataset).enter()
-					.append('path')
-					.attr('d', function(d){return zeroLine(d.values);})
-					.attr('class', 'line2')
+				console.log(dataset[0].values);
 
-				//circles
-				chart.selectAll('g.circles2').data(dataset).enter()
-					.append('g')
-					.attr('class', 'circles2')
-					.attr('transform', 'translate(' + textSpace + ',' + (2 * padding) + ')')
-					.selectAll('circle').data(function(d){return d.values;}).enter()
-					.append('circle')
-					.attr('cx', function(d){return x(d.ano);})
-					.attr('cy', function(d){return y(0);})
-					.attr('r', 3);
+				//create cat text
+				chart.selectAll('text.cat1').data(dataset[0].values).enter()
+					.append('text')
+					.filter(function(d){ return d.ano === '2011'; })
+					.text('acesso à internet')
+					.attr('x', function(d){ return x(d.ano) + textSpace; })
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', padding)
+					.attr('class', 'cat cat1');
+				chart.selectAll('text.cat2').data(dataset[0].values).enter()
+					.append('text')
+					.filter(function(d){ return d.ano === '2011'; })
+					.text('analfabetismo')
+					.attr('x', function(d){ return x(d.ano) + textSpace; })
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', padding)
+					.attr('class', 'cat cat2');
 
-				//update internet usage lines and circles
-				//lines
-				chart.select('path.line1')
-					.transition().duration(500)
-					.attr('d', function(d){return line1(d.values);});
 
-				//circles
-				chart.select('g.circles1')
-					.selectAll('circle')
-					.transition().duration(500)
-					.attr('cy', function(d){return y(d['acessam %']);});
+				//update differences lines
+				chart.select('g.dif').data(dataset)
+					.selectAll('line').data(function(d){ return d.values; })
+					.transition().duration(1000)
+					.attr('y1', function(d){ return y(d['acessam %']); })
+					.attr('y2', function(d){ return y(d['analfabetas %']); });
 
 				//update illiteracy lines and circles
 				//lines
-				chart.select('path.line2')
-					.transition().duration(500)
-					.attr('d', function(d){return line2(d.values);});
+				chart.select('path.line2').data(dataset)
+					.transition().duration(1000)
+					.attr('d', function(d){ return line2(d.values); });
 
 				//circles
-				chart.select('g.circles2')
-					.selectAll('circle')
-					.transition().duration(500)
-					.attr('cy', function(d){return y(d['analfabetas %']);});
-
-				/*
-
-				//users point
-				chart.selectAll('circle.users').data(csv).enter()
-					.append('circle')
-					.attr('cx', textSpace)
-					.attr('cy', chartH + (2 * padding))
-					.attr('r', radius)
-					.attr('class', 'gmain users interactive')
-					.attr('data-state', function(d){ return d.sigla; });
-				//cat text
-				chart.selectAll('text.cat').data(csv).enter()
-					.append('text')
-					.attr('x', textSpace)
-					.attr('y', chartH + (2 * padding))
-					.attr('dx', radius)
-					.attr('dy', (-1 * radius))
-					.style('display', 'none')
-					.attr('class', 'gblack cat')
-					.attr('id', function(d){ return d.sigla; });
-
-				//remove
-				//users point
-				chart.selectAll('circle.users').data(csv).exit()
-					.transition().duration(400)
-					.attr('cx', textSpace)
-					.attr('cy', chartH + (2 * padding))
-					.style('opacity', 0)
-					.remove();
-				//cat text
-				chart.selectAll('text.cat').data(csv).exit()
-					.transition().duration(400)
-					.attr('x', textSpace)
-					.attr('y', chartH + (2 * padding))
-					.style('opacity', 0)
-					.remove();
-
-				//update
-				//users point
-				chart.selectAll('circle.users').data(csv)
+				chart.select('g.circles2').data(dataset)
+					.selectAll('circle').data(function(d){ return d.values; })
 					.transition().duration(1000)
-					.attr('cx', function(d) { return x(d[graph.parameter]) + textSpace; })
-					.attr('cy', function(d) { return y(d.utilizam) + (2 * padding); })
-					.attr('data-x-val', function(d) { return d[graph.parameter]; })
-					.attr('data-y-val', function(d) { return d.utilizam; });
-				//cat text
-				chart.selectAll('text.cat').data(csv)
-					.text(function(d) { return d.sigla; })
+					.attr('cy', function(d){ return y(d['analfabetas %']); })
+					.attr('data-value', function(d){ return d['analfabetas %']; });
+
+				//update internet usage lines and circles
+				//lines
+				chart.select('path.line1').data(dataset)
 					.transition().duration(1000)
-					.attr('x', function(d) { return x(d[graph.parameter]) + textSpace; })
-					.attr('y', function(d) { return y(d.utilizam) + (2 * padding); });
-				//axes text
-				chart.selectAll('g.x-axes text').data(xValues)
-					.text(function(d) { return d; });
-				chart.selectAll('g.y-axes text').data(absValues)
-					.text(function(d) { return d; });
-				//axes title
-				chart.select('text.x-title')
-					.text(xTitle);
-				chart.select('text.y-title')
-					.text('Acesso à internet (milhões de pessoas)');
+					.attr('d', function(d){ return line1(d.values); });
+
+				//circles
+				chart.select('g.circles1').data(dataset)
+					.selectAll('circle').data(function(d){ return d.values; })
+					.transition().duration(1000)
+					.attr('cy', function(d){ return y(d['acessam %']); })
+					.attr('data-value', function(d){ return d['acessam %']; });
+
+				//update cat text
+				chart.selectAll('text.cat1').data(dataset[0].values)
+					.filter(function(d){ return d.ano === '2011'; })
+					.transition().duration(1000)
+					.attr('y', function(d){ return y(d['acessam %']) + (2 * padding); });
+				chart.selectAll('text.cat2').data(dataset[0].values)
+					.filter(function(d){ return d.ano === '2011'; })
+					.transition().duration(1000)
+					.attr('y', function(d){ return y(d['analfabetas %']) + (2 * padding); });
+
 				//ref line
 				chart.selectAll('g.ref line')
-					.transition().duration(1000)
+					.transition().duration(200)
 					.attr('x1', 0)
 					.attr('y1', chartH)
-					.attr('x2', 0)
+					.attr('x2', chartW)
 					.attr('y2', chartH);
 				//ref text
-				chart.selectAll('g.x-ref text')
-					.text(0)
-					.transition().duration(1000)
-					.attr('x', 0);
-				chart.selectAll('g.y-ref text')
-					.text(0)
-					.transition().duration(1000)
+				chart.selectAll('g.ref text')
+					.text('0%')
+					.transition().duration(200)
 					.attr('y', chartH);
 
 				//ref interaction
-				//reset event binding first
-				$('#edu-graph3 svg .interactive').on({
-					mouseenter: function(e){
-						var point = $(this);
+				$('#edu-graph3 svg .interactive').on('mouseenter', function(e){
+					var val = $(this).attr('data-value');
 
-						//clear previous stored data first
-						var id = '#' + point.attr('data-state');
-						var hVal = point.attr('data-x-val');
-						var vVal = point.attr('data-y-val');
+					chart.select('g.ref line')
+						.transition().duration(200)
+						.attr('y1', y(val))
+						.attr('y2', y(val));
 
-						chart.select('g.x-ref line')
-							.transition().duration(200)
-							.attr('x1', x(hVal))
-							.attr('y1', y(vVal))
-							.attr('x2', x(hVal));
-
-						chart.select('g.y-ref line')
-							.transition().duration(200)
-							.attr('y1', y(vVal))
-							.attr('y2', y(vVal))
-							.attr('x2', x(hVal));
-
-						chart.select('g.x-ref text')
-							.text(d3.round(hVal,2))
-							.transition().duration(200)
-							.attr('x', x(hVal));
-
-						chart.select('g.y-ref text')
-							.text(d3.round(vVal,2))
-							.transition().duration(200)
-							.attr('y', y(vVal));
-
-						$(id).fadeIn(200);
-					},
-					mouseleave: function(e){
-						//clear previous stored data first
-						$(this).removeData('state');
-						var id = '#' + $(this).data('state');
-
-						$(id).fadeOut(200);
-					}
-				});*/
+					chart.select('g.ref text')
+						.text(d3.round(val,2) + '%')
+						.transition().duration(200)
+						.attr('y', y(val));
+				});
 
 			});
 		}

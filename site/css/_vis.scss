@@ -161,18 +161,24 @@ text {
 }
 .ref text { fill: black }
 
+line.connection {
+	fill: none;
+    stroke: $main;
+}
+
 text.cat { cursor: default }
+
+.dif line {
+	fill: none;
+    shape-rendering: crispEdges;
+    stroke: $c2;
+}
 
 .gmain { fill: $main }
 .gc1 { fill: $c1 }
 .gc2 { fill: $c2 }
 .gwhite { fill: white }
 .gblack { fill: black }
-
-line.connection {
-	fill: none;
-    stroke: $main;
-}
 
 
 /* ------------------------------ *\
@@ -198,13 +204,12 @@ EDUCATION
 	.line1,
 	.line2 {
 		stroke: $c2;
-		stroke-width: 1;
+		stroke-width: 2;
 		fill: none;
 	}
 	circle {
-		r: 4;
 		stroke: $c2;
-		stroke-width: 1;
+		stroke-width: 2;
 		fill: white;
 	}
 	.line1,
@@ -213,7 +218,7 @@ EDUCATION
 	}
 	.line2,
 	.circles2 circle {
-		stroke: black;
+		stroke: $supp2;
 	}
 }
 
