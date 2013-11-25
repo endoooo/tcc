@@ -635,6 +635,35 @@ EDUCATION
   opacity: 0;
 }
 
+#edu-graph3 .line1,
+#edu-graph3 .line2 {
+  stroke: silver;
+  stroke-width: 1;
+  fill: none;
+}
+#edu-graph3 circle {
+  r: 4;
+  stroke: silver;
+  stroke-width: 1;
+  fill: white;
+}
+#edu-graph3 .line1,
+#edu-graph3 .circles1 circle {
+  stroke: #42b3c6;
+}
+#edu-graph3 .line2,
+#edu-graph3 .circles2 circle {
+  stroke: black;
+}
+
+/* ------------------------------ *\
+INCOMING
+\* ------------------------------ */
+#inc-graph4 img {
+  display: block;
+  width: 100%;
+}
+
 /* ------------------------------ *\
 REGION
 \* ------------------------------ */

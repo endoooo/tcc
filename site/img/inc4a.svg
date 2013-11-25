@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="648px" height="212px" viewBox="0 0 648 212" enable-background="new 0 0 648 212" xml:space="preserve">
+<circle fill="#F0F0F0" cx="100" cy="100" r="80"/>
+<circle fill="#F0F0F0" cx="548" cy="100" r="80"/>
+<path fill="#42B3C6" d="M470.146,81.619C468.758,87.523,468,93.672,468,100c0,44.182,35.817,80,80,80s80-35.818,80-80
+	s-35.817-80-80-80v80L470.146,81.619z"/>
+<path fill="#42B3C6" d="M179.92,103.165c0.041-1.052,0.08-2.104,0.08-3.165c0-44.182-35.817-80-80-80v80L179.92,103.165z"/>
+<circle fill="#C8C8B4" cx="324" cy="100" r="100"/>
+<path fill="#8CD2BE" d="M385.983,178.474C409.14,160.158,424,131.815,424,100C424,44.772,379.229,0,324,0v100L385.983,178.474z"/>
+<circle fill="#FFFFFF" cx="324" cy="100" r="80"/>
+<text transform="matrix(1 0 0 1 292.5 130.5996)"><tspan x="0" y="0" fill="#C8C8B4" font-family="'UbuntuMono-Regular'" font-size="18">101.260</tspan><tspan x="-1.5" y="16" fill="#909090" font-family="'UbuntuMono-Regular'" font-size="12">não possuem</tspan></text>
+<text transform="matrix(1 0 0 1 297 66.5981)"><tspan x="0" y="0" fill="#8CD2BE" font-family="'UbuntuMono-Regular'" font-size="18">65.727</tspan><tspan x="6" y="16" fill="#909090" font-family="'UbuntuMono-Regular'" font-size="12">possuem</tspan></text>
+<g>
+	<path fill="#8CD2BE" d="M548,1c54.589,0,99,44.411,99,99s-44.411,99-99,99s-99-44.411-99-99S493.411,1,548,1 M548,0
+		c-55.229,0-100,44.772-100,100s44.771,100,100,100s100-44.772,100-100S603.229,0,548,0L548,0z"/>
+</g>
+<circle fill="#FFFFFF" cx="548" cy="100" r="60"/>
+<g>
+	<text transform="matrix(1 0 0 1 521 90.5991)"><tspan x="0" y="0" fill="#42B3C6" font-family="'UbuntuMono-Regular'" font-size="18">78.69%</tspan><tspan x="3" y="16" font-family="'UbuntuMono-Regular'" font-size="12">utilizam</tspan><tspan x="3" y="32" font-family="'UbuntuMono-Regular'" font-size="12">internet</tspan></text>
+</g>
+<g>
+	<path fill="#C8C8B4" d="M100,1c54.589,0,99,44.411,99,99s-44.411,99-99,99S1,154.589,1,100S45.411,1,100,1 M100,0
+		C44.771,0,0,44.772,0,100s44.771,100,100,100s100-44.772,100-100S155.229,0,100,0L100,0z"/>
+</g>
+<circle fill="#FFFFFF" cx="100" cy="100" r="60"/>
+<line fill="none" stroke="#C0C0C0" stroke-miterlimit="10" x1="284" y1="100.5" x2="364" y2="100.5"/>
+<line fill="none" stroke="#8CD2BE" stroke-miterlimit="10" x1="424" y1="100.5" x2="448" y2="100.5"/>
+<line fill="none" stroke="#C8C8B4" stroke-miterlimit="10" x1="200" y1="100.5" x2="224" y2="100.5"/>
+<circle fill="#8CD2BE" cx="448" cy="100" r="4"/>
+<circle fill="#C8C8B4" cx="200" cy="100" r="4"/>
+<g>
+	<text transform="matrix(1 0 0 1 73 90.5991)"><tspan x="0" y="0" fill="#42B3C6" font-family="'UbuntuMono-Regular'" font-size="18">25.63%</tspan><tspan x="3" y="16" font-family="'UbuntuMono-Regular'" font-size="12">utilizam</tspan><tspan x="3" y="32" font-family="'UbuntuMono-Regular'" font-size="12">internet</tspan></text>
+</g>
+<g>
+	<path fill="#FFFFFF" d="M488,211.5c-1.379,0-2.5-1.121-2.5-2.5v-18c0-1.379,1.121-2.5,2.5-2.5h120c1.379,0,2.5,1.121,2.5,2.5v18
+		c0,1.379-1.121,2.5-2.5,2.5H488z"/>
+	<path fill="#8CD2BE" d="M608,189c1.103,0,2,0.897,2,2v18c0,1.103-0.897,2-2,2H488c-1.103,0-2-0.897-2-2v-18c0-1.103,0.897-2,2-2
+		H608 M608,188H488c-1.65,0-3,1.35-3,3v18c0,1.65,1.35,3,3,3h120c1.65,0,3-1.35,3-3v-18C611,189.35,609.65,188,608,188L608,188z"/>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 494 203.0586)" font-family="'UbuntuMono-Regular'" font-size="12">com acesso em casa</text>
+</g>
+<g>
+	<path fill="#FFFFFF" d="M42,211.5c-1.378,0-2.5-1.121-2.5-2.5v-18c0-1.379,1.122-2.5,2.5-2.5h116c1.378,0,2.5,1.121,2.5,2.5v18
+		c0,1.379-1.122,2.5-2.5,2.5H42z"/>
+	<path fill="#C8C8B4" d="M158,189c1.103,0,2,0.897,2,2v18c0,1.103-0.897,2-2,2H42c-1.103,0-2-0.897-2-2v-18c0-1.103,0.897-2,2-2H158
+		 M158,188H42c-1.65,0-3,1.35-3,3v18c0,1.65,1.35,3,3,3h116c1.65,0,3-1.35,3-3v-18C161,189.35,159.65,188,158,188L158,188z"/>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 46 203.0586)" font-family="'UbuntuMono-Regular'" font-size="12">sem acesso em casa</text>
+</g>
+<rect fill="none" width="648" height="212"/>
+</svg>

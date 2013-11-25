@@ -194,6 +194,39 @@ EDUCATION
 	}
 	#edu-1b { opacity: 0 }
 }
+#edu-graph3 {
+	.line1,
+	.line2 {
+		stroke: $c2;
+		stroke-width: 1;
+		fill: none;
+	}
+	circle {
+		r: 4;
+		stroke: $c2;
+		stroke-width: 1;
+		fill: white;
+	}
+	.line1,
+	.circles1 circle {
+		stroke: $main;
+	}
+	.line2,
+	.circles2 circle {
+		stroke: black;
+	}
+}
+
+
+/* ------------------------------ *\
+INCOMING
+\* ------------------------------ */
+#inc-graph4 {
+	img {
+		display: block;
+		width: 100%;
+	}
+}
 
 
 /* ------------------------------ *\

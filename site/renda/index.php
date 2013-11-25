@@ -99,6 +99,21 @@
 			</div>
 		</div>
 
+		<div class="content">
+			<p>Quem tem acesso a internet em casa?</p>
+		</div>
+
+		<div class="graph-container" id="inc-graph4">
+			<h2 class="title">Pessoas que residem em domicílio com computador e acesso à internet, e sua utilização (2011)</h2>
+			<div class="graph">
+				<img src="<?= $root ?>/img/inc4a.svg" alt="Residência com computador e acesso à internet e sua utilização (2011)" />
+			</div>
+			<p class="obs">Valores em milhões de pessoas</p>
+			<div class="settings" id="inc-settings4">
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+			</div>
+		</div>
+
 		<div class="content link-list">
 			<h3><span class="icon-link"></span> Referências</h3>
 			<ul>
