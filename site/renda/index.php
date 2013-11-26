@@ -106,7 +106,7 @@
 		</div>
 
 		<div class="content">
-			<p>Quem tem acesso a internet em casa?</p>
+			<p>Quantas pessoas possuem computador com acesso a internet em casa? Quem não possui, acessa a internet?</p>
 		</div>
 
 		<div class="graph-container" id="inc-graph4">
@@ -116,7 +116,7 @@
 			</div>
 			<p class="obs">Valores em milhões de pessoas</p>
 			<div class="settings" id="inc-settings4">
-				<a href="<?= $root ?>/renda/notas.html" class="has-note icon-note" data-target="#edu-note-graph4">Notas</a>
+				<a href="<?= $root ?>/renda/notas.html" class="has-note icon-note" data-target="#inc-note-graph4">Notas</a>
 			</div>
 		</div>
 

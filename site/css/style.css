@@ -806,6 +806,29 @@ INTRO
 }
 
 /* ------------------------------ *\
+GENERAL
+\* ------------------------------ */
+#gen-graph1 .line1,
+#gen-graph1 .line2 {
+  stroke: silver;
+  stroke-width: 2;
+  fill: none;
+}
+#gen-graph1 circle {
+  stroke: silver;
+  stroke-width: 2;
+  fill: white;
+}
+#gen-graph1 .line1,
+#gen-graph1 .circles1 circle {
+  stroke: #42b3c6;
+}
+#gen-graph1 .line2,
+#gen-graph1 .circles2 circle {
+  stroke: #c8c8b4;
+}
+
+/* ------------------------------ *\
 EDUCATION
 \* ------------------------------ */
 #edu-graph1 .graph {

@@ -177,6 +177,32 @@ INTRO
 
 
 /* ------------------------------ *\
+GENERAL
+\* ------------------------------ */
+#gen-graph1 {
+	.line1,
+	.line2 {
+		stroke: $c2;
+		stroke-width: 2;
+		fill: none;
+	}
+	circle {
+		stroke: $c2;
+		stroke-width: 2;
+		fill: white;
+	}
+	.line1,
+	.circles1 circle {
+		stroke: $main;
+	}
+	.line2,
+	.circles2 circle {
+		stroke: $supp2;
+	}
+}
+
+
+/* ------------------------------ *\
 EDUCATION
 \* ------------------------------ */
 #edu-graph1 {

@@ -18,7 +18,7 @@ define(['jquery', 'd3js'], function($, ignore){
 		.rangeRoundBands([0,12], 1, 0);
 
 	//values array
-	var absMaxVal = 40;
+	var absMaxVal = 48;
 	var absValues = [0,absMaxVal*0.25,absMaxVal*0.5,absMaxVal*0.75,absMaxVal];
 	var relMaxVal = 100;
 	var relValues = [0,relMaxVal*0.25,relMaxVal*0.5,relMaxVal*0.75,relMaxVal];
