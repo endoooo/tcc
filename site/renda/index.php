@@ -5,7 +5,9 @@
 	include '../inc/header.php';
 ?>
 
-	<body id="incoming">
+	<body>
+	
+	<div class="container" id="incoming">
 
 		<div class="first content">
 			<h1>A utilização da internet e a renda da população</h1>
@@ -29,7 +31,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -55,7 +57,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -90,7 +92,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -110,7 +112,7 @@
 			</div>
 			<p class="obs">Valores em milhões de pessoas</p>
 			<div class="settings" id="inc-settings4">
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 			</div>
 		</div>
 
@@ -168,6 +170,8 @@
 		</div>
 
 		<?php include '../inc/menu.php'; ?>
+
+	</div><!-- container -->
 
 	</body>
 

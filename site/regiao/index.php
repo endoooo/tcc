@@ -5,7 +5,9 @@
 	include '../inc/header.php';
 ?>
 
-	<body id="region">
+	<body>
+	
+	<div class="container" id="region">
 
 		<div class="first content">
 			<h1>A utilização da internet pelos estados e regiões brasileiros</h1>
@@ -29,7 +31,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -53,7 +55,7 @@
 					<li><a href="#" class="graph-value" data-map="map-abs">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 			</div>
 		</div>
 
@@ -76,7 +78,7 @@
 					<li class="active"><a href="#" class="graph-cat" data-detail="none" data-connection="0">nenhum</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
 			</div>
 		</div>
 
@@ -108,6 +110,8 @@
 		</div>
 
 		<?php include '../inc/menu.php'; ?>
+
+	</div><!-- container -->
 
 	</body>
 

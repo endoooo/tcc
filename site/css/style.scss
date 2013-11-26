@@ -13,7 +13,6 @@ Import Vis (graphs, SVG, etc.)
 BASE
 \* ------------------------------ */
 html, body {
-	position: relative;
 	width: 100%;
 	height: 100%;
 }
@@ -26,7 +25,9 @@ body {
 	color: $c1;
 	background: $c3;
 }
-
+.container {
+	position: relative;
+}
 .content {
 	padding: 2.5em 40% 2.5em 4em;
 	&.first { padding-top: 4em }
@@ -121,6 +122,55 @@ MENU
 		font-size: 2em;
 		color: $c2;
 		&:hover { color: black }
+	}
+}
+
+
+/* ------------------------------ *\
+NOTES
+\* ------------------------------ */
+#note {
+	display: none;
+	position: absolute;
+	width: 448px;
+	@include box-shadow(rgba(0,0,0,0.3) 0 3px 12px);
+
+	.header {
+		padding: 16px;
+		border-bottom: 1px solid $c2;
+		background: white;
+	}
+	.header:hover {
+		background: $c3;
+		cursor: move;
+	}
+	.header a {
+		display: block;
+		float: right;
+		margin-left: 1em;
+	}
+	.title {
+		float: left;
+		color: black;
+	}
+	.content {
+		overflow: auto;
+		max-height: 30em;
+		padding: 16px;
+		background: rgba(255,255,255,0.9);
+	}
+	p {
+		margin-bottom: 0.5em;
+		font-size: 0.875em;
+	}
+	p.headline {
+	    text-transform: uppercase;
+	    color: black;
+	}
+	hr { height: 2px }
+	img {
+		display: block;
+		margin-bottom: 0.5em;
 	}
 }
 

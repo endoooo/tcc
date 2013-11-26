@@ -98,7 +98,8 @@ define(['jquery', 'd3js'], function($, ignore){
 				});
 				x.domain([0, absMaxVal]);
 				y.domain(sorted.sort(function(a,b){
-					return b - a;	
+					// return b - a;	
+					return a;
 				}));
 
 				//chart
@@ -230,7 +231,8 @@ define(['jquery', 'd3js'], function($, ignore){
 				});
 				x.domain([0, relMaxVal]);
 				y.domain(sorted.sort(function(a,b){
-					return b - a;	
+					// return b - a;
+					return a;
 				}));
 
 				//chart
@@ -319,7 +321,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text(function(d) { return d + '%'; });
 				//ruler text
 				chart.select('g.ruler text')
-					.text('percentual de pessoas no estado');
+					.text('percentual de pessoas na faixa de rendimento');
 				//ref line
 				chart.select('g.ref line')
 					.transition().duration(200)

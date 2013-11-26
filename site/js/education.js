@@ -2,17 +2,19 @@ require.config({
     baseUrl: '../js',
     paths: {
         jquery: 'lib/jquery-2.0.3.min',
+        jqueryui: 'lib/jquery-ui-1.10.3.custom.min',
         d3js: 'lib/d3.v3.min'
     },
     urlArgs: 'bust=' + (new Date()).getTime()
 });
 
-require(['jquery', 'menu','graphs/education01', 'graphs/education02', 'graphs/education03'], function($, menu, education01, education02, education03){
+require(['jquery', 'menu', 'notes', 'graphs/education01', 'graphs/education02', 'graphs/education03'], function($, menu, notes, education01, education02, education03){
 	$('document').ready(function() {
 		
 		//initialize menu and settings
 		menu.initializeMain();
 		menu.initializeSettings();
+		notes.set();
 
 		//graph parameters
 		var graph2a = {

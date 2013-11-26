@@ -4,13 +4,18 @@
 	$script = 'education.js';
 	include '../inc/header.php';
 ?>
-
-	<body id="education">
+	
+	<body>
+	
+	<div class="container" id="education">
 
 		<div class="first content">
 			<h1>Impacto da educação na utilização da internet</h1>
 			<hr />
-			<p>Qual a relação entre o fato da pessoa estar estudando, a quantidade de anos de estudo e o tipo de rede de ensino com o acesso à internet?</p>
+			<p>No ano em que diversos estados americanos <a href="http://www.cartacapital.com.br/sociedade/novos-tempo" target="_blank">aboliram a escrita à mão nas escolas</a>, recomendando dar ênfase à digitação ao invés da letra cursiva, é inevitável questionar a relação entre a educação e a utilização do computador, ou mais precisamente, da internet.</p>
+			<p>Quem estuda acessa mais a internet do que aqueles que não estudam? A quantidade de anos de estudo faz alguma diferença?</p>
+			<br/>
+			<p>Os gráficos abaixo foram desenvolvidos buscando mostrar essa relação educação/internet no Brasil de alguns pontos de vista diferentes.</p>
 		</div>
 
 		<div class="graph-container" id="edu-graph1">
@@ -28,7 +33,7 @@
 					<li><a href="#" class="graph-type" data-graph="edu-1b">rede de ensino</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/notes.html" class="has-note icon-note" data-target="#edu-note-graph1">Notas</a>
 			</div>
 		</div>
 
@@ -44,7 +49,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/notes.html" class="has-note icon-note" data-target="#edu-note-graph2">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -54,11 +59,11 @@
 		</div>
 
 		<div class="content">
-			<p>Existe alguma relação entre a taxa de analfabetismo e o acesso à internet?</p>
+			<p>Será que existe alguma relação entre as taxas de acesso à internet com as taxas de analfabetismo? O aumento no acesso a internet nestes últimos anos colaborou com a diminuição do analfabetismo, ou não houve diferença?</p>
 		</div>
 
 		<div class="graph-container" id="edu-graph3">
-			<h2 id="graph3-title">Utilização da internet e taxas de analfabetismo (2005 - 2011)</h2>
+			<h2 id="graph3-title">Taxas de acesso à internet e analfabetismo (2005 - 2011)</h2>
 			<div class="graph"></div>
 			<div class="settings" id="edu-settings3">
 				<ul class="type-list">
@@ -71,7 +76,7 @@
 					<li><a href="#" class="graph-type" data-region="Centro-Oeste">Centro-Oeste</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="annotation icon-pencil">Notas</a>
+				<a href="<?= $root ?>/educacao/notes.html" class="has-note icon-note" data-target="#edu-note-graph3">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -151,6 +156,8 @@
 		</div>
 
 		<?php include '../inc/menu.php'; ?>
+
+	</div><!-- container -->
 
 	</body>
 

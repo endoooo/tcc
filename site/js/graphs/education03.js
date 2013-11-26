@@ -59,7 +59,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('x', chartW + textSpace)
 				.attr('y', chartH + (2 * padding) + (2 * rulerSpace))
 				.attr('text-anchor', 'end')
-				.attr('class', 'x-title gc1');
+				.attr('class', 'x-title gblack');
 
 			//y axes
 			var yAxes = chart.append('g')
@@ -85,7 +85,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				.text('Taxas (%)')
 				.attr('x', textSpace)
 				.attr('y', padding)
-				.attr('class', 'y-title gc1');
+				.attr('class', 'y-title gblack');
 
 			//y ref
 			var ref = chart.append('g')
@@ -95,7 +95,7 @@ define(['jquery', 'd3js'], function($, ignore){
 			ref.append('line')
 				.attr('x1', 0)
 				.attr('y1', chartH)
-				.attr('x2', chartW)
+				.attr('x2', 0)
 				.attr('y2', chartH);
 			//ref text
 			ref.append('text')
@@ -188,8 +188,6 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('r', 4)
 					.attr('class', 'interactive');
 
-				console.log(dataset[0].values);
-
 				//create cat text
 				chart.selectAll('text.cat1').data(dataset[0].values).enter()
 					.append('text')
@@ -227,7 +225,8 @@ define(['jquery', 'd3js'], function($, ignore){
 					.selectAll('circle').data(function(d){ return d.values; })
 					.transition().duration(1000)
 					.attr('cy', function(d){ return y(d['analfabetas %']); })
-					.attr('data-value', function(d){ return d['analfabetas %']; });
+					.attr('data-y-val', function(d){ return d['analfabetas %']; })
+					.attr('data-x-val', function(d){ return d['ano']; });
 
 				//update internet usage lines and circles
 				//lines
@@ -240,7 +239,8 @@ define(['jquery', 'd3js'], function($, ignore){
 					.selectAll('circle').data(function(d){ return d.values; })
 					.transition().duration(1000)
 					.attr('cy', function(d){ return y(d['acessam %']); })
-					.attr('data-value', function(d){ return d['acessam %']; });
+					.attr('data-y-val', function(d){ return d['acessam %']; })
+					.attr('data-x-val', function(d){ return d['ano']; });
 
 				//update cat text
 				chart.selectAll('text.cat1').data(dataset[0].values)
@@ -257,7 +257,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.transition().duration(200)
 					.attr('x1', 0)
 					.attr('y1', chartH)
-					.attr('x2', chartW)
+					.attr('x2', 0)
 					.attr('y2', chartH);
 				//ref text
 				chart.selectAll('g.ref text')
@@ -267,17 +267,19 @@ define(['jquery', 'd3js'], function($, ignore){
 
 				//ref interaction
 				$('#edu-graph3 svg .interactive').on('mouseenter', function(e){
-					var val = $(this).attr('data-value');
+					var yVal = $(this).attr('data-y-val');
+					var xVal = $(this).attr('data-x-val');
 
 					chart.select('g.ref line')
 						.transition().duration(200)
-						.attr('y1', y(val))
-						.attr('y2', y(val));
+						.attr('y1', y(yVal))
+						.attr('x2', x(xVal))
+						.attr('y2', y(yVal));
 
 					chart.select('g.ref text')
-						.text(d3.round(val,2) + '%')
+						.text(d3.round(yVal,2) + '%')
 						.transition().duration(200)
-						.attr('y', y(val));
+						.attr('y', y(yVal));
 				});
 
 			});

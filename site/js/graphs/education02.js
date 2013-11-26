@@ -18,7 +18,7 @@ define(['jquery', 'd3js'], function($, ignore){
 		.rangeRoundBands([0,8], 1, 0);
 
 	//values array
-	var absMaxVal = 132;
+	var absMaxVal = 48;
 	var absValues = [0,absMaxVal*0.25,absMaxVal*0.5,absMaxVal*0.75,absMaxVal];
 	var relMaxVal = 100;
 	var relValues = [0,relMaxVal*0.25,relMaxVal*0.5,relMaxVal*0.75,relMaxVal];
@@ -98,7 +98,8 @@ define(['jquery', 'd3js'], function($, ignore){
 				});
 				x.domain([0, absMaxVal]);
 				y.domain(sorted.sort(function(a,b){
-					return b - a;	
+					// return b - a;
+					return a;
 				}));
 
 				//chart
@@ -230,7 +231,8 @@ define(['jquery', 'd3js'], function($, ignore){
 				});
 				x.domain([0, relMaxVal]);
 				y.domain(sorted.sort(function(a,b){
-					return b - a;	
+					// return b - a;	
+					return a;
 				}));
 
 				//chart
@@ -319,7 +321,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text(function(d) { return d + '%'; });
 				//ruler text
 				chart.select('g.ruler text')
-					.text('percentual de pessoas na classificação');
+					.text('percentual de pessoas no grupo');
 				//ref line
 				chart.select('g.ref line')
 					.transition().duration(200)

@@ -67,7 +67,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				.attr('x', chartW + textSpace)
 				.attr('y', chartH + (2 * padding) + (2 * rulerSpace))
 				.attr('text-anchor', 'end')
-				.attr('class', 'x-title gc1');
+				.attr('class', 'x-title gblack');
 
 			//y axes
 			var yAxes = chart.append('g')
@@ -93,7 +93,7 @@ define(['jquery', 'd3js'], function($, ignore){
 				.text('Acesso à internet (milhões de pessoas)')
 				.attr('x', textSpace)
 				.attr('y', padding)
-				.attr('class', 'y-title gc1');
+				.attr('class', 'y-title gblack');
 
 			//x ref
 			var hRef = chart.append('g')

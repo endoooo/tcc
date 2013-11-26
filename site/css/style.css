@@ -197,7 +197,7 @@ ICONS
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-down:before {
+.icon-arrow-down2:before {
   content: "\e734";
 }
 
@@ -225,16 +225,40 @@ ICONS
   content: "\e6f0";
 }
 
-.icon-arrow-left:before {
-  content: "\e72e";
-}
-
 .icon-pencil:before {
   content: "\e605";
 }
 
 .icon-file-excel:before {
   content: "\e7b5";
+}
+
+.icon-note:before {
+  content: "\e628";
+}
+
+.icon-minus:before {
+  content: "\e701";
+}
+
+.icon-plus:before {
+  content: "\e702";
+}
+
+.icon-arrow-up:before {
+  content: "\e728";
+}
+
+.icon-arrow-right:before {
+  content: "\e72a";
+}
+
+.icon-arrow-down:before {
+  content: "\e72c";
+}
+
+.icon-arrow-left:before {
+  content: "\e72e";
 }
 
 /* ------------------------------ *\
@@ -248,7 +272,6 @@ REUSABLE
 BASE
 \* ------------------------------ */
 html, body {
-  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -261,6 +284,10 @@ body {
   line-height: 1.5em;
   color: #909090;
   background: #f0f0f0;
+}
+
+.container {
+  position: relative;
 }
 
 .content {
@@ -377,6 +404,57 @@ MENU
 }
 
 /* ------------------------------ *\
+NOTES
+\* ------------------------------ */
+#note {
+  display: none;
+  position: absolute;
+  width: 448px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 12px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.3) 0 3px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 12px;
+}
+#note .header {
+  padding: 16px;
+  border-bottom: 1px solid silver;
+  background: white;
+}
+#note .header:hover {
+  background: #f0f0f0;
+  cursor: move;
+}
+#note .header a {
+  display: block;
+  float: right;
+  margin-left: 1em;
+}
+#note .title {
+  float: left;
+  color: black;
+}
+#note .content {
+  overflow: auto;
+  max-height: 30em;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.9);
+}
+#note p {
+  margin-bottom: 0.5em;
+  font-size: 0.875em;
+}
+#note p.headline {
+  text-transform: uppercase;
+  color: black;
+}
+#note hr {
+  height: 2px;
+}
+#note img {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+/* ------------------------------ *\
 COVER
 \* ------------------------------ */
 #cover {
@@ -451,7 +529,7 @@ GRAPH
   width: 1em;
   height: 1em;
 }
-.graph-container .annotation {
+.graph-container .has-note {
   display: inline-block;
   padding: 8px 16px;
   border: 1px solid black;
@@ -462,11 +540,11 @@ GRAPH
   border-radius: 8px;
   color: black;
 }
-.graph-container .annotation:hover {
+.graph-container .has-note:hover {
   border-color: #42b3c6;
   color: #42b3c6;
 }
-.graph-container .annotation:before {
+.graph-container .has-note:before {
   margin-right: 0.5em;
   vertical-align: middle;
 }
