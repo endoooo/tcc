@@ -1,7 +1,7 @@
 <?php
-	$area = 'education';
-	$title = 'A educação e o acesso a internet | Visualizando o PNAD Internet 2011';
-	$script = 'education.js';
+	$area = 'general';
+	$title = 'Visão geral sobre o acesso à internet no Brasil | Visualizando o PNAD Internet 2011';
+	$script = 'general.js';
 	include '../inc/header.php';
 ?>
 	
@@ -10,7 +10,7 @@
 	<div class="container" id="education">
 
 		<div class="first content">
-			<h1>Impacto da educação na utilização da internet</h1>
+			<h1>O cenário da utilização da internet no Brasil</h1>
 			<hr />
 			<p>No ano em que diversos estados americanos <a href="http://www.cartacapital.com.br/sociedade/novos-tempo" target="_blank">aboliram a escrita à mão nas escolas</a>, recomendando dar ênfase à digitação ao invés da letra cursiva, é inevitável questionar a relação entre a educação e a utilização do computador, ou mais precisamente, da internet.</p>
 			<p>Quem estuda acessa mais a internet do que aqueles que não estudam? A quantidade de anos de estudo faz alguma diferença?</p>

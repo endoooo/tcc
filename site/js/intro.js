@@ -2,17 +2,18 @@ require.config({
     baseUrl: 'js',
     paths: {
         jquery: 'lib/jquery-2.0.3.min',
+        jqueryui: 'lib/jquery-ui-1.10.3.custom.min',
         d3js: 'lib/d3.v3.min'
     },
     urlArgs: 'bust=' + (new Date()).getTime()
 });
 
-require(['jquery', 'menu'], function($, menu){
+require(['jquery', 'menu', 'notes'], function($, menu, notes){
 	$('document').ready(function() {
 		
-		//initialize menu and settings
+		//initialize menu and notes
 		menu.initializeMain();
-		menu.initializeSettings();
+		notes.set();
 
 		//hide menu
 		$('#menu-link').hide();

@@ -341,7 +341,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.text(function(d) { return d + '%'; });
 				//ruler text
 				chart.select('g.ruler text')
-					.text('percentual de pessoas na classificação');
+					.text('percentual de pessoas que utilizam a internet');
 				//ref line
 				chart.select('g.ref line')
 					.transition().duration(200)

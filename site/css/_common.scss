@@ -166,12 +166,34 @@ a {
 }
     a:hover { color: black }
 
+.has-note {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid black;
+    @include border-radius(8px);
+    color: black;
+    &:hover {
+        border-color: $main;
+        color: $main;
+    }
+    &:before {
+        margin-right: 0.5em;
+        vertical-align: middle;
+    }
+}
+
 .note-indicator {
     font-size: 0.6em;
     vertical-align: super;
     color: $main;
 }
 .num { color: $main }
+
+.mini-title {
+    margin-bottom: 1em;
+    text-transform: uppercase;
+    color: black;
+}
 
 /* ------------------------------ *\
 ICONS
@@ -201,7 +223,6 @@ ICONS
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-arrow-down2:before { content: "\e734" }
 .icon-link:before { content: "\e6c3" }
 .icon-info:before { content: "\e6f7" }
 .icon-close:before { content: "\e6fd" }
@@ -213,12 +234,18 @@ ICONS
 .icon-note:before { content: "\e628" }
 .icon-minus:before { content: "\e701" }
 .icon-plus:before { content: "\e702" }
+.icon-location:before { content: "\e642" }
+.icon-coin:before { content: "\e638" }
+.icon-book:before { content: "\e61f" }
+.icon-users2:before { content: "\e673" }
+.icon-search:before { content: "\e67f" }
 
 //arrows
 .icon-arrow-up:before { content: "\e728" }
 .icon-arrow-right:before { content: "\e72a" }
 .icon-arrow-down:before { content: "\e72c" }
 .icon-arrow-left:before { content: "\e72e" }
+.icon-arrow-down2:before { content: "\e734" }
 
 
 /* ------------------------------ *\

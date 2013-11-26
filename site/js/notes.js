@@ -20,19 +20,21 @@ define(['jquery', 'jqueryui'], function($, jqui){
 				// ajax target url
 				var url = $(this).attr('href') + ' ' + $(this).attr('data-target');
 
-				// ajax call
-				content.load(url, function(){
+				if ($(this).attr('data-target') !== 'null') {
+					// ajax call
+					content.load(url, function(){
 
-					// show note on callback
-					note.css({
-						top: $(window).scrollTop() + 16,
-						left: 'auto',
-						right: 16
-					}).fadeIn();
-					note.find('.collapse').removeClass('icon-plus').addClass('icon-minus');
-					content.show();
-					
-				})
+						// show note on callback
+						note.css({
+							top: $(window).scrollTop() + 16,
+							left: 'auto',
+							right: 16
+						}).fadeIn();
+						note.find('.collapse').removeClass('icon-plus').addClass('icon-minus');
+						content.show();
+						
+					})
+				}
 
 				e.preventDefault();
 			});

@@ -12,7 +12,9 @@
 		<div class="first content">
 			<h1>A utilização da internet e a renda da população</h1>
 			<hr/>
-			<p>Qual a relação entre renda e internet?</p>
+			<p>Você já ouviu falar sobre <a href="http://pt.wikipedia.org/wiki/Neutralidade_da_rede" target="_blank">neutralidade da rede</a>? É uma filosofia de democratização da rede, que visa garantir acesso igualitário de informações a todos, independentemente da contratação de serviços de internet e banda larga. Existe no Brasil um intenso debate acerca do <a href="http://pt.wikipedia.org/wiki/Marco_Civil_da_Internet" target="_blank">Marco Civil da Internet</a>, um projeto de lei que trata do tema da neutralidade da rede (entre outros), pois caso a neutralidade da rede seja imposta, provedores de serviços de internet e banda larga seriam diretamente afetados.</p>
+			<br/>
+			<p>Os gráficos abaixo procuram mostrar a relação entre a renda da população e a internet. Será que de fato existe uma relação entre o poder aquisitivo das pessoas e o acesso à internet/informação?</p>
 		</div>
 
 		<div class="graph-container" id="inc-graph1">
@@ -31,7 +33,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/renda/notas.html" class="has-note icon-note" data-target="#inc-note-graph1">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -57,7 +59,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/renda/notas.html" class="has-note icon-note" data-target="#inc-note-graph2">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -72,7 +74,9 @@
 		</div>
 
 		<div class="content">
-			<p>Qual a relação entre ocupação e internet?</p>
+			<p>O gráfico abaixo mostra a relação entre diversas visões da situação de ocupação das pessoas (setor em que trabalha, posição que ocupa) e a utilização da internet.</p>
+			<br/>
+			<p>É possível dizer que alguns cenários são favoráveis à utilização da internet enquanto outros são desfavoráveis?</p>
 		</div>
 
 		<div class="graph-container" id="inc-graph3">
@@ -92,7 +96,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/renda/notas.html" class="has-note icon-note" data-target="#inc-note-graph3">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -112,7 +116,7 @@
 			</div>
 			<p class="obs">Valores em milhões de pessoas</p>
 			<div class="settings" id="inc-settings4">
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/renda/notas.html" class="has-note icon-note" data-target="#edu-note-graph4">Notas</a>
 			</div>
 		</div>
 

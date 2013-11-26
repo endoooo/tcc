@@ -163,6 +163,26 @@ a:hover {
   color: black;
 }
 
+.has-note {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  color: black;
+}
+.has-note:hover {
+  border-color: #42b3c6;
+  color: #42b3c6;
+}
+.has-note:before {
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
 .note-indicator {
   font-size: 0.6em;
   vertical-align: super;
@@ -171,6 +191,12 @@ a:hover {
 
 .num {
   color: #42b3c6;
+}
+
+.mini-title {
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  color: black;
 }
 
 /* ------------------------------ *\
@@ -195,10 +221,6 @@ ICONS
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.icon-arrow-down2:before {
-  content: "\e734";
 }
 
 .icon-link:before {
@@ -245,6 +267,26 @@ ICONS
   content: "\e702";
 }
 
+.icon-location:before {
+  content: "\e642";
+}
+
+.icon-coin:before {
+  content: "\e638";
+}
+
+.icon-book:before {
+  content: "\e61f";
+}
+
+.icon-users2:before {
+  content: "\e673";
+}
+
+.icon-search:before {
+  content: "\e67f";
+}
+
 .icon-arrow-up:before {
   content: "\e728";
 }
@@ -259,6 +301,10 @@ ICONS
 
 .icon-arrow-left:before {
   content: "\e72e";
+}
+
+.icon-arrow-down2:before {
+  content: "\e734";
 }
 
 /* ------------------------------ *\
@@ -297,6 +343,37 @@ body {
   padding-top: 4em;
 }
 
+.link-box {
+  padding: 0 4em 4em;
+}
+.link-box li {
+  display: block;
+  float: left;
+  min-width: 10em;
+  margin-right: 1em;
+}
+.link-box a {
+  display: block;
+  padding: 1em;
+  border: 1px solid black;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border-radius: 8px;
+  text-align: center;
+  color: black;
+}
+.link-box a:hover {
+  border-color: #42b3c6;
+  color: #42b3c6;
+}
+.link-box .icon {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 2em;
+}
+
 .link-list {
   margin-top: 2em;
   background: #e0e0e0;
@@ -326,6 +403,17 @@ body {
 }
 .link-list a:before {
   margin-right: 0.5em;
+}
+
+ul.list {
+  padding-top: 1em;
+  border-top: 1px solid silver;
+}
+ul.list li {
+  padding-bottom: 1em;
+  border-bottom: 1px solid silver;
+  margin-bottom: 1em;
+  font-size: 0.75em;
 }
 
 /* ------------------------------ *\
@@ -457,9 +545,20 @@ NOTES
 /* ------------------------------ *\
 COVER
 \* ------------------------------ */
+#intro h2 {
+  margin-bottom: 0;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  text-transform: uppercase;
+  color: black;
+}
+
 #cover {
   min-height: 100%;
   background: #42b3c6 url("../img/connections.png") no-repeat center;
+}
+#cover hr {
+  background: white;
 }
 #cover #start {
   display: inline-block;
@@ -472,6 +571,24 @@ COVER
 }
 #cover h1, #cover p {
   color: white;
+}
+
+/* ------------------------------ *\
+ABOUT
+\* ------------------------------ */
+#about .profile img {
+  display: block;
+  float: left;
+  margin-right: 1em;
+}
+#about .profile .mini-title {
+  padding-top: 0.5em;
+  margin-bottom: 0;
+}
+#about .profile hr {
+  width: 1em;
+  height: 1px;
+  margin: 0.5em 0;
 }
 
 /* ------------------------------ *\
@@ -528,25 +645,6 @@ GRAPH
   right: 1em;
   width: 1em;
   height: 1em;
-}
-.graph-container .has-note {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid black;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
-  border-radius: 8px;
-  color: black;
-}
-.graph-container .has-note:hover {
-  border-color: #42b3c6;
-  color: #42b3c6;
-}
-.graph-container .has-note:before {
-  margin-right: 0.5em;
-  vertical-align: middle;
 }
 .graph-container .info {
   font-size: 0.75em;
@@ -697,6 +795,14 @@ text.cat {
 
 .gblack {
   fill: black;
+}
+
+/* ------------------------------ *\
+INTRO
+\* ------------------------------ */
+#intro-graph img {
+  display: block;
+  width: 100%;
 }
 
 /* ------------------------------ *\
