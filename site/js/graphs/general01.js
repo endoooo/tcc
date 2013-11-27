@@ -23,7 +23,7 @@ define(['jquery', 'd3js'], function($, ignore){
 	//values array
 	var absMaxVal = 168;
 	var absValues = [0,absMaxVal*0.25,absMaxVal*0.5,absMaxVal*0.75,absMaxVal];
-	var grwMaxVal = 108;
+	var grwMaxVal = 48;
 	var grwValues = [0,grwMaxVal*0.25,grwMaxVal*0.5,grwMaxVal*0.75,grwMaxVal];
 
 	return {

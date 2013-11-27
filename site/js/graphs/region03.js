@@ -4,12 +4,12 @@ define(['jquery', 'd3js'], function($, ignore){
 
 	//graph config
 	var graphHeight = 400;
-	var graphWidth = 560;
 	var catSpace = 128;
 	var subSpace = 32;
 	var radius = 2;
 	var w = $('#reg-graph3 .graph').width();
 	var h = graphHeight + (2 * subSpace);
+	var graphWidth = w - (2*catSpace);
 
 	//scales
 	var y = d3.scale.linear()

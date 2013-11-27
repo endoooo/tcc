@@ -8,7 +8,7 @@ require.config({
     urlArgs: 'bust=' + (new Date()).getTime()
 });
 
-require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes, general1){
+require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes, general01){
 	$('document').ready(function() {
 		
 		//initialize menu and notes
@@ -28,8 +28,8 @@ require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes
 		}
 
 		//initialize graphs
-		general1.initializeGraph(function(){
-			general1.activateAbsGraph(graph1a, 'Brasil');
+		general01.initializeGraph(function(){
+			general01.activateAbsGraph(graph1a, 'Brasil');
 		});
 
 		//bind settings control to graph01
@@ -41,9 +41,9 @@ require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes
 
 			var type = $('#gen-settings1 .value-list .active a').data('value');
 			if (type === 'absolute')
-				general1.activateAbsGraph(graph1a, region);
+				general01.activateAbsGraph(graph1a, region);
 			else
-				general1.activateGrwGraph(graph1a, region);
+				general01.activateGrwGraph(graph1a, region);
 
 			e.preventDefault();			
 		});
@@ -62,7 +62,7 @@ require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes
 
 		// 	var region = $(this).data('region');
 
-		// 	general1.activateGraph(graph1a, region);
+		// 	general01.activateGraph(graph1a, region);
 
 		// 	e.preventDefault();			
 		// });

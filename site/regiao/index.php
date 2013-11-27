@@ -78,7 +78,12 @@
 					<li class="active"><a href="#" class="graph-cat" data-detail="none" data-connection="0">nenhum</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/regiao/notas.html" class="has-note icon-note" data-target="#reg-note-graph3">Notas</a>
+				<br/><br/>
+				<p class="info">
+					<strong class="icon-info">Info</strong>
+					O PNAD não contemplou todos os estados neste levantamento.
+				</p>
 			</div>
 		</div>
 
