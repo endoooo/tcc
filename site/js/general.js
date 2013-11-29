@@ -8,7 +8,7 @@ require.config({
     urlArgs: 'bust=' + (new Date()).getTime()
 });
 
-require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes, general01){
+require(['jquery', 'menu', 'notes', 'graphs/general01', 'graphs/general02'], function($, menu, notes, general01, general02){
 	$('document').ready(function() {
 		
 		//initialize menu and notes
@@ -18,11 +18,6 @@ require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes
 		//graph parameters
 		var graph1a = {
 			titleText: 'População e acesso à internet - Brasil (2005 - 2011)',
-			csvPath: '../visao-geral/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
-			parameter: 'local'
-		}
-		var graph1b = {
-			titleText: 'Taxas de analfabetismo e acesso à internet - grandes regiões (2005 - 2011)',
 			csvPath: '../visao-geral/data/01a.csv' + '?' + Math.floor(Math.random() * 1000),
 			parameter: 'local'
 		}
@@ -52,6 +47,18 @@ require(['jquery', 'menu', 'notes', 'graphs/general01'], function($, menu, notes
 			$(this).parent('li').addClass('active');
 
 			$('#gen-settings1 .type-list .active .graph-type').click();
+
+			e.preventDefault();			
+		});
+
+		//bind settings control to graph02
+		$('#gen-settings2 .graph-type').on('click', function(e){
+			$(this).parent('li').siblings().removeClass('active');
+			$(this).parent('li').addClass('active');
+
+			var type = $(this).attr('data-view');
+
+			general02.activateGraph(type);
 
 			e.preventDefault();			
 		});

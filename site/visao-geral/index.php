@@ -86,11 +86,11 @@
 			<div class="settings" id="gen-settings2">
 				<ul class="type-list">
 					<span class="setting-title">Visualizar:</span>
-					<li class="active"><a href="#" class="graph-type">Educação</a></li>
-					<li><a href="#" class="graph-type">Renda</a></li>
-					<li><a href="#" class="graph-type">Região</a></li>
-					<li><a href="#" class="graph-type">Idade</a></li>
-					<li><a href="#" class="graph-type">Sexo</a></li>
+					<li class="active"><a href="#" class="graph-type" data-view="edu">Educação</a></li>
+					<li><a href="#" class="graph-type" data-view="inc">Renda</a></li>
+					<li><a href="#" class="graph-type" data-view="reg">Região</a></li>
+					<li><a href="#" class="graph-type" data-view="age">Idade</a></li>
+					<li><a href="#" class="graph-type" data-view="gen">Sexo</a></li>
 				</ul>
 				<hr/>
 				<a href="<?= $root ?>/visao-geral/notas.html" class="has-note icon-note" data-target="#gen-note-graph1">Notas</a>

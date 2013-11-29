@@ -45,8 +45,8 @@
 		<div class="graph-container" id="reg-graph2">
 			<h2 class="title">Mapa da utilização da internet no Brasil (2011)</h2>
 			<div class="graph">
-				<img src="<?= $root ?>/img/choropleth-abs.png" alt="utilização da internet - valores absolutos" id="map-abs" class="choropleth-map" />
-				<img src="<?= $root ?>/img/choropleth-rel.png" alt="utilização da internet - valores relativos" id="map-rel" class="choropleth-map" />
+				<img src="<?= $root ?>/img/choropleth-rel.svg" alt="utilização da internet - valores relativos" id="map-rel" class="choropleth-map" />
+				<img src="<?= $root ?>/img/choropleth-abs.svg" alt="utilização da internet - valores absolutos" id="map-abs" class="choropleth-map" />
 			</div>
 			<div class="settings" id="reg-settings2">
 				<ul>

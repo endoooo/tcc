@@ -215,16 +215,34 @@ GENERAL
 		transition: all 1s ease;
 	}
 	.svg img.edu {
-		-ms-transform:rotate(72deg);
-		-webkit-transform:rotate(72deg);
-		-moz-transform:rotate(72deg);
-		transform: rotate(72deg);
+		-ms-transform:rotate(288deg);
+		-webkit-transform:rotate(288deg);
+		-moz-transform:rotate(288deg);
+		transform: rotate(288deg);
+	}
+	.svg img.inc {
+		-ms-transform:rotate(216deg);
+		-webkit-transform:rotate(216deg);
+		-moz-transform:rotate(216deg);
+		transform: rotate(216deg);
 	}
 	.svg img.reg {
 		-ms-transform:rotate(144deg);
 		-webkit-transform:rotate(144deg);
 		-moz-transform:rotate(144deg);
 		transform: rotate(144deg);
+	}
+	.svg img.age {
+		-ms-transform:rotate(72deg);
+		-webkit-transform:rotate(72deg);
+		-moz-transform:rotate(72deg);
+		transform: rotate(72deg);
+	}
+	.svg img.gen {
+		-ms-transform:rotate(0);
+		-webkit-transform:rotate(0);
+		-moz-transform:rotate(0);
+		transform: rotate(0);
 	}
 	.svg img.txt {
 		position: absolute;
