@@ -314,6 +314,14 @@ REUSABLE
   clear: both;
 }
 
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
 /* ------------------------------ *\
 BASE
 \* ------------------------------ */
@@ -576,19 +584,19 @@ COVER
 /* ------------------------------ *\
 ABOUT
 \* ------------------------------ */
+#about .profile {
+  position: relative;
+  padding-left: 136px;
+}
 #about .profile img {
   display: block;
-  float: left;
-  margin-right: 1em;
-}
-#about .profile .mini-title {
-  padding-top: 0.5em;
-  margin-bottom: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 #about .profile hr {
   width: 1em;
   height: 1px;
-  margin: 0.5em 0;
 }
 
 /* ------------------------------ *\
@@ -826,6 +834,43 @@ GENERAL
 #gen-graph1 .line2,
 #gen-graph1 .circles2 circle {
   stroke: #c8c8b4;
+}
+
+#gen-graph2 .svg {
+  position: relative;
+  float: left;
+  width: 50%;
+}
+#gen-graph2 .svg img {
+  display: block;
+}
+#gen-graph2 .svg img.graph {
+  width: 100%;
+  -ms-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  transition: all 1s ease;
+}
+#gen-graph2 .svg img.edu {
+  -ms-transform: rotate(72deg);
+  -webkit-transform: rotate(72deg);
+  -moz-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+#gen-graph2 .svg img.reg {
+  -ms-transform: rotate(144deg);
+  -webkit-transform: rotate(144deg);
+  -moz-transform: rotate(144deg);
+  transform: rotate(144deg);
+}
+#gen-graph2 .svg img.txt {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+#gen-graph2 .table {
+  float: right;
+  width: 45%;
 }
 
 /* ------------------------------ *\

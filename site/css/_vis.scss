@@ -200,6 +200,42 @@ GENERAL
 		stroke: $supp2;
 	}
 }
+#gen-graph2 {
+	.svg {
+		position: relative;
+		float: left;
+		width: 50%;
+	}
+	.svg img{ display: block }
+	.svg img.graph {
+		width: 100%;
+		-ms-transition: all 1s ease;
+		-webkit-transition: all 1s ease;
+		-moz-transition: all 1s ease;
+		transition: all 1s ease;
+	}
+	.svg img.edu {
+		-ms-transform:rotate(72deg);
+		-webkit-transform:rotate(72deg);
+		-moz-transform:rotate(72deg);
+		transform: rotate(72deg);
+	}
+	.svg img.reg {
+		-ms-transform:rotate(144deg);
+		-webkit-transform:rotate(144deg);
+		-moz-transform:rotate(144deg);
+		transform: rotate(144deg);
+	}
+	.svg img.txt {
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+	.table {
+		float: right;
+		width: 45%;
+	}
+}
 
 
 /* ------------------------------ *\

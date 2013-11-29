@@ -107,15 +107,6 @@
 						localidade
 					</a>
 				</li>
-				<li>
-					<a href="<?= $root ?>/regiao/">
-						<div class="icon">
-							<span class="icon-users2"></span>
-						</div>
-						Internet e<br/>
-						sexo/idade
-					</a>
-				</li>
 				<div class="clear"></div>
 			</ul>
 		</nav>

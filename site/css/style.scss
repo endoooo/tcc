@@ -255,19 +255,17 @@ ABOUT
 \* ------------------------------ */
 #about {
 	.profile {
+		position: relative;
+		padding-left: 136px;
 		img {
 			display: block;
-			float: left;
-			margin-right: 1em;
-		}
-		.mini-title {
-			padding-top: 0.5em;
-			margin-bottom: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 		hr {
 			width: 1em;
 			height: 1px;
-			margin: 0.5em 0;
 		}
 	}
 

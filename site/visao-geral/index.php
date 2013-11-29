@@ -44,6 +44,64 @@
 			</div>
 		</div>
 
+		<br/>
+
+		<div class="graph-container" id="gen-graph2">
+			<h2 id="graph2-title">Qual o perfil do usuário da internet no Brasil?</h2>
+			<div class="graph">
+				<div class="svg">
+					<img src="<?= $root ?>/img/gen2a.svg" alt="utilização da internet - perfil" class="graph" />
+					<img src="<?= $root ?>/img/gen2a-txt.svg" alt="utilização da internet - perfil" class="txt" />
+				</div>
+				<div class="table">
+					<table>
+						<tr>
+							<th>Anos de estudo</th>
+							<th>Percentual dos usuários</th>
+						</tr>
+						<tr>
+							<td>4 anos ou menos</td>
+							<td>5.6%</td>
+						</tr>
+						<tr>
+							<td>4 a 7 anos</td>
+							<td>18.1%</td>
+						</tr>
+						<tr>
+							<td>8 a 10 anos</td>
+							<td>19.1%</td>
+						</tr>
+						<tr>
+							<td>11 a 14 anos</td>
+							<td>41.5%</td>
+						</tr>
+						<tr>
+							<td>15 anos ou mais</td>
+							<td>15.7%</td>
+						</tr>
+					</table>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="settings" id="gen-settings2">
+				<ul class="type-list">
+					<span class="setting-title">Visualizar:</span>
+					<li class="active"><a href="#" class="graph-type">Educação</a></li>
+					<li><a href="#" class="graph-type">Renda</a></li>
+					<li><a href="#" class="graph-type">Região</a></li>
+					<li><a href="#" class="graph-type">Idade</a></li>
+					<li><a href="#" class="graph-type">Sexo</a></li>
+				</ul>
+				<hr/>
+				<a href="<?= $root ?>/visao-geral/notas.html" class="has-note icon-note" data-target="#gen-note-graph1">Notas</a>
+				<br/><br/>
+				<p class="info">
+					<strong class="icon-point-up">Interação</strong>
+					Passe o mouse sobre o ponto para ver seu valor exato.
+				</p>
+			</div>
+		</div>
+
 		<div class="content link-list">
 			<h3><span class="icon-link"></span> Referências</h3>
 			<ul>

@@ -31,7 +31,7 @@
 					<li><a href="#" class="graph-value" data-value="absolute">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/regiao/notas.html" class="has-note icon-note" data-target="#reg-note-graph1">Notas</a>
 				<br/><br/>
 				<p class="info">
 					<strong class="icon-point-up">Interação</strong>
@@ -55,7 +55,7 @@
 					<li><a href="#" class="graph-value" data-map="map-abs">absolutos</a></li>
 				</ul>
 				<hr/>
-				<a href="<?= $root ?>/educacao/estudo-vs-internet/" class="has-note icon-note">Notas</a>
+				<a href="<?= $root ?>/regiao/notas.html" class="has-note icon-note" data-target="#reg-note-graph2">Notas</a>
 			</div>
 		</div>
 

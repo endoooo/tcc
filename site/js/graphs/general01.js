@@ -157,7 +157,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y2', chartH)
 					.attr('stroke', 'black');
 
-				//create illiteracy lines and circles
+				//create population lines and circles
 				//lines
 				chart.selectAll('path.line2').data(dataset).enter()
 					.append('path')
@@ -195,6 +195,24 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('r', 4)
 					.attr('class', 'interactive');
 
+				//create cat text
+				chart.selectAll('text.cat1').data(dataset[0].values).enter()
+					.append('text')
+					.filter(function(d){ return d.ano === '2011'; })
+					.text('acesso à internet')
+					.attr('x', function(d){ return x(d.ano) + textSpace; })
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', padding)
+					.attr('class', 'cat cat1');
+				chart.selectAll('text.cat2').data(dataset[0].values).enter()
+					.append('text')
+					.filter(function(d){ return d.ano === '2011'; })
+					.text('população')
+					.attr('x', function(d){ return x(d.ano) + textSpace; })
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', padding)
+					.attr('class', 'cat cat2');
+
 				//update differences lines
 				chart.select('g.dif').data(dataset)
 					.selectAll('line').data(function(d){ return d.values; })
@@ -202,7 +220,7 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('y1', function(d){ return y(d['acessam']); })
 					.attr('y2', function(d){ return y(d['população']); });
 
-				//update illiteracy lines and circles
+				//update population lines and circles
 				//lines
 				chart.select('path.line2').data(dataset)
 					.transition().duration(1000)
@@ -229,6 +247,16 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('cy', function(d){ return y(d['acessam']); })
 					.attr('data-y-val', function(d){ return d['acessam']; })
 					.attr('data-x-val', function(d){ return d['ano']; });
+
+				//update cat text
+				chart.selectAll('text.cat1').data(dataset[0].values)
+					.filter(function(d){ return d.ano === '2011'; })
+					.transition().duration(1000)
+					.attr('y', function(d){ return y(d['acessam']) + (2 * padding); });
+				chart.selectAll('text.cat2').data(dataset[0].values)
+					.filter(function(d){ return d.ano === '2011'; })
+					.transition().duration(1000)
+					.attr('y', function(d){ return y(d['população']) + (2 * padding); });
 
 				//axes text
 				d3.select('g.y-axes').selectAll('text').data(absValues)
@@ -350,6 +378,24 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('r', 4)
 					.attr('class', 'interactive');
 
+				//create cat text
+				chart.selectAll('text.cat1').data(dataset[0].values).enter()
+					.append('text')
+					.filter(function(d){ return d.ano === '2011'; })
+					.text('acesso à internet')
+					.attr('x', function(d){ return x(d.ano) + textSpace; })
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', padding)
+					.attr('class', 'cat cat1');
+				chart.selectAll('text.cat2').data(dataset[0].values).enter()
+					.append('text')
+					.filter(function(d){ return d.ano === '2011'; })
+					.text('população')
+					.attr('x', function(d){ return x(d.ano) + textSpace; })
+					.attr('y', chartH + (2 * padding))
+					.attr('dx', padding)
+					.attr('class', 'cat cat2');
+
 				//update differences lines
 				chart.select('g.dif').data(dataset)
 					.selectAll('line').data(function(d){ return d.values; })
@@ -384,6 +430,16 @@ define(['jquery', 'd3js'], function($, ignore){
 					.attr('cy', function(d){ return y(d['crescimento acesso']); })
 					.attr('data-y-val', function(d){ return d['crescimento acesso']; })
 					.attr('data-x-val', function(d){ return d['ano']; });
+
+				//update cat text
+				chart.selectAll('text.cat1').data(dataset[0].values)
+					.filter(function(d){ return d.ano === '2011'; })
+					.transition().duration(1000)
+					.attr('y', function(d){ return y(d['crescimento acesso']) + (2 * padding); });
+				chart.selectAll('text.cat2').data(dataset[0].values)
+					.filter(function(d){ return d.ano === '2011'; })
+					.transition().duration(1000)
+					.attr('y', function(d){ return y(d['crescimento população']) + (2 * padding); });
 
 				//axes text
 				d3.select('g.y-axes').selectAll('text').data(grwValues)
