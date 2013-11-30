@@ -26,6 +26,7 @@ require(['jquery', 'menu', 'notes', 'graphs/general01', 'graphs/general02'], fun
 		general01.initializeGraph(function(){
 			general01.activateAbsGraph(graph1a, 'Brasil');
 		});
+		$('#gen-graph2 .edu').addClass('active').show();
 
 		//bind settings control to graph01
 		$('#gen-settings1 .graph-type').on('click', function(e){

@@ -836,59 +836,67 @@ GENERAL
   stroke: #c8c8b4;
 }
 
-#gen-graph2 .svg {
+#gen-graph2 .roulette {
   position: relative;
-  float: left;
-  width: 50%;
+  width: 300px;
+  margin: 0 auto;
 }
-#gen-graph2 .svg img {
+#gen-graph2 .roulette img {
   display: block;
 }
-#gen-graph2 .svg img.graph {
+#gen-graph2 .roulette img.graph {
   width: 100%;
-  -ms-transition: all 1s ease;
-  -webkit-transition: all 1s ease;
-  -moz-transition: all 1s ease;
-  transition: all 1s ease;
+  -ms-transition: all 1.5s ease;
+  -webkit-transition: all 1.5s ease;
+  -moz-transition: all 1.5s ease;
+  transition: all 1.5s ease;
 }
-#gen-graph2 .svg img.edu {
-  -ms-transform: rotate(288deg);
-  -webkit-transform: rotate(288deg);
-  -moz-transform: rotate(288deg);
-  transform: rotate(288deg);
+#gen-graph2 .roulette img.edu {
+  -ms-transform: rotate();
+  -webkit-transform: rotate();
+  -moz-transform: rotate();
+  transform: rotate();
 }
-#gen-graph2 .svg img.inc {
-  -ms-transform: rotate(216deg);
-  -webkit-transform: rotate(216deg);
-  -moz-transform: rotate(216deg);
-  transform: rotate(216deg);
-}
-#gen-graph2 .svg img.reg {
-  -ms-transform: rotate(144deg);
-  -webkit-transform: rotate(144deg);
-  -moz-transform: rotate(144deg);
-  transform: rotate(144deg);
-}
-#gen-graph2 .svg img.age {
+#gen-graph2 .roulette img.inc {
   -ms-transform: rotate(72deg);
   -webkit-transform: rotate(72deg);
   -moz-transform: rotate(72deg);
   transform: rotate(72deg);
 }
-#gen-graph2 .svg img.gen {
-  -ms-transform: rotate(0);
-  -webkit-transform: rotate(0);
-  -moz-transform: rotate(0);
-  transform: rotate(0);
+#gen-graph2 .roulette img.reg {
+  -ms-transform: rotate(144deg);
+  -webkit-transform: rotate(144deg);
+  -moz-transform: rotate(144deg);
+  transform: rotate(144deg);
 }
-#gen-graph2 .svg img.txt {
+#gen-graph2 .roulette img.age {
+  -ms-transform: rotate(216deg);
+  -webkit-transform: rotate(216deg);
+  -moz-transform: rotate(216deg);
+  transform: rotate(216deg);
+}
+#gen-graph2 .roulette img.gen {
+  -ms-transform: rotate(288deg);
+  -webkit-transform: rotate(288deg);
+  -moz-transform: rotate(288deg);
+  transform: rotate(288deg);
+}
+#gen-graph2 .roulette img.txt {
   position: absolute;
   top: 0;
   width: 100%;
 }
-#gen-graph2 .table {
-  float: right;
-  width: 45%;
+#gen-graph2 .vis {
+  display: none;
+  margin-top: 1em;
+}
+#gen-graph2 .vis h3 {
+  text-align: center;
+  color: #909090;
+}
+#gen-graph2 .vis img {
+  display: block;
+  width: 100%;
 }
 
 /* ------------------------------ *\

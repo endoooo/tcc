@@ -201,57 +201,65 @@ GENERAL
 	}
 }
 #gen-graph2 {
-	.svg {
+	.roulette {
 		position: relative;
-		float: left;
-		width: 50%;
+		width: 300px;
+		margin: 0 auto;
 	}
-	.svg img{ display: block }
-	.svg img.graph {
+	.roulette img{ display: block }
+	.roulette img.graph {
 		width: 100%;
-		-ms-transition: all 1s ease;
-		-webkit-transition: all 1s ease;
-		-moz-transition: all 1s ease;
-		transition: all 1s ease;
+		-ms-transition: all 1.5s ease;
+		-webkit-transition: all 1.5s ease;
+		-moz-transition: all 1.5s ease;
+		transition: all 1.5s ease;
 	}
-	.svg img.edu {
-		-ms-transform:rotate(288deg);
-		-webkit-transform:rotate(288deg);
-		-moz-transform:rotate(288deg);
-		transform: rotate(288deg);
+	.roulette img.edu {
+		-ms-transform:rotate();
+		-webkit-transform:rotate();
+		-moz-transform:rotate();
+		transform: rotate();
 	}
-	.svg img.inc {
-		-ms-transform:rotate(216deg);
-		-webkit-transform:rotate(216deg);
-		-moz-transform:rotate(216deg);
-		transform: rotate(216deg);
-	}
-	.svg img.reg {
-		-ms-transform:rotate(144deg);
-		-webkit-transform:rotate(144deg);
-		-moz-transform:rotate(144deg);
-		transform: rotate(144deg);
-	}
-	.svg img.age {
+	.roulette img.inc {
 		-ms-transform:rotate(72deg);
 		-webkit-transform:rotate(72deg);
 		-moz-transform:rotate(72deg);
 		transform: rotate(72deg);
 	}
-	.svg img.gen {
-		-ms-transform:rotate(0);
-		-webkit-transform:rotate(0);
-		-moz-transform:rotate(0);
-		transform: rotate(0);
+	.roulette img.reg {
+		-ms-transform:rotate(144deg);
+		-webkit-transform:rotate(144deg);
+		-moz-transform:rotate(144deg);
+		transform: rotate(144deg);
 	}
-	.svg img.txt {
+	.roulette img.age {
+		-ms-transform:rotate(216deg);
+		-webkit-transform:rotate(216deg);
+		-moz-transform:rotate(216deg);
+		transform: rotate(216deg);
+	}
+	.roulette img.gen {
+		-ms-transform:rotate(288deg);
+		-webkit-transform:rotate(288deg);
+		-moz-transform:rotate(288deg);
+		transform: rotate(288deg);
+	}
+	.roulette img.txt {
 		position: absolute;
 		top: 0;
 		width: 100%;
 	}
-	.table {
-		float: right;
-		width: 45%;
+	.vis {
+		display: none;
+		margin-top: 1em;
+	}
+	.vis h3 {
+		text-align: center;
+		color: $c1;
+	}
+	.vis img {
+		display: block;
+		width: 100%;
 	}
 }
 
