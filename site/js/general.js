@@ -64,17 +64,6 @@ require(['jquery', 'menu', 'notes', 'graphs/general01', 'graphs/general02'], fun
 			e.preventDefault();			
 		});
 
-		// $('#gen-settings1 .graph-type').on('click', function(e){
-		// 	$(this).parent('li').siblings().removeClass('active');
-		// 	$(this).parent('li').addClass('active');
-
-		// 	var region = $(this).data('region');
-
-		// 	general01.activateGraph(graph1a, region);
-
-		// 	e.preventDefault();			
-		// });
-
 
 	});
 });

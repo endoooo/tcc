@@ -16,12 +16,12 @@
 			<br/>
 			<div class="profile">
 				<img src="<?= $root ?>/img/endo.png" alt="Endo" />
-				<p>Desenvolvido por:</p>
+				<p>Sobre o autor:</p>
 				<p class="mini-title">Eric Hiroyuki Endo</p>
 				<hr/>
 				<p>Apesar da formação em design, sempre se interessou pela área de programação e encontrou na visualização de dados um meio de unir os dois interesses.</p>
 				<br/>
-				<p>Atualmente trabalha na Wefit como designer e arquiteto de informação com foco na experiência do usuário. Nas horas vagas, além das leituras de UX e metodologias de projeto necessárias para o seu dia-a-dia, tem estudado arte generativa e Processing.</p>
+				<p>Atualmente trabalha como designer e arquiteto de informação com foco na experiência do usuário. Nas horas vagas, além das leituras de UX e metodologias de projeto necessárias para o seu dia-a-dia, tem estudado arte generativa e Processing.</p>
 				<br/>
 				<a href="http://behance.net/end" target="_blank"><span class="icon-link"></span> Behance</a>
 			</div>
@@ -42,7 +42,7 @@
 			<p>Última atualização: 26/nov/2013</p>
 			<p><a href="https://github.com/endoooo/tcc" target="_blank">Github</a></p>
 			<br/>
-			<p class="mini-title">Próximas etapas:</p>
+			<p class="mini-title">Próximas etapas <small>(não ordenadas)</small>:</p>
 			<ul class="to-do list">
 				<li>Conversão dos gráficos de argola para d3.js</li>
 				<li>Gerador de gráficos</li>
@@ -50,6 +50,7 @@
 				<li>Inclusão dos dados sobre posse de telefone móvel para uso pessoal</li>
 				<li>Versão mobile</li>
 				<li>Inclusão de visualizações mais experimentais</li>
+				<li>Versão estática para impressão</li>
 			</ul>
 		</div>
 

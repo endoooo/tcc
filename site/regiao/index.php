@@ -12,7 +12,8 @@
 		<div class="first content">
 			<h1>A utilização da internet pelos estados e regiões brasileiros</h1>
 			<hr/>
-			<p>Existe muita diferença de acesso à internet entre os estados e regiões do Brasil?</p>
+			<p>O acesso à internet varia de acordo com o local onde a pessoa mora? A diferença de acesso entre os estados é muito grande?</p>
+			<p>Responder a estas perguntas e entender a relação entre localização e o acesso à internet é de grande importância na definição de estratégias de políticas de inclusão digital. O Ministério das Comunicações, por exemplo, tem uma <a href="http://www.mc.gov.br/inclusao-digital/acoes-e-programas" target="_blank">série de programas de inclusão digital</a>, dentre os quais o <a href="http://www.mc.gov.br/acoes-e-programas/programa-nacional-de-banda-larga-pnbl" target="_blank">Programa Nacional de Banda Larga</a> que tem como objetivo levar infraestrutura e acesso banda larga a 40 milhões de domicílios brasileiros.</p>
 		</div>
 
 		<div class="graph-container" id="reg-graph1">
@@ -60,7 +61,8 @@
 		</div>
 
 		<div class="content">
-			<p>Qual a relação dos dados de acesso à internet dos estados como um todo e somente de suas regiões metropolitanas?</p>
+			<p>Além das diferenças de acesso entre os estados, a pesquisa possui dados que permite visualizar a diferença de acesso dos estados como um todo e somente de suas regiões metropolitanas.</p>
+			<p>O fato de haver uma maior concentração de pessoas, economia mais dinâmica entre outras características que configuram uma região metropolitana favorecem ou não o acesso à internet?</p>
 		</div>
 
 		<div class="graph-container" id="reg-graph3">
