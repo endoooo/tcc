@@ -1,4 +1,4 @@
-define(['jquery', 'jqueryui'], function($, jqui){
+define(['jquery', 'jquery-ui'], function($, $){
 
 	console.log('notes required');
 

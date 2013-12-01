@@ -1,9 +1,15 @@
 require.config({
     baseUrl: 'js',
     paths: {
-        jquery: 'lib/jquery-2.0.3.min',
-        jqueryui: 'lib/jquery-ui-1.10.3.custom.min',
-        d3js: 'lib/d3.v3.min'
+        'jquery': 'lib/jquery-2.0.3.min',
+        'jquery-ui': 'lib/jquery-ui-1.10.3.custom.min',
+        'd3js': 'lib/d3.v3.min'
+    },
+    shim: {
+        'jquery-ui': {
+        	deps: ['jquery'],
+            exports: '$'
+        }
     },
     urlArgs: 'bust=' + (new Date()).getTime()
 });
